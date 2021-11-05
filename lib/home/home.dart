@@ -48,6 +48,7 @@ class _home extends State<Home> {
                           return model.name;
                         }
                       }));
+                      /// 接收的回调，返回的参数，必须要使用 async await.
                       print("接收到的回传的值：${result}");
                     },
                   );
