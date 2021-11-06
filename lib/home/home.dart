@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
 import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
+import 'package:flutter_demo/home/widget_lifecycle.dart';
+
+import 'list_view_controller.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,7 +18,10 @@ class _home extends State<Home> {
   List data = <RouterModel>[
     RouterModel("导航路由的使用", "navigator_use", const NavigatorUse("导航路由的使用")),
     RouterModel("stateful的使用", "stateful_use", StatefulUse()),
-    RouterModel("导航传参使用", "", null)
+    RouterModel("导航传参使用", "", null),
+    RouterModel("stateful的使用", "list_view_controller", ListViewController()),
+    RouterModel("widget的生命周期的使用", "widget_lifecycle", WidgetLifeCycle()),
+
   ];
 
   @override

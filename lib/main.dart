@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
 
+import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
 import 'home/stateful_use.dart';
+import 'home/widget_lifecycle.dart';
 import 'mine/mine.dart';
 
 void main() {
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
         'mine': (BuildContext context)=>Mine(),
         'stateful_use': (BuildContext context)=>StatefulUse(),
         'navigator_use': (BuildContext context)=>const NavigatorUse("123"),
+        'list_view_controller': (BuildContext context)=>ListViewController(),
+        'widget_lifecycle': (BuildContext context)=>WidgetLifeCycle(),
+
       },
     );
   }

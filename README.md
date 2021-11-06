@@ -1,11 +1,13 @@
 # flutter_demo
-
     学习flutter 时的一些个人心得记录。
     1.导航栏的使用
     2.导航的跳转(
-        两种方法，方法一：使用routes 添加在mian中，使用路由名 方法二：使用page，widget 直接new
+        两种方法，
+        方法一：使用routes 添加在mian中，使用路由名 
+        方法二：使用page，widget 直接new
     )，参数的传递和回传。
     3.ListView 的基本使用，
+    4.关于widget的生命周期的介绍。
 
 ## Getting Started
 
