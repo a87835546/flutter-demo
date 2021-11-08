@@ -15,7 +15,7 @@ class CatalogueListPage extends State<CatalogueList> {
       body: Center(
         child: Container(
             decoration: BoxDecoration(color: Colors.black12),
-            child: Column(
+            child: ListView(
               children: [
                 Container(
                   alignment: Alignment.centerRight,
@@ -39,9 +39,9 @@ class CatalogueListPage extends State<CatalogueList> {
                         }),
                   ),
                 ),
-                ListView.builder(
+                ListView.separated(
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: 100,
                     itemBuilder: (BuildContext context, int index) {
                       return IntrinsicHeight(
                           child: GestureDetector(
@@ -76,6 +76,12 @@ class CatalogueListPage extends State<CatalogueList> {
                           ],
                         ),
                       ));
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Divider(
+                        height: 10,
+                        color: Color(0xeeeeee),
+                      );
                     }),
                 Container(
                   alignment: Alignment.center,
