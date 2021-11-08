@@ -67,9 +67,36 @@ class _statefulUse extends State<StatefulUse> {
               },
             ),
             Text("text field 的内容:$_string 内容的长度：${_string.length} 总长度:${199}"),
+            Container(
+              height: 100,
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.transparent
+              ),
+              child: PhysicalModel(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(6),
+                /// 抗锯齿，不开就会看不到圆角
+                clipBehavior: Clip.antiAlias,
+                child: PageView(
+                  children: [
+                    _item("page1",Colors.amber),
+                    _item("page2",Colors.teal),
+                    _item("page3",Colors.blueGrey),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+Widget _item(String s, Color color) {
+  return Container(
+    color: color,
+    child: Text(s),
+  );
 }
