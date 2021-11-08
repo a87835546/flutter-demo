@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
 
+import 'home/catalogue_list.dart';
 import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
 import 'home/stateful_use.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         'navigator_use': (BuildContext context)=>const NavigatorUse("123"),
         'list_view_controller': (BuildContext context)=>ListViewController(),
         'widget_lifecycle': (BuildContext context)=>WidgetLifeCycle(),
+        'catalogue_list': (BuildContext context)=>CatalogueList(),
 
       },
     );
