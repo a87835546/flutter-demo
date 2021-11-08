@@ -87,11 +87,87 @@ class _statefulUse extends State<StatefulUse> {
                 ),
               ),
             ),
+            Column(
+              children: [
+                FractionallySizedBox(
+                  widthFactor: 1,
+                  // heightFactor: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.limeAccent
+                    ),
+                    child: Text("FractionallySizedBox --- 简单使用， 可以充满整个屏幕"),
+                  ),
+                ),
+                Stack(
+
+                  children: [
+                    Image.network("https://img-pre.ivsky.com/img/tupian/pre/202102/15/sunyunzhu_xiannvqun-010.jpg",width: 100,
+                      height: 100,
+                      color: Colors.pink,
+                    ),
+                    Positioned(
+                        bottom: .0,
+                        left: 0,
+                        child:Image.network("https://img-pre.ivsky.com/img/tupian/pre/202102/15/sunyunzhu_xiannvqun-010.jpg",
+                          height: 36,width: 36,)
+                    )
+                  ],
+                ),
+                ///创建一个从左到右的一个布局，可以自动换行
+                Wrap(
+                  direction: Axis.vertical,
+                  // 水平间距
+                  spacing: 10,
+                  // 垂直间距
+                  runSpacing: 20,
+                  children: [
+                    _wrapItem("123"),
+                    _wrapItem("123"),
+                    _wrapItem("123"),
+                    _wrapItem("123"),
+                    _wrapItem("123"),
+                  ],
+                )
+              ],
+            ),
+
           ],
         ),
       ),
     );
   }
+}
+
+Widget _wrapItem(String s) {
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.white
+    ),
+    child: PhysicalModel(
+      borderRadius: BorderRadius.circular(6),
+      color: Colors.transparent,
+      clipBehavior: Clip.antiAlias,
+      child:ElevatedButton(
+
+        onPressed: null,
+        child:Row(
+          children: [
+            Container(
+              width: 40,
+              child: Icon(Icons.verified),
+            ),
+            Text("关于我们"),
+            Container(
+              width: 40,
+              child: Icon(Icons.arrow_forward_ios),
+            ),
+          ],
+        ),
+      )
+
+    ),
+  );
 }
 
 Widget _item(String s, Color color) {
