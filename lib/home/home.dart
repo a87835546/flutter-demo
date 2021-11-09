@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
 import 'package:flutter_demo/home/router_pass_arguments.dart';
@@ -22,6 +23,7 @@ class _home extends State<Home> {
     RouterModel("导航传参使用", "", null),
     RouterModel("stateful的使用", "list_view_controller", ListViewController()),
     RouterModel("widget的生命周期的使用", "widget_lifecycle", WidgetLifeCycle()),
+    RouterModel("app的生命周期的使用", "app_lifecycle", AppLifeCycle()),
     RouterModel("常用的目录", "catalogue_list", CatalogueList()),
 
   ];

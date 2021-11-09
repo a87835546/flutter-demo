@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 
+import 'home/app_lifecycle.dart';
 import 'home/catalogue_list.dart';
 import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
@@ -10,17 +12,19 @@ import 'home/widget_lifecycle.dart';
 import 'mine/mine.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
+  MyApp({Key? key}) : super(key: key);
   @override
+  late int i ;
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        brightness: AppSingleton.brightness,
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -32,6 +36,8 @@ class MyApp extends StatelessWidget {
         'navigator_use': (BuildContext context)=>const NavigatorUse("123"),
         'list_view_controller': (BuildContext context)=>ListViewController(),
         'widget_lifecycle': (BuildContext context)=>WidgetLifeCycle(),
+        'app_lifecycle': (BuildContext context)=>AppLifeCycle(),
+
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 
       },
