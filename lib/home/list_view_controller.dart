@@ -17,9 +17,19 @@ class ListViewPage extends State<ListViewController> {
         appBar: AppBar(
           title: Text("ListView的基本使用"),
         ),
-        body: ListView(
-          children: _createListViews(),
-        ));
+        body:RefreshIndicator(
+          onRefresh: _refresh,
+          child:  ListView(
+            children: _createListViews(),
+          ),
+        )
+    );
+  }
+
+  Future<void> _refresh() async {
+    await Future.delayed(Duration(seconds: 1),(){
+      print("refresh");
+    });
   }
 }
 
