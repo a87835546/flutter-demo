@@ -13,6 +13,7 @@
 - 5.添加flutter app的生命周期介绍
 - 6.widgetful 组件介绍使用
 - 7.[关于CustomScrollView](https://jianshu.com/p/2ba93e7bb8ea )使用
+- 8.[常用的第三方库](https://www.jianshu.com/p/67cda9aba038)
 
 ## Getting Started
 

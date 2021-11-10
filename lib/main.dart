@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         'widget_lifecycle': (BuildContext context)=>WidgetLifeCycle(),
         'app_lifecycle': (BuildContext context)=>AppLifeCycle(),
         'page_transition': (BuildContext context)=>PageTransition(),
+        'device_info': (BuildContext context)=>DeviceInfo(),
 
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 

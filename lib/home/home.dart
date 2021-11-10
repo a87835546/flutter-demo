@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
+import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
 import 'package:flutter_demo/home/page_transition.dart';
 import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
+import 'package:flutter_demo/utils/screen_utils.dart';
 
 import 'list_view_controller.dart';
 
@@ -27,6 +29,7 @@ class _home extends State<Home> {
     RouterModel("app的生命周期的使用", "app_lifecycle", AppLifeCycle()),
     RouterModel("常用的目录", "catalogue_list", CatalogueList()),
     RouterModel("常用页面转场动画", "page_transition", PageTransition()),
+    RouterModel("查看设备信息", "device_info", DeviceInfo()),
 
   ];
 
@@ -35,6 +38,7 @@ class _home extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("flutter 学习资料"),
+
       ),
       body: Center(
         child: Container(

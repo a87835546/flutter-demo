@@ -43,7 +43,7 @@ Widget _createItem(title) {
     margin: EdgeInsets.only(bottom: 1.0),
     alignment: Alignment.center,
     decoration: BoxDecoration(
-        color: int.parse(title) % 2 == 0 ? Colors.white10 : Colors.white),
+        color: int.parse(title) % 2 == 0 ? Colors.white30 : Colors.white),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.end,
