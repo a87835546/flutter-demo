@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
+import 'package:flutter_demo/home/page_transition.dart';
 import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
@@ -25,6 +26,7 @@ class _home extends State<Home> {
     RouterModel("widget的生命周期的使用", "widget_lifecycle", WidgetLifeCycle()),
     RouterModel("app的生命周期的使用", "app_lifecycle", AppLifeCycle()),
     RouterModel("常用的目录", "catalogue_list", CatalogueList()),
+    RouterModel("常用页面转场动画", "page_transition", PageTransition()),
 
   ];
 

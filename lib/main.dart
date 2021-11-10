@@ -7,6 +7,7 @@ import 'home/app_lifecycle.dart';
 import 'home/catalogue_list.dart';
 import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
+import 'home/page_transition.dart';
 import 'home/stateful_use.dart';
 import 'home/widget_lifecycle.dart';
 import 'mine/mine.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         'list_view_controller': (BuildContext context)=>ListViewController(),
         'widget_lifecycle': (BuildContext context)=>WidgetLifeCycle(),
         'app_lifecycle': (BuildContext context)=>AppLifeCycle(),
+        'page_transition': (BuildContext context)=>PageTransition(),
 
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 
