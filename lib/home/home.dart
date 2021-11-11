@@ -4,6 +4,7 @@ import 'package:flutter_demo/home/catalogue_list.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
 import 'package:flutter_demo/home/page_transition.dart';
+import 'package:flutter_demo/home/request_page.dart';
 import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
@@ -30,6 +31,7 @@ class _home extends State<Home> {
     RouterModel("常用的目录", "catalogue_list", CatalogueList()),
     RouterModel("常用页面转场动画", "page_transition", PageTransition()),
     RouterModel("查看设备信息", "device_info", DeviceInfo()),
+    RouterModel("网络请求的使用", "request_use", RequestUse()),
 
   ];
 

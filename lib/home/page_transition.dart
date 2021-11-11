@@ -81,9 +81,11 @@ class DrawerPage extends State<Page3> {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: IconButton(onPressed: (){},icon: Icon(Icons.close),iconSize: 20),
+              child: IconButton(onPressed: (){
+                Navigator.pop(context);
+              },icon: Icon(Icons.close),iconSize: 20,color: Colors.white,),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: Text(
                 "Scaffold 上的endDrawer 右侧抽屉盒子Drawer的使用，和 CustomScrollView 下得SliverToBoxAdapter 使用",
                 style: TextStyle(
@@ -92,7 +94,7 @@ class DrawerPage extends State<Page3> {
                 maxLines: 4,
               ),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 20,
               ),
@@ -101,21 +103,28 @@ class DrawerPage extends State<Page3> {
               child: ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      color: Colors.red,
-                      height: 40,
-                      child: Text("row :$index"),
+                    return GestureDetector(
+                      onTap: (){
+                        print("click cell index:$index");
+                      },
+                      child: Container(
+                        padding:const EdgeInsets.only(left: 10,right: 10),
+                        alignment: Alignment.centerLeft,
+                        color: Colors.red,
+                        height: 40,
+                        child: Text("row :$index"),
+                      ),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
-                    return Divider(
+                    return const Divider(
                       height: 10,
                       color: Colors.grey,
                     );
                   },
                   itemCount: 10),
             ),
-            SliverToBoxAdapter(
+           const SliverToBoxAdapter(
               child: Text("1232312"),
             )
           ],
