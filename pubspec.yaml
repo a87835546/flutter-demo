@@ -65,12 +65,32 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
+  assets:
+    - imgs/
+    - imgs/images/
+    - imgs/images/icon-p@3x.png
+    - imgs/images/bottom-icon-gaming-hover@3x.png
+    - imgs/images/banner@3x.png
+    - imgs/images/icon- advertise@3x.png
+    - imgs/images/icon- responsibility@3x.png
+    - imgs/images/icon-about-us@3x.png
+    - imgs/images/icon-close@3x.png
+    - imgs/images/icon-cooperate@3x.png
+    - imgs/images/icon-help@3x.png
+    - imgs/images/icon-List@3x.png
+    - imgs/images/icon-NEW-HELP@3x.png
+    - imgs/images/icon-Refresh@3x.png
+    - imgs/images/icon-result@3x.png
+    - imgs/images/icon-share@3x.png
+    - imgs/images/iocn-Unfold@3x.png
+    - imgs/images/logo-SDY@3x.png
+    - imgs/images/Security-center@3x.png
+    - imgs/images/Transaction-Record@3x.png
   # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # https://flutter.dev/imgs-and-images/#resolution-aware.
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
+  # For details regarding adding imgs from package dependencies, see
+  # https://flutter.dev/imgs-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

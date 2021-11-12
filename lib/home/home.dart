@@ -45,9 +45,10 @@ class _home extends State<Home> {
       body: Center(
         child: Container(
           child: RefreshIndicator(
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
+              child: ListView.separated(itemBuilder: (BuildContext context,int index){
+                return Container(
+                  height: 60,
+                  child: ListTile(
                     title: Text("row : ${data[index].navTitle}"),
                     subtitle: Text("${data[index].name}"),
                     onTap: () async {
@@ -59,25 +60,21 @@ class _home extends State<Home> {
                       /// 方法二，不使用路由跳转，
                       final result = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        if (model.name == null) {
-                          /// 需要传参
-                          return RouterPassArguments(model);
-                        } else {
-                          return model.name;
-                        }
-                      }));
+                            if (model.name == null) {
+                              /// 需要传参
+                              return RouterPassArguments(model);
+                            } else {
+                              return model.name;
+                            }
+                          }));
                       /// 接收的回调，返回的参数，必须要使用 async await.
                       print("接收到的回传的值：${result}");
                     },
-                  );
-                  // return Container(
-                  //   padding: EdgeInsets.all(8.0),
-                  //   child: Text("row : $index"),
-                  //   height: 44,
-                  // );
-                },
-                itemCount: data.length,
-              ),
+                  ),
+                );
+              }, separatorBuilder: (BuildContext context,int index){
+                return Divider(height: 2,color: Colors.grey,);
+              }, itemCount: data.length),
               onRefresh: _refresh),
         ),
       ),
