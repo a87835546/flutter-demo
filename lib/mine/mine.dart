@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -53,14 +54,21 @@ class MinePage extends State<Mine> {
           centerTitle: true,
           automaticallyImplyLeading: true,
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.message,
-                color: Colors.white,
-                size: 20,
+            Badge(
+              badgeContent: Container(
+                color: Colors.redAccent,
+                width: 15,
+                height: 15,
+                alignment: Alignment.center,
+                child: Text("100",
+                  style: TextStyle(color: Colors.white,fontSize:12),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              color: Colors.red,
+              showBadge: true,
+              borderRadius: BorderRadius.circular(7.5),
+              position: BadgePosition(top: -0, end: -10),
+              child: Icon(Icons.message),
             ),
             IconButton(
                 onPressed: () {},
