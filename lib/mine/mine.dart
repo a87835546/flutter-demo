@@ -60,8 +60,9 @@ class MinePage extends State<Mine> {
                 width: 15,
                 height: 15,
                 alignment: Alignment.center,
-                child: Text("100",
-                  style: TextStyle(color: Colors.white,fontSize:12),
+                child: Text(
+                  "100",
+                  style: TextStyle(color: Colors.white, fontSize: 12),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -103,6 +104,44 @@ class MinePage extends State<Mine> {
       child: Container(
         color: Colors.red,
         height: 300,
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              child: Row(
+                children: [
+                  Container(
+                    width: 30,
+                    child:const Icon(Icons.volume_up),
+                  ),
+                  Expanded(
+                      child: Container(
+                    color: Colors.greenAccent,
+                        child: const SizedBox(
+                          height: 180,
+                          width: 180,
+                          child: CircularProgressIndicator(
+                            value: 0.8,
+                            backgroundColor: Colors.white,
+                            valueColor: AlwaysStoppedAnimation(Colors.yellow)
+                          ),
+                        ),
+                  )),
+                  Container(
+                    width: 30,
+                    child: Icon(Icons.volume_up),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 100,
+              child: Container(
+                color: Colors.blueAccent,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -114,7 +153,9 @@ class MinePage extends State<Mine> {
             physics: ScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-                onTap: () async {},
+                onTap: () async {
+                  print("cell clicked index :$index");
+                },
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     clipBehavior: Clip.antiAlias,

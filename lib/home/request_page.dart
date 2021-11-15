@@ -88,7 +88,7 @@ class RequestUsePage extends State<RequestUse> {
     HttpClient httpClient = HttpClient();
     Uri uri = Uri(
         scheme: "http",
-        host: "localhost",
+        host: "127.0.0.1",
         queryParameters: {"username": "zhangsan", "password": "123456"},
         port: 9000,
         path: "user/test3");
@@ -110,7 +110,7 @@ class RequestUsePage extends State<RequestUse> {
     HttpClient httpClient = HttpClient();
     Uri uri = Uri(
         scheme: "http",
-        host: "localhost",
+        host: "127.0.0.1",
         queryParameters: {"username": "zhangsan", "password": "123456"},
         port: 9000,
         path: "user/test4");
@@ -136,7 +136,7 @@ class RequestUsePage extends State<RequestUse> {
   void httpRequest() async {
     Uri uri = Uri(
         scheme: "http",
-        host: "localhost",
+        host: "127.0.0.1",
         queryParameters: {"username": "zhangsan", "password": "123456"},
         port: 9000,
         path: "user/test1");
@@ -153,7 +153,7 @@ class RequestUsePage extends State<RequestUse> {
   void httpPostRequest() async {
     Uri uri = Uri(
         scheme: "http",
-        host: "localhost",
+        host: "127.0.0.1",
         // queryParameters: {"username": "zhangsan", "password": "123456"},
         port: 9000,
         path: "user/test4");
@@ -173,7 +173,7 @@ class RequestUsePage extends State<RequestUse> {
   /// dio get 请求
   void dioGetRequest() async{
     var dio = Dio();
-    final response = await dio.get("http://localhost:9000/user/test1");
+    final response = await dio.get("http://127.0.0.1:9000/user/test1");
     setState(() {
       _result = response;
     });
@@ -182,7 +182,7 @@ class RequestUsePage extends State<RequestUse> {
   /// dio post 请求
   void dioPostRequest() async{
     var dio = Dio();
-    final response = await dio.post("http://localhost:9000/user/test4",data: {"username":"zhansan","password":"123456"});
+    final response = await dio.post("http://127.0.0.1:9000/user/register",data: {"username":"wangwu","password":"123456"});
     setState(() {
       _result = response;
     });

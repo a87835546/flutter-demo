@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/home/animation_use.dart';
 import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
@@ -32,6 +33,7 @@ class _home extends State<Home> {
     RouterModel("常用页面转场动画", "page_transition", PageTransition()),
     RouterModel("查看设备信息", "device_info", DeviceInfo()),
     RouterModel("网络请求的使用", "request_use", RequestUse()),
+    RouterModel("常用的动画animation的使用", "animation_use", AnimationUse()),
 
   ];
 

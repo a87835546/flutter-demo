@@ -4,6 +4,7 @@ import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
 
+import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
 import 'home/catalogue_list.dart';
 import 'home/list_view_controller.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         'page_transition': (BuildContext context)=>PageTransition(),
         'device_info': (BuildContext context)=>DeviceInfo(),
         'request_use': (BuildContext context)=>RequestUse(),
+        'animation_use': (BuildContext context)=>AnimationUse(),
 
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 
