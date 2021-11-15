@@ -8,6 +8,7 @@ import 'package:flutter_demo/home/page_transition.dart';
 import 'package:flutter_demo/home/request_page.dart';
 import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
+import 'package:flutter_demo/home/swiper_demo.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
 import 'package:flutter_demo/utils/screen_utils.dart';
 
@@ -34,6 +35,7 @@ class _home extends State<Home> {
     RouterModel("查看设备信息", "device_info", DeviceInfo()),
     RouterModel("网络请求的使用", "request_use", RequestUse()),
     RouterModel("常用的动画animation的使用", "animation_use", AnimationUse()),
+    RouterModel("swiper的使用", "swiper_demo", SwiperDemo()),
 
   ];
 

@@ -39,6 +39,9 @@ dependencies:
   http: ^0.13.4
   dio: ^4.0.1
   badges: ^2.0.1
+  card_swiper: ^1.0.4
+  json_serializable: ^6.0.1
+
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +53,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -84,6 +88,7 @@ flutter:
     - imgs/images/icon-result@3x.png
     - imgs/images/icon-share@3x.png
     - imgs/images/iocn-Unfold@3x.png
+    - imgs/images/banner@3x.png
     - imgs/images/logo-SDY@3x.png
     - imgs/images/Security-center@3x.png
     - imgs/images/Transaction-Record@3x.png

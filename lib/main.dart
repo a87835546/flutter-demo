@@ -12,6 +12,7 @@ import 'home/navigator_use.dart';
 import 'home/page_transition.dart';
 import 'home/request_page.dart';
 import 'home/stateful_use.dart';
+import 'home/swiper_demo.dart';
 import 'home/widget_lifecycle.dart';
 import 'mine/mine.dart';
 
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         'device_info': (BuildContext context)=>DeviceInfo(),
         'request_use': (BuildContext context)=>RequestUse(),
         'animation_use': (BuildContext context)=>AnimationUse(),
+        'swiper_demo': (BuildContext context)=>SwiperDemo(),
 
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 

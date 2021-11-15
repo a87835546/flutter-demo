@@ -9,6 +9,8 @@ class AnimationUse extends StatefulWidget {
   }
 }
 
+bool _isAnimated = true;
+
 /// animation 动画的使用
 class AnimationState extends State<AnimationUse>
     with SingleTickerProviderStateMixin {
@@ -59,11 +61,24 @@ class AnimationState extends State<AnimationUse>
                 child: Text("开始动画")),
             ElevatedButton(
                 onPressed: () async {
+                  setState(() {
+                    _isAnimated = true;
+                  });
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return AnimationWidgetUse();
                   }));
                 },
-                child: Text("animated widget 动画")),
+                child: Text("animated widget 动画1")),
+            ElevatedButton(
+                onPressed: () async {
+                  setState(() {
+                    _isAnimated = false;
+                  });
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return AnimationWidgetUse();
+                  }));
+                },
+                child: Text("animated widget 动画2")),
             Container(
               width: _animationValue,
               height: _animationValue,
@@ -85,14 +100,17 @@ class AnimationWidgetUse extends StatefulWidget {
   }
 }
 
-class AnimationWidgetUseState extends State<AnimationWidgetUse> with SingleTickerProviderStateMixin {
+class AnimationWidgetUseState extends State<AnimationWidgetUse>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
 
   @override
   void initState() {
-    _animationController = AnimationController(vsync: this,duration:const Duration(seconds: 2));
-    _animation = Tween<double>(begin: 0,end: 300).animate(_animationController);
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _animation =
+        Tween<double>(begin: 0, end: 300).animate(_animationController);
     _animationController.forward();
     super.initState();
   }
@@ -105,9 +123,9 @@ class AnimationWidgetUseState extends State<AnimationWidgetUse> with SingleTicke
 
   @override
   Widget build(BuildContext context) {
-    return TopMenuWidget(controller: _animationController);
-    return AnimatedLogo(animation:_animation);
+    // return TopMenuWidget(controller: _animationController);
+    return _isAnimated
+        ? TopMenuWidget(controller: _animationController)
+        : AnimatedLogo(animation: _animation);
   }
 }
-
-
