@@ -12,6 +12,7 @@ class Active {
 
   static Active fromJson(Map<String, dynamic> json) {
     Active active = Active(id: json['id'], title: json['title'], url: json['url'], description: json['description'] ?? "");
+    print(active);
     return active;
   }
 
@@ -22,5 +23,10 @@ class Active {
     data['url'] = this.url;
     data['description'] = this.description;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'Active{id: $id, title: $title, url: $url, description: $description}';
   }
 }
