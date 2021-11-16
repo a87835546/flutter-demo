@@ -13,6 +13,7 @@ import 'package:flutter_demo/home/swiper_demo.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
 import 'package:flutter_demo/utils/screen_utils.dart';
 
+import 'expansion_use.dart';
 import 'list_view_controller.dart';
 
 class Home extends StatefulWidget {
@@ -38,6 +39,7 @@ class _home extends State<Home> {
     RouterModel("常用的动画animation的使用", "animation_use", AnimationUse()),
     RouterModel("swiper的使用", "swiper_demo", SwiperDemo()),
     RouterModel("SharePreferences的使用/本地数据存储", "share_preference_use", SharePreferenceUse()),
+    RouterModel("ExpansionTitle的使用/可折叠的列表", "expansion_title_use", ExpansionUse()),
 
   ];
 

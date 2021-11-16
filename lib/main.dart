@@ -7,6 +7,7 @@ import 'package:flutter_demo/utils/app_singleton.dart';
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
 import 'home/catalogue_list.dart';
+import 'home/expansion_use.dart';
 import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
 import 'home/page_transition.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         'animation_use': (BuildContext context)=>AnimationUse(),
         'swiper_demo': (BuildContext context)=>SwiperDemo(),
         'share_preference_use': (BuildContext context)=>SharePreferenceUse(),
+        'expansion_title_use': (BuildContext context)=>ExpansionUse(),
 
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 
