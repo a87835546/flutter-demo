@@ -43,7 +43,7 @@ dependencies:
   json_serializable: ^6.0.1
   transparent_image: ^2.0.0
   shared_preferences: ^2.0.8
-
+  fluttertoast: ^8.0.8
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +72,7 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+
   assets:
     - imgs/
     - imgs/images/

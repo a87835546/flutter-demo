@@ -7,6 +7,7 @@ import 'package:flutter_demo/utils/app_singleton.dart';
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
 import 'home/catalogue_list.dart';
+import 'home/corner_raduis_button.dart';
 import 'home/expansion_use.dart';
 import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         'swiper_demo': (BuildContext context)=>SwiperDemo(),
         'share_preference_use': (BuildContext context)=>SharePreferenceUse(),
         'expansion_title_use': (BuildContext context)=>ExpansionUse(),
-
+        'corner_raduis_button': (BuildContext context)=>CornerRaduisButton(),
         'catalogue_list': (BuildContext context)=>CatalogueList(),
 
       },

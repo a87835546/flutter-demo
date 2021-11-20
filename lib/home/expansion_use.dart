@@ -68,7 +68,7 @@ class ExpansionUseState extends State<ExpansionUse> {
 
   Future<List<Map<String,List<CityModel>>>> _getData() async {
     var dio = Dio();
-    final response = await dio.get("http://127.0.0.1:9000/address/queryCites");
+    final response = await dio.get("http://192.168.1.15:9000/address/queryCites");
     final data = response.data;
     List list = [];
     try {
