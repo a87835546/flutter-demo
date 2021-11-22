@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -8,6 +9,8 @@ import 'package:flutter_demo/entity/active.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
+const API_HOST = '192.168.1.15';
+const API_PORT = 9000;
 class RequestUse extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -89,9 +92,9 @@ class RequestUsePage extends State<RequestUse> {
     HttpClient httpClient = HttpClient();
     Uri uri = Uri(
         scheme: "http",
-        host: "127.0.0.1",
+        host: API_HOST,
         queryParameters: {"username": "zhangsan", "password": "123456"},
-        port: 9000,
+        port: API_PORT,
         path: "user/test3");
     HttpClientRequest request = await httpClient.getUrl(uri);
 
@@ -111,9 +114,9 @@ class RequestUsePage extends State<RequestUse> {
     HttpClient httpClient = HttpClient();
     Uri uri = Uri(
         scheme: "http",
-        host: "127.0.0.1",
+        host: API_HOST,
         queryParameters: {"username": "zhangsan", "password": "123456"},
-        port: 9000,
+        port: API_PORT,
         path: "user/test4");
     HttpClientRequest request = await httpClient.postUrl(uri);
 
@@ -137,9 +140,9 @@ class RequestUsePage extends State<RequestUse> {
   void httpRequest() async {
     Uri uri = Uri(
         scheme: "http",
-        host: "127.0.0.1",
+        host: API_HOST,
         queryParameters: {"username": "zhangsan", "password": "123456"},
-        port: 9000,
+        port: API_PORT,
         path: "user/test1");
     Client client = http.Client();
     http.Response response = await client.get(uri);
@@ -154,9 +157,9 @@ class RequestUsePage extends State<RequestUse> {
   void httpPostRequest() async {
     Uri uri = Uri(
         scheme: "http",
-        host: "127.0.0.1",
+        host: API_HOST,
         // queryParameters: {"username": "zhangsan", "password": "123456"},
-        port: 9000,
+        port: API_PORT,
         path: "user/test4");
     Client client = http.Client();
     var userAgentClient = UserAgentClient("",client);
@@ -174,7 +177,8 @@ class RequestUsePage extends State<RequestUse> {
   /// dio get 请求
   void dioGetRequest() async{
     var dio = Dio();
-    final response = await dio.get("http://127.0.0.1:9000/user/test1");
+    var url = "http://$API_HOST:$API_PORT/user/test1";
+    final response = await dio.get(url);
     setState(() {
       _result = response;
     });
@@ -183,7 +187,9 @@ class RequestUsePage extends State<RequestUse> {
   /// dio post 请求
   void dioPostRequest() async{
     var dio = Dio();
-    final response = await dio.post("http://127.0.0.1:9000/user/register",data: {"username":"wangwu","password":"123456"});
+    var url = "http://$API_HOST:$API_PORT/user/register";
+
+    final response = await dio.post(url,data: {"username":"wangwu:${DateTime.now()}","password":"123456","email":"123@gmail.com"});
     setState(() {
       _result = response;
     });
@@ -196,6 +202,7 @@ class UserAgentClient extends http.BaseClient {
 
   UserAgentClient(this.userAgent, this._inner);
 
+  @override
   Future<http.StreamedResponse> send(http.BaseRequest request) {
     request.headers['content-type'] = "application/json";
     return _inner.send(request);

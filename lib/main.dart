@@ -7,7 +7,7 @@ import 'package:flutter_demo/utils/app_singleton.dart';
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
 import 'home/catalogue_list.dart';
-import 'home/corner_raduis_button.dart';
+import 'home/corner_radius_button.dart';
 import 'home/expansion_use.dart';
 import 'home/list_view_controller.dart';
 import 'home/navigator_use.dart';
@@ -16,6 +16,7 @@ import 'home/request_page.dart';
 import 'home/share_preference_use.dart';
 import 'home/stateful_use.dart';
 import 'home/swiper_demo.dart';
+import 'home/webview_use.dart';
 import 'home/widget_lifecycle.dart';
 import 'mine/mine.dart';
 
@@ -52,8 +53,9 @@ class MyApp extends StatelessWidget {
         'swiper_demo': (BuildContext context)=>SwiperDemo(),
         'share_preference_use': (BuildContext context)=>SharePreferenceUse(),
         'expansion_title_use': (BuildContext context)=>ExpansionUse(),
-        'corner_raduis_button': (BuildContext context)=>CornerRaduisButton(),
+        'corner_radius_button': (BuildContext context)=>const CornerRadiusButton(),
         'catalogue_list': (BuildContext context)=>CatalogueList(),
+        'custom_webView': (BuildContext context)=>const CustomWebView(),
 
       },
     );

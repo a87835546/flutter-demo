@@ -5,52 +5,100 @@ import 'package:flutter_demo/custom_widget/info_button.dart';
 import 'package:flutter_demo/utils/screen_utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class CornerRaduisButton extends StatefulWidget {
+class CornerRadiusButton extends StatefulWidget {
+  const CornerRadiusButton({Key? key}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => _CornerRaduisButtonState();
+  State<StatefulWidget> createState() => _CornerRadiusButtonState();
 }
 
-class _CornerRaduisButtonState extends State<CornerRaduisButton> {
+class _CornerRadiusButtonState extends State<CornerRadiusButton> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!
         .addPostFrameCallback((_) => _insertOverlay(context));
   }
-@override
+
+  @override
   void dispose() {
-  Overlay.of(context)!.dispose();
-  // Overlay.of(context)!.rearrange();
+    // Overlay.of(context)!.dispose();
+    // Overlay.of(context)!.rearrange(newE);
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     Offset _offset = Offset.zero;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("自定义button 带圆角"),
-      ),
-      body: Column(
-        children: [
-          Padding(padding: EdgeInsets.only(top: 10)),
-          ClipRRect(
-            // borderRadius: const BorderRadius.all(Radius.circular(12)),
-            // clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Container(
+        appBar: AppBar(
+          title: const Text("自定义button 带圆角"),
+        ),
+        body: Column(
+          children: [
+            const Padding(padding: EdgeInsets.only(top: 10)),
+            ClipRRect(
+              // borderRadius: const BorderRadius.all(Radius.circular(12)),
+              // clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: Container(
+                width: 128,
+                height: 24,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    border:
+                        Border.all(width: 1, color: const Color(0xffD3C294)),
+                    //   border: Border.all(width: 1, color: Colors.yellowAccent),
+                    color: Colors.transparent),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 62,
+                      height: 22,
+                      child: GestureDetector(
+                        onTap: () {
+                          // showToast("提款");
+                        },
+                        child: Container(
+                          width: 62,
+                          alignment: Alignment.center,
+                          child: Text("提款"),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 62,
+                      height: 22,
+                      child: GestureDetector(
+                        onTap: () {
+                          // showToast("充值");
+                        },
+                        child: Container(
+                          width: 62,
+                          alignment: Alignment.center,
+                          child: Text("充值"),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Padding(padding: EdgeInsets.only(top: 10)),
+            Container(
               width: 128,
               height: 24,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  border:
-                  Border.all(width: 1, color: const Color(0xffD3C294)),
+                  border: Border.all(width: 1, color: const Color(0xffD3C294)),
                   //   border: Border.all(width: 1, color: Colors.yellowAccent),
                   color: Colors.transparent),
               child: Row(
                 children: [
-                  Container(
-                    width: 62,
+                  SizedBox(
+                    width: 63,
                     height: 22,
                     child: GestureDetector(
                       onTap: () {
@@ -59,12 +107,20 @@ class _CornerRaduisButtonState extends State<CornerRaduisButton> {
                       child: Container(
                         width: 62,
                         alignment: Alignment.center,
-                        child: Text("提款"),
+                        child: const Text(
+                          "提款",
+                          style: TextStyle(
+                            color: Color(0xffD0C3A6),
+                            backgroundColor: Colors.transparent,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: 62,
+                  SizedBox(
+                    width: 63,
                     height: 22,
                     child: GestureDetector(
                       onTap: () {
@@ -73,106 +129,56 @@ class _CornerRaduisButtonState extends State<CornerRaduisButton> {
                       child: Container(
                         width: 62,
                         alignment: Alignment.center,
-                        child: Text("充值"),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(12),
+                                bottomRight: Radius.circular(12)),
+                            color: Color(0xffD0C3A6)),
+                        child: const Text(
+                          "充值",
+                          style: TextStyle(
+                            color: Color(0xff3a3a3a),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
-          ),
-          Padding(padding: EdgeInsets.only(top: 10)),
-          Container(
-            width: 128,
-            height: 24,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                border: Border.all(width: 1, color: const Color(0xffD3C294)),
-                //   border: Border.all(width: 1, color: Colors.yellowAccent),
-                color: Colors.transparent),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 63,
-                  height: 22,
-                  child: GestureDetector(
-                    onTap: () {
-                      // showToast("提款");
-                    },
-                    child: Container(
-                      width: 62,
-                      alignment: Alignment.center,
-                      child: const Text(
-                        "提款",
-                        style: TextStyle(
-                          color: Color(0xffD0C3A6),
-                          backgroundColor: Colors.transparent,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 63,
-                  height: 22,
-                  child: GestureDetector(
-                    onTap: () {
-                      // showToast("充值");
-                    },
-                    child: Container(
-                      width: 62,
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(12),
-                              bottomRight: Radius.circular(12)),
-                          color: Color(0xffD0C3A6)),
-                      child: const Text(
-                        "充值",
-                        style: TextStyle(
-                          color: Color(0xff3a3a3a),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
-              ],
+            const Padding(
+              padding: EdgeInsets.only(top: 10),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-          ),
-          _createMyWalletInfo(),
-          // Positioned(
-          //   left: _offset.dx,
-          //   top: _offset.dy,
-          //
-          //   child: GestureDetector(
-          //     onPanUpdate: (d) {
-          //       print("${d}");
-          //       setState(() => _offset += Offset(d.delta.dx, d.delta.dy));
-          //
-          //     },
-          //     child: FloatingActionButton(
-          //       onPressed: () {},
-          //       backgroundColor: Colors.orange,
-          //       child: Icon(Icons.add),
-          //     ),
-          //   ),
-          // ),
-          BorderRadiusButton(60, 20, title: Text("测试"),click: (){
-            print("click test button");
-          },)
-        ],
-      )
-    );
+            _createMyWalletInfo(),
+            // Positioned(
+            //   left: _offset.dx,
+            //   top: _offset.dy,
+            //
+            //   child: GestureDetector(
+            //     onPanUpdate: (d) {
+            //       print("${d}");
+            //       setState(() => _offset += Offset(d.delta.dx, d.delta.dy));
+            //
+            //     },
+            //     child: FloatingActionButton(
+            //       onPressed: () {},
+            //       backgroundColor: Colors.orange,
+            //       child: Icon(Icons.add),
+            //     ),
+            //   ),
+            // ),
+            BorderRadiusButton(
+              title: Text("测试"),
+              height: 20,
+              width: 60,
+              click: () {
+                print("click test button");
+              },
+            ),
+          ],
+        ));
   }
 
   Widget _createMyWalletInfo() {
@@ -280,7 +286,6 @@ class _CornerRaduisButtonState extends State<CornerRaduisButton> {
     );
   }
 
-
   void _insertOverlay(BuildContext context) {
     return Overlay.of(context)!.insert(
       OverlayEntry(builder: (context) {
@@ -289,17 +294,18 @@ class _CornerRaduisButtonState extends State<CornerRaduisButton> {
         return Positioned(
           width: 56,
           height: 56,
-          top: size.height /2,
-          left: size.width /2,
+          top: size.height / 2,
+          left: size.width / 2,
           child: Material(
             color: Colors.white,
             child: GestureDetector(
-              onTap: (){print("1231231231312");},
-
+              onTap: () {
+                print("1231231231312");
+              },
               child: Container(
                 height: 100,
                 width: 100,
-                decoration: BoxDecoration(
+                decoration:const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.redAccent),
                 child: Text("1231231231"),
               ),
@@ -309,6 +315,4 @@ class _CornerRaduisButtonState extends State<CornerRaduisButton> {
       }),
     );
   }
-
-
 }

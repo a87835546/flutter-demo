@@ -6,10 +6,10 @@ typedef BorderRadiusButtonClick = void Function();
 class BorderRadiusButton extends StatelessWidget {
   final Widget title;
   final BorderRadiusButtonClick? click;
-  double width = 10;
-  double height = 10;
+  final double width ;
+  final double height ;
 
-  BorderRadiusButton(this.width,this.height,{required this.title, Key? key, this.click})
+  const BorderRadiusButton({this.width = 10,this.height = 10,required this.title, Key? key, this.click})
       : super(key: key);
 
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/animation_use.dart';
 import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
-import 'package:flutter_demo/home/corner_raduis_button.dart';
+import 'package:flutter_demo/home/corner_radius_button.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
 import 'package:flutter_demo/home/page_transition.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/share_preference_use.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
 import 'package:flutter_demo/home/swiper_demo.dart';
+import 'package:flutter_demo/home/webview_use.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
 import 'package:flutter_demo/utils/screen_utils.dart';
 
@@ -41,7 +42,8 @@ class _home extends State<Home> {
     RouterModel("swiper的使用", "swiper_demo", SwiperDemo()),
     RouterModel("SharePreferences的使用/本地数据存储", "share_preference_use", SharePreferenceUse()),
     RouterModel("ExpansionTitle的使用/可折叠的列表", "expansion_title_use", ExpansionUse()),
-    RouterModel("定义button 带圆角", "corner_raduis_button", CornerRaduisButton()),
+    RouterModel("定义button 带圆角", "corner_radius_button", const CornerRadiusButton()),
+    RouterModel("webview 的常见使用", "custom_webView", const CustomWebView()),
 
   ];
 

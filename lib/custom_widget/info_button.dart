@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 typedef InfoButtonTapCallback = void Function();
 
 class InfoButton extends StatelessWidget {
-  InfoButton(
-      {this.key,
+  const InfoButton(
+      {Key? key,
       required this.title,
-      this.width,
+      this.width = 100,
       required this.iconName,
       this.clickBtn})
       : assert(
@@ -15,7 +15,6 @@ class InfoButton extends StatelessWidget {
         ),
         super(key: key);
 
-  Key? key;
   final Widget title;
   final double? width;
   final String iconName;
