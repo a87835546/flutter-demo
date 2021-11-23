@@ -6,6 +6,7 @@ import 'package:flutter_demo/utils/app_singleton.dart';
 
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
+import 'home/card_use.dart';
 import 'home/catalogue_list.dart';
 import 'home/corner_radius_button.dart';
 import 'home/expansion_use.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         'corner_radius_button': (BuildContext context)=>const CornerRadiusButton(),
         'catalogue_list': (BuildContext context)=>CatalogueList(),
         'custom_webView': (BuildContext context)=>const CustomWebView(),
+        'card_use': (BuildContext context)=>const CardUse(),
 
       },
     );

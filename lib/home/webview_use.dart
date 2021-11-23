@@ -33,7 +33,7 @@ class _CustomWebViewState extends State<CustomWebView> {
       ),
       body: SafeArea(
         child: WebView(
-          initialUrl: "http://localhost:9000/doc.html",
+          initialUrl: "http://192.168.1.15:9000/doc.html",
           onWebViewCreated: (WebViewController webViewController) {
             _completer.complete(webViewController);
             _controller = webViewController;
@@ -50,7 +50,6 @@ class _CustomWebViewState extends State<CustomWebView> {
 
             _controller.runJavascript("document.title").then((result) {
               print("runJavascript ");
-
             }).catchError((error){
               print("error info :${error.toString()}");
             });
