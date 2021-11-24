@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Mine extends StatefulWidget {
+  const Mine({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return MinePage();
@@ -10,39 +12,39 @@ class Mine extends StatefulWidget {
 }
 
 class MinePage extends State<Mine> {
-  var _refreshController = RefreshController();
-  final List<MimeModel> _list = [
-    MimeModel("imgs/images/Transaction-Record@3x.png", "交易记录",
+  final _refreshController = RefreshController();
+  final List<MineModel> _list = [
+    MineModel("imgs/images/Transaction-Record@3x.png", "交易记录",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel(
+    MineModel(
         "imgs/images/icon-p@3x.png", "我的优惠", "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "优惠活动",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "优惠活动",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/icon-help@3x.png", "帮助中心",
+    MineModel("imgs/images/icon-help@3x.png", "帮助中心",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/icon-NEW-HELP@3x.png", "新手任务",
+    MineModel("imgs/images/icon-NEW-HELP@3x.png", "新手任务",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/Security-center@3x.png", "安全中心",
+    MineModel("imgs/images/Security-center@3x.png", "安全中心",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "意见反馈",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "意见反馈",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
-    MimeModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
+    MineModel("imgs/images/iocn-Unfold@3x.png", "下载APP",
         "imgs/images/iocn-Unfold@3x.png"),
   ];
 
@@ -209,12 +211,12 @@ class MinePage extends State<Mine> {
   }
 }
 
-class MimeModel {
+class MineModel {
   String iconName = "";
   String title = "";
   String rightIconName = "";
 
-  MimeModel(String _iconName, String _title, String _rightIconName) {
+  MineModel(String _iconName, String _title, String _rightIconName) {
     iconName = _iconName;
     title = _title;
     rightIconName = _rightIconName;

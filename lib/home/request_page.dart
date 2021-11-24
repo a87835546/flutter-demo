@@ -6,11 +6,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/entity/active.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 const API_HOST = '192.168.1.15';
 const API_PORT = 9000;
+
 class RequestUse extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -20,6 +22,7 @@ class RequestUse extends StatefulWidget {
 
 class RequestUsePage extends State<RequestUse> {
   dynamic _result;
+  late int _count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +82,22 @@ class RequestUsePage extends State<RequestUse> {
               ),
             ),
             SliverToBoxAdapter(
+              child: ElevatedButton(
+                onPressed: () {
+                  httpManagerGetRequest();
+                },
+                child: const Text("封装的dio get网络请求"),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: ElevatedButton(
+                onPressed: () {
+                  multiRequest();
+                },
+                child: const Text("多个线程先执行，后再去刷新UI"),
+              ),
+            ),
+            SliverToBoxAdapter(
               child: Text("${_result}"),
             )
           ],
@@ -123,7 +142,8 @@ class RequestUsePage extends State<RequestUse> {
     request.headers.set("ContentType", "application/json");
     request.headers.set("content-type", "application/json");
     print(request.headers);
-    request.add(utf8.encode(json.encode({"username":"zhangsan","password":"123456"})));
+    request.add(utf8
+        .encode(json.encode({"username": "zhangsan", "password": "123456"})));
 
     HttpClientResponse response = await request.close();
 
@@ -162,9 +182,10 @@ class RequestUsePage extends State<RequestUse> {
         port: API_PORT,
         path: "user/test4");
     Client client = http.Client();
-    var userAgentClient = UserAgentClient("",client);
+    var userAgentClient = UserAgentClient("", client);
     http.Response response = await userAgentClient.post(uri,
-        body: utf8.encode(json.encode({"username":"zhangsan","password":"123456"})));
+        body: utf8.encode(
+            json.encode({"username": "zhangsan", "password": "123456"})));
     print("response:${response.headers}");
     print("request success : ${response.body}");
     var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
@@ -175,7 +196,7 @@ class RequestUsePage extends State<RequestUse> {
   }
 
   /// dio get 请求
-  void dioGetRequest() async{
+  void dioGetRequest() async {
     var dio = Dio();
     var url = "http://$API_HOST:$API_PORT/user/test1";
     final response = await dio.get(url);
@@ -185,14 +206,125 @@ class RequestUsePage extends State<RequestUse> {
   }
 
   /// dio post 请求
-  void dioPostRequest() async{
+  void dioPostRequest() async {
     var dio = Dio();
     var url = "http://$API_HOST:$API_PORT/user/register";
 
-    final response = await dio.post(url,data: {"username":"wangwu:${DateTime.now()}","password":"123456","email":"123@gmail.com"});
+    final response = await dio.post(url, data: {
+      "username": "wangwu:${DateTime.now()}",
+      "password": "123456",
+      "email": "123@gmail.com"
+    });
     setState(() {
       _result = response;
     });
+  }
+
+  /// 封装的dio get网络请求
+  Future<bool> httpManagerGetRequest() async {
+    HttpManager.get(url: "/user/test1").then((value) async {
+      log("request success : $value");
+      setState(() {
+        _result = value;
+      });
+    }).catchError((err) {
+      log("request error : ${err.toString()}");
+    }).whenComplete(() {
+      log("when complete1  count :$_count");
+      return Future.value(true);
+    });
+    log("11111111111");
+    return Future.value(true);
+  }
+
+  Future<bool> httpManagerGetRequest1() async {
+    HttpManager.get(url: "/user/test1").then((value) async {
+      log("request success : $value");
+      setState(() {
+        _result = value;
+      });
+    }).catchError((err) {
+      log("request error : ${err.toString()}");
+    }).whenComplete(() {
+      setState(() {
+        _count = _count + 1;
+      });
+      log("when complete1  count :$_count");
+      if (_count == 3) {
+        afterRequest();
+      }
+      return Future.value(true);
+    });
+    log("11111111111");
+    return Future.value(true);
+  }
+
+  /// 等待多线程ABC三个线程执行完，后执行其他的线程
+  void multiRequest() {
+    // Future.wait([Future.doWhile(() => httpManagerGetRequest()),]);
+    setState(() {
+      _count = 0;
+    });
+    Future future = Future(() {
+      httpManagerGetRequest1();
+    });
+    Future future1 = Future(() {
+      httpManagerGetRequest2();
+    });
+    Future future2 = Future(() {
+      httpManagerGetRequest3();
+    });
+    Future.wait([future, future1, future2])
+        .then((value) => log("future wait result : $value"))
+        .catchError((error) {
+      log("future wait error :${error.toString()}");
+    }).whenComplete(() => log("future wait completed"));
+    // httpManagerGetRequest();
+    // httpManagerGetRequest2();
+    // httpManagerGetRequest3();
+  }
+
+  void httpManagerGetRequest2() async {
+    HttpManager.get(url: "/user/test1").then((value) {
+      log("request success : $value");
+      setState(() {
+        _result = value;
+      });
+    }).catchError((err) {
+      log("request error : ${err.toString()}");
+    }).whenComplete(() {
+      setState(() {
+        _count = _count + 1;
+      });
+      if (_count == 3) {
+        afterRequest();
+      }
+      log("when complete2  count :$_count");
+    });
+  }
+
+  void httpManagerGetRequest3() async {
+    HttpManager.get(url: "/user/test1").then((value) {
+      log("request success : $value");
+      setState(() {
+        _result = value;
+      });
+    }).catchError((err) {
+      log("request error : ${err.toString()}");
+    }).whenComplete(() {
+      setState(() {
+        _count = _count + 1;
+      });
+      log("when complete3  count :$_count");
+      if (_count == 3) {
+        afterRequest();
+      }
+    });
+  }
+
+  void afterRequest() {
+    _count = 0;
+    log("当之前的三个网络请求执行完之后执行的此方法");
   }
 }
 

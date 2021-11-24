@@ -8,7 +8,7 @@ class SharePreferenceUse extends StatefulWidget {
 }
 
 class SharePreferenceUseState extends State<SharePreferenceUse> {
-  Future<SharedPreferences> _preference = SharedPreferences.getInstance();
+  final Future<SharedPreferences> _preference = SharedPreferences.getInstance();
   String localString = "";
 
   @override
