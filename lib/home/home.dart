@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/animation_use.dart';
 import 'package:flutter_demo/home/app_lifecycle.dart';
@@ -18,7 +20,17 @@ import 'package:flutter_demo/utils/screen_utils.dart';
 
 import 'expansion_use.dart';
 import 'list_view_controller.dart';
+import 'package:logger/logger.dart';
 
+var logger = Logger(
+  printer: PrefixPrinter(
+    PrettyPrinter(
+      stackTraceBeginIndex: 5,
+      methodCount: 1
+    ),
+  ),
+  filter: ProductionFilter(),
+);
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -97,6 +109,12 @@ class _home extends State<Home> {
 
   Future<void> _refresh() async {
     print("下拉刷新开始");
+    logger.w("测试logger 的使用");
+    logger.i("测试logger 的使用");
+    logger.e("测试logger 的使用");
+    logger.v("测试logger 的使用");
+    logger.d("测试logger 的使用");
+    logger.wtf("测试logger 的使用");
     // setState(() {
     //   int length = data.length;
     //   for(int i = 1 ;i <= 10; i++){
@@ -104,7 +122,7 @@ class _home extends State<Home> {
     //   }
     // });
     Future.delayed(Duration(milliseconds: 300), () {
-      print("下拉刷新------end");
+      log("下拉刷新------end",name: "log");
     });
   }
 }
