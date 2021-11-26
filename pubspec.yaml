@@ -77,6 +77,8 @@ flutter:
 
   assets:
     - imgs/
+    - imgs/mine/
+    - imgs/mine/images/
     - imgs/images/
     - imgs/images/icon-p@3x.png
     - imgs/images/bottom-icon-gaming-hover@3x.png
@@ -97,6 +99,41 @@ flutter:
     - imgs/images/logo-SDY@3x.png
     - imgs/images/Security-center@3x.png
     - imgs/images/Transaction-Record@3x.png
+    - imgs/mine/images/icon-p@3x.png
+    - imgs/mine/images/bottom-icon-gaming-hover@3x.png
+    - imgs/mine/images/banner@3x.png
+    - imgs/mine/images/icon- advertise@3x.png
+    - imgs/mine/images/icon- responsibility@3x.png
+    - imgs/mine/images/icon-about-us@3x.png
+    - imgs/mine/images/icon-close@3x.png
+    - imgs/mine/images/icon-cooperate@3x.png
+    - imgs/mine/images/icon-help@3x.png
+    - imgs/mine/images/icon-List@3x.png
+    - imgs/mine/images/icon-NEW-HELP@3x.png
+    - imgs/mine/images/icon-Refresh@3x.png
+    - imgs/mine/images/icon-result@3x.png
+    - imgs/mine/images/icon-share@3x.png
+    - imgs/mine/images/iocn-Unfold@3x.png
+    - imgs/mine/images/banner@3x.png
+    - imgs/mine/images/logo-SDY@3x.png
+    - imgs/mine/images/Security-center@3x.png
+    - imgs/mine/images/Transaction-Record@3x.png
+    - imgs/mine/images/Transaction-Record@3x.png
+    - imgs/mine/images/icon-Feedback@2x.png
+    - imgs/mine/images/icon-mine-Promotions@2x.png
+    - imgs/mine/images/icon-chat@3x.png
+    - imgs/mine/images/icon-customer-service@3x.png
+    - imgs/mine/images/icon-edit@3x.png
+    - imgs/mine/images/tx_icon@3x.png
+    - imgs/mine/images/icon-Expand-all@3x.png
+    - imgs/mine/images/mineBg.png
+    - imgs/mine/images/background-mig@3x.png
+    - imgs/mine/images/background-mig-up@3x.png
+    - imgs/mine/images/bg@3x.png
+    - imgs/mine/images/icon-selected@3x.png
+    - imgs/mine/images/icon-unselected@3x.png
+    - imgs/mine/images/icon-vip-task-arrow@3x.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/imgs-and-images/#resolution-aware.
 

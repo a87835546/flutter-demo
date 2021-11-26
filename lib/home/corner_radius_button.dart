@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/custom_widget/border_radius_button.dart';
 import 'package:flutter_demo/custom_widget/info_button.dart';
-import 'package:flutter_demo/utils/screen_utils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class CornerRadiusButton extends StatefulWidget {
   const CornerRadiusButton({Key? key}) : super(key: key);
@@ -204,7 +202,7 @@ class _CornerRadiusButtonState extends State<CornerRadiusButton> {
             iconName: "imgs/images/icon-Refresh@3x.png",
             width: 80,
             clickBtn: () async {
-              Fluttertoast.showToast(msg: "1231231");
+              //Fluttertoast.showToast(msg: "1231231");
             },
           ),
           InfoButton(
@@ -217,7 +215,7 @@ class _CornerRadiusButtonState extends State<CornerRadiusButton> {
             ),
             iconName: "imgs/images/icon-Refresh@3x.png",
             clickBtn: () async {
-              Fluttertoast.showToast(msg: "1231231");
+              //Fluttertoast.showToast(msg: "1231231");
             },
           ),
           Container(
