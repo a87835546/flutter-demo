@@ -22,7 +22,7 @@ class SwiperDemoState extends State<SwiperDemo> {
 
   @override
   void initState() {
-    // _getData();
+    _getData();
     super.initState();
   }
 
@@ -72,10 +72,11 @@ class SwiperDemoState extends State<SwiperDemo> {
                               },
                               pagination: const SwiperPagination(),
                               onTap: (int index) async {
-                                print("swiper index ---- >>>> $index");
+                                print("swiper index ---- >>>> ${list[index]}");
                               });
-                        }else{
-                          return Text("net work request error ${snapshot.error}");
+                        } else {
+                          return Text(
+                              "net work request error ${snapshot.error}");
                         }
                       },
                     ),
@@ -125,7 +126,8 @@ class SwiperDemoState extends State<SwiperDemo> {
 
   Future<List<Active>> _getData() async {
     var dio = Dio();
-    final response = await dio.get("http://192.168.1.15:9000/active/queryAll");
+    // final response = await dio.get("http://192.168.1.15:9000/active/queryAll");
+    final response = await dio.get("http://192.168.1.15:9000/active/banner");
     print(response.data);
     List list = [];
     try {

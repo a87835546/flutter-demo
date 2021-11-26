@@ -32,6 +32,8 @@ var logger = Logger(
   filter: ProductionFilter(),
 );
 class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _home();
@@ -99,7 +101,7 @@ class _home extends State<Home> {
                   ),
                 );
               }, separatorBuilder: (BuildContext context,int index){
-                return Divider(height: 2,color: Colors.grey,);
+                return const Divider(height: 2,color: Colors.grey,);
               }, itemCount: data.length),
               onRefresh: _refresh),
         ),
@@ -121,7 +123,7 @@ class _home extends State<Home> {
     //     data.add(RouterModel("${i + length}", "stateful_use", StatefulUse()));
     //   }
     // });
-    Future.delayed(Duration(milliseconds: 300), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       log("下拉刷新------end",name: "log");
     });
   }
