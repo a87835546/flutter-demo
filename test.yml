@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  web:
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://127.0.0.1:9200"]
+    build:
+      dockerfile: ../
+      context: ./dir
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../src:/opt/src
+    expose:
+      - "5000"
+
+  redis:
+    image: redis:latest
+  elasticsearch:
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+      - cluster.name=test-es
+      - bootstrap.memory_lock=true
+    image: elasticsearch:7.7.0
+    container_name: "elasticsearch"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    expose:
+      - "9200"
+      - "9300"
+  kibana:
+    container_name: "kibana"
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
+      - xpack.monitoring.ui.container.elasticsearch.enabled= true
+    depends_on:
+      - elasticsearch
+    image: kibana:7.7.0
+    ports:
+      - "5601:5601"
+    expose:
+      - "5601"
+  logstash:
+    image: logstash:7.7.0
+    container_name: logstash
+    volumes:
+      - .\logstash:/home/adminpc/Desktop/logs/
+      - /home/adminpc/compose_test/docker/logstash/conf:/config-dir
+      - /home/adminpc/compose_test/docker/logstash/plugins:/tmp/plugins
+#      - /etc/localtime:/etc/localtime
+    ports:
+      - "5044:5044"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    depends_on:
+      - elasticsearch
+    external_links:
+      - elasticsearch: 'elasticsearch'
+
+

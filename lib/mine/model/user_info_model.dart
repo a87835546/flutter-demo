@@ -2,13 +2,13 @@
 class UserInfoModel {
   late final bool gender;
   final DateTime birthday;
-  final int userId;
+  final num userId;
   final String loginName;
   final String nickName;
   final String depositLock;
   final String realName;
   final String registerTime;
-  final int available;
+  final num available;
   final double balance;
   final String mobile;
   final String email;

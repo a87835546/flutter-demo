@@ -1,34 +1,26 @@
 
 import 'dart:ui';
 
-class AppSingleton {
-  static late final AppSingleton _singleton;
-  static bool _isInstanceCreated = false;
-  static Brightness brightness = Brightness.light;
+class AppSingleton{
+  // static _instance，_instance会在编译期被初始化，保证了只被创建一次
+  static final AppSingleton _instance = AppSingleton._internal();
+
+  //提供了一个工厂方法来获取该类的实例
   factory AppSingleton(){
-    if (_isInstanceCreated = false){
-      _singleton = AppSingleton();
-    }
-    _isInstanceCreated = true;
-    return _singleton;
+    return _instance;
   }
+
+  // 通过私有方法_internal()隐藏了构造方法，防止被误创建
+  AppSingleton._internal(){
+    // 初始化
+    init();
+  }
+  // Singleton._internal(); // 不需要初始化
+
+  void init(){
+    print("这里初始化");
+  }
+
+
+  static Brightness? brightness;
 }
-// static late final _singleton = null;
-
-
-// static late final GeustUser _instance;
-// static bool _isInstanceCreated = false;
-//
-// factory GuestUser(
-//     {required String firstName,
-//       required String lastName,
-//       required String email,
-//       required Address address,
-//       required PaymentInfo paymentInfo}) {
-//   if (_isInstanceCreated == false) {
-//     _instance =
-//         GuestUser._(firstName, lastName, email, address, paymentInfo);
-//   }
-//   _isInsanceCreated = true;
-//   return _instance;
-// }

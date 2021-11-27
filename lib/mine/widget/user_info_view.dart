@@ -41,7 +41,7 @@ class _UserInfoViewState extends State<UserInfoView>{
               child: Container(
                 height: 20,
                 width: 160,
-                padding: EdgeInsets.only(left: 40),
+                padding:const EdgeInsets.only(left: 40),
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 color: Colors.transparent,
                 alignment: Alignment.center,

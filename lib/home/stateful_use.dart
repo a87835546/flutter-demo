@@ -34,11 +34,11 @@ class _statefulUse extends State<StatefulUse> {
                 helperStyle: TextStyle(color: Colors.black87),
                 errorText: "errorText 的使用",
                 errorMaxLines: 1,
-                errorStyle: TextStyle(color: Colors.redAccent),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(3)
-                ),
+                // errorStyle: TextStyle(color: Colors.redAccent),
+                // errorBorder: OutlineInputBorder(
+                //   borderSide: BorderSide(color: Colors.red),
+                //   borderRadius: BorderRadius.circular(3)
+                // ),
                 suffix: Text("suffix"),
                 suffixIcon: Icon(Icons.ac_unit),
                 filled: true,

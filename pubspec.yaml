@@ -80,6 +80,7 @@ flutter:
     - imgs/mine/
     - imgs/mine/images/
     - imgs/images/
+    - imgs/background-pic@3x.png
     - imgs/images/icon-p@3x.png
     - imgs/images/bottom-icon-gaming-hover@3x.png
     - imgs/images/banner@3x.png

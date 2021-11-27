@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/login&register/login.dart';
 import 'package:flutter_demo/login&register/register.dart';
 import 'package:flutter_demo/mine/widget/mine_list_view.dart';
 import 'package:flutter_demo/mine/widget/user_ifno_progress_view.dart';
