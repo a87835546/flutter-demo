@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/custom_widget/login_input_view.dart';
 import 'package:flutter_demo/custom_widget/switch_button.dart';
+import 'package:flutter_demo/login&register/login_request.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,6 +21,10 @@ class _LoginPageState extends State<LoginPage> {
   bool phoneHasValid = false;
   bool codeHasValid = false;
   bool usePwdLogin = true;
+  String username = "";
+  String pwd = "";
+  String phone = "";
+  String code = "";
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                         });
                       },
                     ),
-                    usePwdLogin?_createLoginByPwd():_createLoginByPhone(),
+                    usePwdLogin ? _createLoginByPwd() : _createLoginByPhone(),
                     _createLoginButton(),
                     _createRememberPwd1()
                   ],
@@ -80,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
               log("user name value : $value");
               setState(() {
                 userHasValid = value.length >= 6;
+                username = value;
               });
             },
           ),
@@ -93,6 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                 log("password value : $value");
                 setState(() {
                   pwdHasValid = value.length >= 6;
+                  pwd = value;
                 });
               },
               complete: () {
@@ -106,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
+
   Widget _createLoginByPhone() {
     return Column(
       children: [
@@ -118,7 +127,8 @@ class _LoginPageState extends State<LoginPage> {
             didChanged: (value) {
               log("phone num value : $value");
               setState(() {
-                phoneHasValid = value.length == 11;
+                phoneHasValid = value.length >= 11;
+                phone = value;
               });
             },
           ),
@@ -132,7 +142,8 @@ class _LoginPageState extends State<LoginPage> {
               didChanged: (value) {
                 log("verity code value : $value");
                 setState(() {
-                  codeHasValid = value.length == 6;
+                  codeHasValid = value.length >= 6;
+                  code = value;
                 });
               },
               complete: () {
@@ -145,8 +156,6 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
-
-
 
   Widget _createLogoView() {
     return SizedBox(
@@ -191,7 +200,35 @@ class _LoginPageState extends State<LoginPage> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(22),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          if (usePwdLogin) {
+            if (userHasValid && pwdHasValid) {
+              LoginRequest.loginByUsername(username, pwd).then((value) {
+                log("value ----->>>>>> $value");
+                if (value != null && value['code'] == 200) {
+                  Navigator.pop(context, true);
+                } else {
+                  Fluttertoast.showToast(msg: value["message"]);
+                }
+              }).catchError((err) {
+                log("err --- >>>> $err");
+              });
+            }
+          } else {
+            if (phoneHasValid && codeHasValid) {
+              LoginRequest.loginByPhone(phone, code).then((value) {
+                log("value ----->>>>>> $value");
+                if (value != null && value['code'] == 200) {
+                  Navigator.pop(context, true);
+                } else {
+                  Fluttertoast.showToast(msg: value["message"]);
+                }
+              }).catchError((err) {
+                log("err --- >>>> $err");
+              });
+            }
+          }
+        },
         child: Container(
           alignment: Alignment.center,
           color: userHasValid && pwdHasValid

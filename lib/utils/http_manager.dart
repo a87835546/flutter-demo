@@ -4,7 +4,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 class HttpManager {
-  static String baseUrl = "http://192.168.1.15:9000";
+  // static String baseUrl = "http://192.168.1.15:9000";
+  static String baseUrl = "http://127.0.0.1:9000";
   static final Dio _dio = Dio();
 
   static const int timeout = 1500;
@@ -26,8 +27,9 @@ class HttpManager {
     // return Future.value(true);
   }
 
-  static Future<bool> post({ required String url, Map<String, dynamic>? headers, Map<String,String>? params}) async {
+  static  post({ required String url, Map<String, dynamic>? headers,required Map<String,String> params}) async {
     Options options = Options(headers: headers,sendTimeout: timeout);
+    log("post request params $params");
     Response response = await _dio.post(baseUrl + url,data: params,options: options);
 
     try {
@@ -54,15 +56,15 @@ class HttpInterceptor extends Interceptor{
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    log("http interceptor request  response : ${response.toString()}");
+    // log("http interceptor request  response : ${response.toString()}");
     super.onResponse(response, handler);
   }
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    log("http interceptor request  options headers: ${options.headers}");
-    log("http interceptor request  options queryParameters: ${options.queryParameters}");
-    log("http interceptor request  options path: ${options.path}");
+    // log("http interceptor request  options headers: ${options.headers}");
+    // log("http interceptor request  options queryParameters: ${options.queryParameters}");
+    // log("http interceptor request  options path: ${options.path}");
     handler.next(options);
   }
 }
