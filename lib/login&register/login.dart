@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/custom_widget/login_input_view.dart';
 import 'package:flutter_demo/custom_widget/switch_button.dart';
 import 'package:flutter_demo/login&register/login_request.dart';
+import 'package:flutter_demo/login&register/register.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -261,7 +262,14 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+             bool result = await Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const RegisterPage();
+              }));
+             if (result){
+               Navigator.pop(context,true);
+             }
+            },
             child: const Text(
               "没有账号立即注册",
               style: TextStyle(color: Colors.white, fontSize: 13),

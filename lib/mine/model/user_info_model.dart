@@ -1,12 +1,12 @@
 class UserInfoModel {
   late final bool? gender;
-  final DateTime? birthday;
+  final num? birthday;
   final num? userId;
   final String? loginName;
   final String? nickName;
   final String? depositLock;
   final String? realName;
-  final DateTime? registerTime;
+  final num? registerTime;
   final String? available;
   final String? balance;
   final String? mobile;
@@ -38,11 +38,11 @@ class UserInfoModel {
       gender: map['gender'],
       birthday: map['birthday'],
       userId: map['id'],
-      loginName: map['loginName'],
+      loginName: map['username'],
       nickName: map['nickName'],
       depositLock: map['depositLock'],
       realName: map['realName'],
-      registerTime: map['registerTime'],
+      registerTime: map['createTime'],
       balance: map['balance'],
       available: map['available'],
       mobile: map['mobile'],
@@ -52,5 +52,10 @@ class UserInfoModel {
       userInfoMeasure: map['userInfoMeasure'],
     );
     return model;
+  }
+
+  @override
+  String toString() {
+    return 'UserInfoModel{gender: $gender, birthday: $birthday, userId: $userId, loginName: $loginName, nickName: $nickName, depositLock: $depositLock, realName: $realName, registerTime: $registerTime, available: $available, balance: $balance, mobile: $mobile, email: $email, weChat: $weChat, qq: $qq, userInfoMeasure: $userInfoMeasure}';
   }
 }

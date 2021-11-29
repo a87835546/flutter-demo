@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_demo/mine/model/user_info_model.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 
@@ -39,12 +40,12 @@ class LoginRequest {
     });
     return Future.value(model);
   }
-  static Future<UserInfoModel?> registerByUsername(String username, String pwd) async {
+  static Future registerByUsername(String username, String pwd) async {
     Map<String, String> map = HashMap();
     map["username"] = username;
     map["password"] = pwd;
     map['email'] = "123@qq.com";
-    UserInfoModel? model;
+    dynamic model;
     await HttpManager.post(url: "/user/register", params: map).then((value){
       if(value['code'] == 200) {
 
@@ -52,6 +53,7 @@ class LoginRequest {
         log("login by user name result:$value    model : $model");
       }else{
         log("login error $value");
+        model = value;
       }
     });
     return Future.value(model);

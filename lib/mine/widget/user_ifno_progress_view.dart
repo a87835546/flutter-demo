@@ -16,7 +16,7 @@ class _UserInfoProgressViewState extends State<UserInfoProgressView> {
   @override
   Widget build(BuildContext context) {
     int step = widget.signInfoModel?.taskConfigs.first.available.toInt()??0;
-    log("step ---- >>>> $step");
+    // log("step ---- >>>> $step");
     return SizedBox(
         height: 40,
         child: ListView.builder(
