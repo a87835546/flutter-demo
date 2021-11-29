@@ -1,8 +1,8 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/base_page/base_page.dart';
 import 'package:flutter_demo/login&register/login.dart';
 import 'package:flutter_demo/login&register/register.dart';
 import 'package:flutter_demo/mine/widget/mine_list_view.dart';
@@ -39,7 +39,7 @@ var logger = Logger(
   filter: ProductionFilter(),
 );
 
-class _MinePageState extends State<Mine> {
+class _MinePageState extends State<Mine> with BasePage {
   final _refreshController = RefreshController();
 
   /// 用户消息
@@ -73,6 +73,7 @@ class _MinePageState extends State<Mine> {
 
   @override
   Widget build(BuildContext context) {
+    Widget error = setNetError(context);
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -109,7 +110,7 @@ class _MinePageState extends State<Mine> {
                     setState(() {
                       isJump = false;
                     });
-                    goToLogin();
+                    goToLogin(context);
                   },
                   child: Image.asset(
                     "imgs/mine/images/icon-chat@3x.png",
@@ -128,7 +129,7 @@ class _MinePageState extends State<Mine> {
                 )),
           ],
         ),
-        body: Container(
+        body:show?error: Container(
           decoration: const BoxDecoration(
             // color: Color(0xff30323f),
             color: Colors.transparent,
@@ -386,11 +387,16 @@ class _MinePageState extends State<Mine> {
     );
   }
 
-  void getData() async {
+  @override
+  Future getData() async {
+    setState(() {
+      isJump = false;
+    });
     getMessageUnread();
     getBalance();
     getUserInfo();
     getVipInfo();
+    return isJump;
   }
 
   void finishedRequesting(){
@@ -403,13 +409,13 @@ class _MinePageState extends State<Mine> {
   ///获取未读消息
   void getMessageUnread() async {
     logger.i("future complete 1 ");
-    HttpManager.get(url:"/user/messageUnread?terminal=1&msgType=0")
+    HttpManager.get(url:"/message/unreadCount?terminal=1&msgType=0")
         .then((result) {
       logger.i("get message unread result :$result");
       try {
         setState(() {
-          if (result['data'] == true) {
-            _unreadCount = result['count'];
+          if (result['code'] == 200 && result['data'] != null) {
+            _unreadCount = result['data']["count"];
           } else {
             _unreadCount = 0;
           }
@@ -418,7 +424,7 @@ class _MinePageState extends State<Mine> {
         logger.i("parser user unread message count err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
-          goToLogin();
+          goToLogin(context);
         }
       }
     }).whenComplete(() {
@@ -435,7 +441,7 @@ class _MinePageState extends State<Mine> {
   void getUserInfo() async {
     logger.i("future complete 4 ");
 
-    HttpManager.get(url:"/sdyactivity/accountSignInfo?terminal=1")
+    HttpManager.get(url:"/activity/signInfo?terminal=1")
         .then((result) {
       logger.i("get user sign info result :$result");
       try {
@@ -449,7 +455,7 @@ class _MinePageState extends State<Mine> {
         logger.i("parser user sign info err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
-          goToLogin();
+          goToLogin(context);
         }
       }
       return true;
@@ -465,9 +471,18 @@ class _MinePageState extends State<Mine> {
   }
 
   void getVipInfo() {
-    HttpManager.get(url:"/sdyactivity/vipInfo?=1&terminal=1")
+    HttpManager.get(url:"/activity/vipInfo?=1&terminal=1")
         .then((result) {
-      // logger.i("get user vip info result :$result");
+      logger.i("get user vip info result :${result.runtimeType}");
+      if(determineRequest(result)){
+        setState(() {
+          show = !show;
+          errorTitle = "测试。。。。。。。";
+        });
+        // goToLogin(context);
+        logger.i("get user vip info");
+        return;
+      }
       try {
         UserVipInfoModel vipInfoModel = UserVipInfoModel.jsonToObject(result['data']);
         setState(() {
@@ -477,7 +492,7 @@ class _MinePageState extends State<Mine> {
         logger.i("parser user vip info err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
-          goToLogin();
+          goToLogin(context);
         }
       }
     }).whenComplete(() {
@@ -504,7 +519,7 @@ class _MinePageState extends State<Mine> {
         logger.i("parser user sign info err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
-          goToLogin();
+          goToLogin(context);
         }
       }
     }).whenComplete(() {
@@ -518,7 +533,8 @@ class _MinePageState extends State<Mine> {
     });
   }
 
-  void goToLogin() async {
+  @override
+  void goToLogin(BuildContext context) async {
     if (!isJump) {
       setState(() {
         isJump = true;
@@ -532,4 +548,5 @@ class _MinePageState extends State<Mine> {
       }
     }
   }
+
 }

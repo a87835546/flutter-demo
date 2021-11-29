@@ -3,23 +3,23 @@ class UserSignInfoModel {
 
   late final num sumAmount;
 
-  late final List<TaskConfigs> taskConfigs;
+  late final List<TaskConfigs>? taskConfigs;
 
   UserSignInfoModel(
       {required this.dayAmount,
       required this.sumAmount,
       required this.taskConfigs});
 
-  static UserSignInfoModel fromJson(Map<String, dynamic> json) {
+  static UserSignInfoModel fromJson(Map<String, dynamic>? json) {
     List<TaskConfigs> _taskConfigs = [];
-    if (json['taskConfigs'] != null) {
-      json['taskConfigs'].forEach((v) {
+    if (json?['taskConfigs'] != null) {
+      json?['taskConfigs'].forEach((v) {
         _taskConfigs.add(TaskConfigs.fromJson(v));
       });
     }
     UserSignInfoModel model = UserSignInfoModel(
-        dayAmount: json['dayAmount'],
-        sumAmount: json['sumAmount'],
+        dayAmount: json?['dayAmount'],
+        sumAmount: json?['sumAmount'],
         taskConfigs: _taskConfigs);
     return model;
   }

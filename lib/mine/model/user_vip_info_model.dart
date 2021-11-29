@@ -11,13 +11,13 @@ class UserVipInfoModel {
   UserVipInfoModel({required
       this.accountLevel, required this.downgradePromotion,required this.downgradePromotionDay,required this.tierName,required this.loginName});
 
-  static UserVipInfoModel jsonToObject(Map<String,dynamic> map){
+  static UserVipInfoModel jsonToObject(Map<String,dynamic>? map){
     UserVipInfoModel model = UserVipInfoModel(
-      accountLevel: map['accountLevel'],
-      downgradePromotion: map['downgradePromotion'],
-      downgradePromotionDay: map['downgradePromotionDay'],
-      tierName: map['tierName'],
-      loginName: map['loginName'],
+      accountLevel: map?['accountLevel'],
+      downgradePromotion: map?['downgradePromotion'],
+      downgradePromotionDay: map?['downgradePromotionDay'],
+      tierName: map?['tierName'],
+      loginName: map?['loginName'],
     );
     return model;
   }
