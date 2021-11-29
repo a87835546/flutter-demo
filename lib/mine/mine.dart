@@ -10,6 +10,7 @@ import 'package:flutter_demo/mine/widget/user_ifno_progress_view.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
 import 'package:flutter_demo/mine/widget/user_info_mine_wallet_view.dart';
 import 'package:flutter_demo/mine/widget/user_info_view.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:logger/logger.dart';
 
@@ -205,7 +206,7 @@ class _MinePageState extends State<Mine> with BasePage {
                                       ),
                                     ),
                                   ),
-                                  UserInfoView(infoModel: _vipInfoModel,clickEdit: (){
+                                  UserInfoView(infoModel: AppSingleton.userInfoModel,clickEdit: (){
                                     // showToast("点击编辑用户名");
                                   },),
                                   // _createVipInfo(),
@@ -412,6 +413,10 @@ class _MinePageState extends State<Mine> with BasePage {
     HttpManager.get(url:"/message/unreadCount?terminal=1&msgType=0")
         .then((result) {
       logger.i("get message unread result :$result");
+      if(determineRequest(result)){
+        goToLogin(context);
+        return;
+      }
       try {
         setState(() {
           if (result['code'] == 200 && result['data'] != null) {
@@ -444,6 +449,10 @@ class _MinePageState extends State<Mine> with BasePage {
     HttpManager.get(url:"/activity/signInfo?terminal=1")
         .then((result) {
       logger.i("get user sign info result :$result");
+      if(determineRequest(result)){
+        goToLogin(context);
+        return;
+      }
       try {
         UserSignInfoModel signInfoModel = UserSignInfoModel.fromJson(result['data']);
         logger.i("get user sign info model :$signInfoModel");
@@ -458,7 +467,6 @@ class _MinePageState extends State<Mine> with BasePage {
           goToLogin(context);
         }
       }
-      return true;
     }).whenComplete(() {
       setState(() {
         _count = _count + 1;
@@ -511,6 +519,10 @@ class _MinePageState extends State<Mine> with BasePage {
 
     HttpManager.get(url:"/pay/checkBalance?terminal=1").then((result) {
       logger.i("get balance info result : $result");
+      if(determineRequest(result)){
+        goToLogin(context);
+        return;
+      }
       try {
         setState(() {
           _balance = result['balance'];

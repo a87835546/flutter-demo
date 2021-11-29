@@ -1,12 +1,12 @@
 class UserInfoModel {
   late final bool? gender;
-  final num? birthday;
+  final String? birthday;
   final num? userId;
   final String? loginName;
   final String? nickName;
   final String? depositLock;
   final String? realName;
-  final num? registerTime;
+  final String? registerTime;
   final String? available;
   final String? balance;
   final String? mobile;
@@ -14,6 +14,7 @@ class UserInfoModel {
   final String? weChat;
   final String? qq;
   final String? userInfoMeasure;
+  final String? token;
 
   UserInfoModel({
     required this.gender,
@@ -31,6 +32,7 @@ class UserInfoModel {
     required this.weChat,
     required this.qq,
     required this.userInfoMeasure,
+    this.token
   });
 
   static UserInfoModel jsonToObject(Map<String, dynamic> map) {
@@ -50,12 +52,13 @@ class UserInfoModel {
       weChat: map['weChat'],
       qq: map['qq'],
       userInfoMeasure: map['userInfoMeasure'],
+      token: map['token'],
     );
     return model;
   }
 
   @override
   String toString() {
-    return 'UserInfoModel{gender: $gender, birthday: $birthday, userId: $userId, loginName: $loginName, nickName: $nickName, depositLock: $depositLock, realName: $realName, registerTime: $registerTime, available: $available, balance: $balance, mobile: $mobile, email: $email, weChat: $weChat, qq: $qq, userInfoMeasure: $userInfoMeasure}';
+    return 'UserInfoModel{gender: $gender, birthday: $birthday, userId: $userId, loginName: $loginName, nickName: $nickName, depositLock: $depositLock, realName: $realName, registerTime: $registerTime, available: $available, balance: $balance, mobile: $mobile, email: $email, weChat: $weChat, qq: $qq, userInfoMeasure: $userInfoMeasure, token: $token}';
   }
 }

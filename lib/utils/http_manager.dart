@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 /// 网络请求异常信息类型
 enum HttpManagerErrorType {
   /// token失效
@@ -11,6 +12,8 @@ enum HttpManagerErrorType {
   internalServerError,
   /// 需要登陆
   needLogin,
+  /// 请求参数异常
+   paramsError
 }
 
 class HttpManager {
@@ -76,11 +79,14 @@ class HttpInterceptor extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     // log("http interceptor request  response : ${response.toString()}");
+
     super.onResponse(response, handler);
   }
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    String token = AppSingleton.userInfoModel?.token??"";
+    options.headers.putIfAbsent("token", () => token);
     // log("http interceptor request  options headers: ${options.headers}");
     // log("http interceptor request  options queryParameters: ${options.queryParameters}");
     // log("http interceptor request  options path: ${options.path}");

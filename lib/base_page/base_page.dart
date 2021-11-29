@@ -6,32 +6,35 @@ import 'package:flutter_demo/login&register/login.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+/// 基类的page
 class BasePage {
-  final RefreshController _refreshController = RefreshController();
+  final RefreshController netErrorRefreshController = RefreshController();
+
   /// 是否显示异常网页页面
-  bool show  = false;
+  bool show = false;
+
   /// 异常网络页面显示的内容
   String? errorTitle = "网络异常。。。。。。";
-  Widget setNetError(BuildContext context) {
-   return ConstrainedBox(
 
-     constraints: const BoxConstraints.expand(),
-     child: SmartRefresher(
-       controller:  _refreshController,
-       onRefresh: (){
-        getData().then((value){
-          if(value){
-            _refreshController.refreshCompleted();
-          }else{
-            log("$errorTitle");
-          }
-        });
-       },
-       child: Center(
-         child: Text("$errorTitle"),
-       ),
-     ),
-   );
+  Widget setNetError(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints.expand(),
+      child: SmartRefresher(
+        controller: netErrorRefreshController,
+        onRefresh: () {
+          getData().then((value) {
+            if (value) {
+              netErrorRefreshController.refreshCompleted();
+            } else {
+              log("error title ----- >$errorTitle");
+            }
+          });
+        },
+        child: Center(
+          child: Text("$errorTitle"),
+        ),
+      ),
+    );
   }
 
   void setInterError(BuildContext context) {}
@@ -39,7 +42,23 @@ class BasePage {
   /// 判断请求是否异常。。。
   bool determineRequest(dynamic value) {
     if (value.runtimeType == HttpManagerErrorType) {
-      log("网络异常");
+      HttpManagerErrorType type = value as HttpManagerErrorType;
+
+      switch (type) {
+        case HttpManagerErrorType.tokenExpired:
+          {
+            log("token 过期");
+            break;
+          }
+        case HttpManagerErrorType.needLogin:
+          {
+            log("需要登陆");
+            break;
+          }
+        default:
+          log("12312313");
+          break;
+      }
       return true;
     }
     return false;
@@ -52,7 +71,7 @@ class BasePage {
     }));
   }
 
-  Future getData() async{
+  Future getData() async {
     return true;
   }
 }

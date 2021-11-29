@@ -6,6 +6,8 @@ import 'package:flutter_demo/custom_widget/login_input_view.dart';
 import 'package:flutter_demo/custom_widget/switch_button.dart';
 import 'package:flutter_demo/login&register/login_request.dart';
 import 'package:flutter_demo/login&register/register.dart';
+import 'package:flutter_demo/mine/model/user_info_model.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -206,7 +208,10 @@ class _LoginPageState extends State<LoginPage> {
             if (userHasValid && pwdHasValid) {
               LoginRequest.loginByUsername(username, pwd).then((value) {
                 log("value ----->>>>>> $value");
-                if (value != null && value['code'] == 200) {
+                if (value != null && value.runtimeType == UserInfoModel) {
+                  setState(() {
+                    AppSingleton.userInfoModel = value as UserInfoModel;
+                  });
                   Navigator.pop(context, true);
                 } else {
                   Fluttertoast.showToast(msg: value["message"]);

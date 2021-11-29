@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/mine/model/user_info_model.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 
 class LoginRequest {
@@ -15,6 +16,7 @@ class LoginRequest {
       if(value['code'] == 200) {
 
         model = UserInfoModel.jsonToObject(value['data']);
+        AppSingleton.userInfoModel = model as UserInfoModel;
         log("login by user name result:$value    model : $model");
       }else{
         log("login error $value");
@@ -47,9 +49,11 @@ class LoginRequest {
     map['email'] = "123@qq.com";
     dynamic model;
     await HttpManager.post(url: "/user/register", params: map).then((value){
+      log("register by user name request result --- >>> $value");
       if(value['code'] == 200) {
 
         model = UserInfoModel.jsonToObject(value['data']);
+        AppSingleton.userInfoModel = model as UserInfoModel;
         log("login by user name result:$value    model : $model");
       }else{
         log("login error $value");

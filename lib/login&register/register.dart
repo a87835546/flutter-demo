@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/custom_widget/login_input_view.dart';
 import 'package:flutter_demo/login&register/login_request.dart';
+import 'package:flutter_demo/mine/model/user_info_model.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -137,7 +138,7 @@ class _RegisterPage extends State<RegisterPage>{
             if (username.length >= 6 || username.length <= 10) {
               LoginRequest.registerByUsername(username, pwd).then((value) {
                 log("value ----->>>>>> $value");
-                if (value != null) {
+                if (value != null && value.runtimeType == UserInfoModel) {
                   Navigator.pop(context, true);
                 } else {
                   Fluttertoast.showToast(msg: value["message"]);

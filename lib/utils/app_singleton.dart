@@ -1,10 +1,12 @@
 
 import 'dart:ui';
 
+import 'package:flutter_demo/mine/model/user_info_model.dart';
+
 class AppSingleton{
   // static _instance，_instance会在编译期被初始化，保证了只被创建一次
   static final AppSingleton _instance = AppSingleton._internal();
-
+  static UserInfoModel? userInfoModel;
   //提供了一个工厂方法来获取该类的实例
   factory AppSingleton(){
     return _instance;

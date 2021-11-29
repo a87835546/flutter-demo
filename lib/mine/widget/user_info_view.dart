@@ -2,10 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/mine/model/user_vip_info_model.dart';
+import 'package:flutter_demo/mine/model/user_info_model.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 typedef UserInfoViewEdit = void Function();
 class UserInfoView extends StatefulWidget {
-  final UserVipInfoModel? infoModel;
+  final UserInfoModel? infoModel;
   final UserInfoViewEdit clickEdit;
   const UserInfoView({Key? key,required this.infoModel,required this.clickEdit}) : super(key: key);
 
@@ -79,14 +80,16 @@ class _UserInfoViewState extends State<UserInfoView>{
   }
 
   String getJoinDays(){
-    return "1";
-    String registerTime = "";//HiCache.getInstance().get("registerTime");
-    if (registerTime==null){
+    // return "1";
+    if(AppSingleton.userInfoModel?.registerTime != null){
+      String registerTime = AppSingleton.userInfoModel?.registerTime??"";
+      int start = DateTime.parse(registerTime).millisecondsSinceEpoch;
+      int end = DateTime.now().millisecondsSinceEpoch;
+      int days = (end-start)~/(1000*24*3600) + 1;
+      return days.toString();
+    }else{
       return "1";
     }
-    int start = DateTime.parse(registerTime).millisecondsSinceEpoch;
-    int end = DateTime.now().millisecondsSinceEpoch;
-    int days = (end-start)~/(1000*24*3600);
-    return days.toString();
+
   }
 }
