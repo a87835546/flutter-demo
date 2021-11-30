@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:dio/dio.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/entity/active.dart';
 import 'package:flutter_demo/entity/base_model.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/utils/screen_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -127,7 +129,7 @@ class SwiperDemoState extends State<SwiperDemo> {
   Future<List<Active>> _getData() async {
     var dio = Dio();
     // final response = await dio.get("http://192.168.1.15:9000/active/queryAll");
-    final response = await dio.get("http://192.168.1.15:9000/active/banner");
+    final response = await dio.get("http://localhost:9000/activity/banner");
     print(response.data);
     List list = [];
     try {
@@ -141,8 +143,11 @@ class SwiperDemoState extends State<SwiperDemo> {
       result.add(Active.fromJson(element));
     });
     print("result ----- >>>>>> $result");
-    // setState(() {
-    //   _list = result;
+    setState(() {
+      _list = result;
+    });
+    // HttpManager.get(url: "active/banner").then((result){
+    //   print("result ----->>>>>>${result}");
     // });
     return result;
   }

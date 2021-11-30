@@ -56,7 +56,25 @@ class UserInfoModel {
     );
     return model;
   }
-
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = userId;
+    data['gender'] = gender;
+    data['birthday'] = birthday;
+    data['username'] = loginName;
+    data['depositLock'] = depositLock;
+    data['available'] = available;
+    data['realName'] = realName;
+    data['createTime'] = registerTime;
+    data['balance'] = balance;
+    data['mobile'] = mobile;
+    data['email'] = email;
+    data['weChat'] = weChat;
+    data['qq'] = qq;
+    data['userInfoMeasure'] = userInfoMeasure;
+    data['token'] = token;
+    return data;
+  }
   @override
   String toString() {
     return 'UserInfoModel{gender: $gender, birthday: $birthday, userId: $userId, loginName: $loginName, nickName: $nickName, depositLock: $depositLock, realName: $realName, registerTime: $registerTime, available: $available, balance: $balance, mobile: $mobile, email: $email, weChat: $weChat, qq: $qq, userInfoMeasure: $userInfoMeasure, token: $token}';

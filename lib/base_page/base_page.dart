@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/login&register/login.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -73,5 +74,10 @@ class BasePage {
 
   Future getData() async {
     return true;
+  }
+
+  /// 已经登录，！= null
+  bool checkLogin(){
+    return AppSingleton.userInfoModel?.token != null;
   }
 }

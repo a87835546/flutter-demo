@@ -210,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
                 log("value ----->>>>>> $value");
                 if (value != null && value.runtimeType == UserInfoModel) {
                   setState(() {
-                    AppSingleton.userInfoModel = value as UserInfoModel;
+                    // AppSingleton.setUserInfoModel(value as UserInfoModel);
                   });
                   Navigator.pop(context, true);
                 } else {

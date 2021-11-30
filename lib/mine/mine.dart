@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/base_page/base_page.dart';
 import 'package:flutter_demo/login&register/login.dart';
 import 'package:flutter_demo/login&register/register.dart';
+import 'package:flutter_demo/mine/message_center.dart';
 import 'package:flutter_demo/mine/widget/mine_list_view.dart';
 import 'package:flutter_demo/mine/widget/user_ifno_progress_view.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
@@ -107,11 +108,17 @@ class _MinePageState extends State<Mine> with BasePage {
                 position: const BadgePosition(bottom: 10, end: -10),
                 child: GestureDetector(
                   onTap: () {
-
                     setState(() {
                       isJump = false;
                     });
-                    goToLogin(context);
+                    if(checkLogin()){
+                      // Navigator.pushNamed(context, 'message_center');
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                        return MessageCenter(width: MediaQuery.of(context).size.width);
+                      }));
+                    }else{
+                      goToLogin(context);
+                    }
                   },
                   child: Image.asset(
                     "imgs/mine/images/icon-chat@3x.png",

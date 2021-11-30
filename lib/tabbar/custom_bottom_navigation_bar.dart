@@ -12,7 +12,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class TabbarController extends State<CustomBottomNavigationBar> {
   int selectedIndex = 0;
-  final List tabbar_controllers = [Home(), Mine()];
+  final List tabbar_controllers = [Home(), const Mine()];
 
   @override
   Widget build(BuildContext context) {

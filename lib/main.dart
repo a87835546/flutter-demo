@@ -19,6 +19,7 @@ import 'home/stateful_use.dart';
 import 'home/swiper_demo.dart';
 import 'home/webview_use.dart';
 import 'home/widget_lifecycle.dart';
+import 'mine/message_center.dart';
 import 'mine/mine.dart';
 
 void main() {
@@ -28,13 +29,15 @@ void main() {
 class MyApp extends StatelessWidget {
 
   MyApp({Key? key}) : super(key: key);
+
+  dynamic a = AppSingleton.getInstance();
   @override
-  late int i ;
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        brightness: AppSingleton.brightness??Brightness.light,
+        // brightness: AppSingleton.brightness??Brightness.light,
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -68,7 +71,6 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
