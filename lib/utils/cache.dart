@@ -3,34 +3,34 @@ import 'dart:developer';
 import 'package:shared_preferences/shared_preferences.dart';
 
 ///缓存管理类
-class HiCache {
+class Cache {
   SharedPreferences? prefs;
 
-  HiCache._() {
+  Cache._() {
     log("_ init");
     init();
   }
 
-  static HiCache? _instance;
+  static Cache? _instance;
 
-  HiCache._pre(SharedPreferences prefs) {
+  Cache._pre(SharedPreferences prefs) {
     log("_pre ");
     this.prefs = prefs;
   }
 
   ///预初始化，防止在使用get时，prefs还未完成初始化
-  static Future<HiCache> preInit() async {
+  static Future<Cache> preInit() async {
     log("pre init");
     if (_instance == null) {
       var prefs = await SharedPreferences.getInstance();
-      _instance = HiCache._pre(prefs);
+      _instance = Cache._pre(prefs);
     }
     return _instance!;
   }
 
-  static HiCache getInstance() {
+  static Cache getInstance() {
     log("get instance");
-    _instance ??= HiCache._();
+    _instance ??= Cache._();
     return _instance!;
   }
 

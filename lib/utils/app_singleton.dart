@@ -38,11 +38,11 @@ class AppSingleton {
 
   static void test(){
     // SharedPreferenceUtil.getInstance().saveString("userinfo", "test");
-    // HiCache.getInstance().setString("userinfo", "test");
+    // Cache.getInstance().setString("userinfo", "test");
   }
 
   static Future test1() async{
-    dynamic s = await HiCache.getInstance().get("userinfo");
+    dynamic s = await Cache.getInstance().get("userinfo");
     log("reading ---->>>>>> $s");
     return Future.value(s);
   }
@@ -50,7 +50,7 @@ class AppSingleton {
     if (userInfoModel == null) {
       UserInfoModel? model;
       try {
-        String s = await HiCache.getInstance().get("userinfo") as String;
+        String s = await Cache.getInstance().get("userinfo") as String;
         Map<String,dynamic> map = json.decode(s);
         log("string result $s");
         model = UserInfoModel.jsonToObject(map);
@@ -72,7 +72,7 @@ class AppSingleton {
     try {
       String userinfo = json.encode(model.toJson());
       log("user info string value : $userinfo");
-      HiCache.getInstance().setString("userinfo", userinfo);
+      Cache.getInstance().setString("userinfo", userinfo);
     } catch (err) {
       log("set user info model error ${err}");
     }
