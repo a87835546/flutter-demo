@@ -16,7 +16,9 @@ import 'package:flutter_demo/home/stateful_use.dart';
 import 'package:flutter_demo/home/swiper_demo.dart';
 import 'package:flutter_demo/home/webview_use.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/screen_utils.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'expansion_use.dart';
 import 'list_view_controller.dart';
@@ -41,6 +43,7 @@ class Home extends StatefulWidget {
 }
 
 class _home extends State<Home> {
+
   int selectedIndex = 0;
   List data = <RouterModel>[
     RouterModel("导航路由的使用", "navigator_use", const NavigatorUse("导航路由的使用")),
@@ -65,6 +68,10 @@ class _home extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    AppSingleton.getUserInfoModel().then((value)  {
+      log("get result");
+      Fluttertoast.showToast(msg: value?.token??"");
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text("flutter 学习资料"),

@@ -49,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     const Padding(padding: EdgeInsets.only(top: 100)),
+                    IconButton(onPressed: (){Navigator.pop(context);}, icon: Image.asset("imgs/images/icon-back@3x.png")),
                     _createLogoView(),
                     const Padding(
                       padding: EdgeInsets.only(top: 60, bottom: 20),
@@ -210,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                 log("value ----->>>>>> $value");
                 if (value != null && value.runtimeType == UserInfoModel) {
                   setState(() {
-                    // AppSingleton.setUserInfoModel(value as UserInfoModel);
+                    AppSingleton.setUserInfoModel(value as UserInfoModel);
                   });
                   Navigator.pop(context, true);
                 } else {

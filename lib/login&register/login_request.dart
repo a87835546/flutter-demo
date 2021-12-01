@@ -13,11 +13,12 @@ class LoginRequest {
     map["password"] = pwd;
     dynamic model;
     await HttpManager.post(url: "/user/login", params: map).then((value){
+      log("login by user name result:$value");
       if(value['code'] == 200) {
 
         model = UserInfoModel.jsonToObject(value['data']);
-        // AppSingleton.setUserInfoModel(value as UserInfoModel);
-        log("login by user name result:$value    model : $model");
+        AppSingleton.setUserInfoModel(model as UserInfoModel);
+        log("login by user name model : $model");
       }else{
         log("login error $value");
         model = value;
@@ -53,7 +54,7 @@ class LoginRequest {
       if(value['code'] == 200) {
 
         model = UserInfoModel.jsonToObject(value['data']);
-        // AppSingleton.setUserInfoModel(value as UserInfoModel);
+        AppSingleton.setUserInfoModel(value as UserInfoModel);
         log("login by user name result:$value    model : $model");
       }else{
         log("login error $value");

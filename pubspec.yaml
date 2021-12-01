@@ -46,6 +46,7 @@ dependencies:
   fluttertoast: ^8.0.8
   webview_flutter: ^2.3.1
   logger: ^1.1.0
+  image_picker: ^0.8.4+4
 
 dev_dependencies:
   flutter_test:
@@ -135,6 +136,9 @@ flutter:
     - imgs/mine/images/icon-selected@3x.png
     - imgs/mine/images/icon-unselected@3x.png
     - imgs/mine/images/icon-vip-task-arrow@3x.png
+    - imgs/images/iocn-arrow-down@3x.png
+    - imgs/images/icon-add@3x.png
+    - imgs/images/icon-back@3x.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/imgs-and-images/#resolution-aware.

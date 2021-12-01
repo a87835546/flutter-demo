@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/mine/message_activity.dart';
-import 'package:flutter_demo/mine/message_announcement.dart';
-import 'package:flutter_demo/mine/message_notifacation.dart';
-import 'package:flutter_demo/mine/widget/message_app_bar.dart';
+import 'package:flutter_demo/mine/message/message_activity.dart';
+import 'package:flutter_demo/mine/message/message_announcement.dart';
+import 'package:flutter_demo/mine/message/message_notifacation.dart';
+import 'package:flutter_demo/mine/message/message_app_bar.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 
 class MessageCenter extends StatefulWidget {

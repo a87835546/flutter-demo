@@ -1,49 +1,62 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MineListView extends StatefulWidget{
+import '../suggestion_report.dart';
+
+class MineListView extends StatefulWidget {
   const MineListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MineListViewState();
-
 }
 
-class _MineListViewState extends State<MineListView>{
+class _MineListViewState extends State<MineListView> {
   final List<MineModel> _list = [
     MineModel(
         iconName: 'imgs/mine/images/Transaction-Record@3x.png',
         title: '交易记录',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
     MineModel(
         iconName: 'imgs/mine/images/icon-mine-Promotions@2x.png',
         title: '我的优惠',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
     MineModel(
-        iconName: 'imgs/mine/images/icon-p@3x.png',
-        title: '优惠活动',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+      iconName: 'imgs/mine/images/icon-p@3x.png',
+      title: '优惠活动',
+      rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+      target: const SuggestionReport(),
+    ),
     MineModel(
         iconName: 'imgs/mine/images/icon-help@3x.png',
         title: '帮助中心',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
     MineModel(
         iconName: 'imgs/mine/images/icon-NEW-HELP@3x.png',
         title: '新手任务',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
     MineModel(
         iconName: 'imgs/mine/images/Security-center@3x.png',
         title: '安全中心',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
     MineModel(
         iconName: 'imgs/mine/images/icon-Feedback@2x.png',
         title: '意见反馈',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
     MineModel(
         iconName: 'imgs/mine/images/iocn-Unfold@3x.png',
         title: '下载APP',
-        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png'),
+        rightIconName: 'imgs/mine/images/iocn-Unfold@3x.png',
+        target: const SuggestionReport()),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -53,7 +66,9 @@ class _MineListViewState extends State<MineListView>{
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () async {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (_){
+                    return _list[index].target;
+                  }));
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10, left: 10),
@@ -77,15 +92,15 @@ class _MineListViewState extends State<MineListView>{
                             ),
                             Expanded(
                                 child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    _list[index].title,
-                                    style: const TextStyle(
-                                        color: Color(0xffC1C2C4),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                )),
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                _list[index].title,
+                                style: const TextStyle(
+                                    color: Color(0xffC1C2C4),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            )),
                             Container(
                               padding: const EdgeInsets.only(right: 10),
                               width: 50,
@@ -113,22 +128,24 @@ class _MineListViewState extends State<MineListView>{
             },
             itemCount: _list.length));
   }
-
 }
-
 
 class MineModel {
   String iconName = '';
   String title = '';
   String rightIconName = '';
 
+  //跳转的目标
+  Widget target;
+
   MineModel(
       {required this.iconName,
-        required this.title,
-        required this.rightIconName});
+      required this.title,
+      required this.rightIconName,
+      required this.target});
 
   @override
   String toString() {
-    return 'MineModel{iconName: $iconName, title: $title, rightIconName: $rightIconName}';
+    return 'MineModel{iconName: $iconName, title: $title, rightIconName: $rightIconName, target: $target}';
   }
 }

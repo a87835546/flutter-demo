@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
+import 'package:flutter_demo/utils/cache.dart';
+import 'package:flutter_demo/utils/share_preference_util.dart';
 
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
@@ -19,20 +23,17 @@ import 'home/stateful_use.dart';
 import 'home/swiper_demo.dart';
 import 'home/webview_use.dart';
 import 'home/widget_lifecycle.dart';
-import 'mine/message_center.dart';
+import 'mine/message/message_center.dart';
 import 'mine/mine.dart';
 
-void main() {
+void main() async{
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   MyApp({Key? key}) : super(key: key);
 
-  dynamic a = AppSingleton.getInstance();
   @override
-
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',

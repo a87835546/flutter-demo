@@ -41,6 +41,7 @@ class _RegisterPage extends State<RegisterPage>{
                 child: Column(
                   children: [
                     const Padding(padding: EdgeInsets.only(top: 100)),
+                    IconButton(onPressed: (){Navigator.pop(context);}, icon: Image.asset("imgs/images/icon-back@3x.png")),
                     _createLogoView(),
                     const Padding(
                       padding: EdgeInsets.only(top: 60, bottom: 20),

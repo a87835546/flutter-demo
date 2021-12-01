@@ -1,11 +1,11 @@
-import 'dart:developer';
+import 'dart:developer' as developer;
 
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/base_page/base_page.dart';
 import 'package:flutter_demo/login&register/login.dart';
 import 'package:flutter_demo/login&register/register.dart';
-import 'package:flutter_demo/mine/message_center.dart';
+import 'package:flutter_demo/mine/message/message_center.dart';
 import 'package:flutter_demo/mine/widget/mine_list_view.dart';
 import 'package:flutter_demo/mine/widget/user_ifno_progress_view.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
@@ -416,10 +416,10 @@ class _MinePageState extends State<Mine> with BasePage {
 
   ///获取未读消息
   void getMessageUnread() async {
-    logger.i("future complete 1 ");
+    developer.log("future complete 1 ");
     HttpManager.get(url:"/message/unreadCount?terminal=1&msgType=0")
         .then((result) {
-      logger.i("get message unread result :$result");
+      developer.log("get message unread result :$result");
       if(determineRequest(result)){
         goToLogin(context);
         return;
@@ -433,7 +433,7 @@ class _MinePageState extends State<Mine> with BasePage {
           }
         });
       } catch (err) {
-        logger.i("parser user unread message count err:${err.toString()}");
+        developer.log("parser user unread message count err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
           goToLogin(context);
@@ -446,29 +446,29 @@ class _MinePageState extends State<Mine> with BasePage {
       if (_count == 4) {
         finishedRequesting();
       }
-      logger.i("when complete2  count :$_count");
+      developer.log("when complete2  count :$_count");
     });
   }
 
   void getUserInfo() async {
-    logger.i("future complete 4 ");
+    developer.log("future complete 4 ");
 
     HttpManager.get(url:"/activity/signInfo?terminal=1")
         .then((result) {
-      logger.i("get user sign info result :$result");
+      developer.log("get user sign info result :$result");
       if(determineRequest(result)){
         goToLogin(context);
         return;
       }
       try {
         UserSignInfoModel signInfoModel = UserSignInfoModel.fromJson(result['data']);
-        logger.i("get user sign info model :$signInfoModel");
+        developer.log("get user sign info model :$signInfoModel");
 
         setState(() {
           _signInfoModel = signInfoModel;
         });
       } catch (err) {
-        logger.i("parser user sign info err:${err.toString()}");
+        developer.log("parser user sign info err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
           goToLogin(context);
@@ -481,21 +481,21 @@ class _MinePageState extends State<Mine> with BasePage {
       if (_count == 4) {
         finishedRequesting();
       }
-      logger.i("when complete2  count :$_count");
+      developer.log("when complete2  count :$_count");
     });
   }
 
   void getVipInfo() {
     HttpManager.get(url:"/activity/vipInfo?=1&terminal=1")
         .then((result) {
-      logger.i("get user vip info result :${result.runtimeType}");
+      developer.log("get user vip info result :${result.runtimeType}");
       if(determineRequest(result)){
         setState(() {
           show = !show;
           errorTitle = "测试。。。。。。。";
         });
         // goToLogin(context);
-        logger.i("get user vip info");
+        developer.log("get user vip info");
         return;
       }
       try {
@@ -504,7 +504,7 @@ class _MinePageState extends State<Mine> with BasePage {
           _vipInfoModel = vipInfoModel;
         });
       } catch (err) {
-        logger.i("parser user vip info err:${err.toString()}");
+        developer.log("parser user vip info err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
           goToLogin(context);
@@ -517,15 +517,15 @@ class _MinePageState extends State<Mine> with BasePage {
       if (_count == 4) {
         finishedRequesting();
       }
-      logger.i("when complete2  count :$_count");
+      developer.log("when complete2  count :$_count");
     });
   }
 
   void getBalance() {
-    logger.i("future complete 2 ");
+    developer.log("future complete 2 ");
 
     HttpManager.get(url:"/pay/checkBalance?terminal=1").then((result) {
-      logger.i("get balance info result : $result");
+      developer.log("get balance info result : $result");
       if(determineRequest(result)){
         goToLogin(context);
         return;
@@ -535,7 +535,7 @@ class _MinePageState extends State<Mine> with BasePage {
           _balance = result['balance'];
         });
       } catch (err) {
-        logger.i("parser user sign info err:${err.toString()}");
+        developer.log("parser user sign info err:${err.toString()}");
       } finally {
         if (result['code'] == 401) {
           goToLogin(context);
@@ -548,7 +548,7 @@ class _MinePageState extends State<Mine> with BasePage {
       if (_count == 4) {
         finishedRequesting();
       }
-      logger.i("when complete2  count :$_count");
+      developer.log("when complete2  count :$_count");
     });
   }
 
