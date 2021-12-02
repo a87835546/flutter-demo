@@ -4,11 +4,13 @@ import 'package:badges/badges.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/base_page/base_page.dart';
 import 'package:flutter_demo/mine/message/message_activity.dart';
 import 'package:flutter_demo/mine/message/message_announcement.dart';
 import 'package:flutter_demo/mine/message/message_notifacation.dart';
 import 'package:flutter_demo/mine/message/message_app_bar.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
 
 class MessageCenter extends StatefulWidget {
   final double width;
@@ -20,9 +22,13 @@ class MessageCenter extends StatefulWidget {
 }
 
 class _MessageCenterState extends State<MessageCenter>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, BasePage {
   final titles = ['活动', '通知', '公告'];
-  final pages = [const MessageActivity(),MessageNotification(),MessageAnnouncement()];
+  final pages = [
+    const MessageActivity(),
+    MessageNotification(),
+    MessageAnnouncement()
+  ];
   static const double itemWidth = 30;
   static const double lineScale = 1.2;
   AnimationController? animationController;
@@ -86,27 +92,28 @@ class _MessageCenterState extends State<MessageCenter>
                             height: 38,
                             child: ListTile(
                                 title: GestureDetector(
-                              onTap: () {
-                                getX(index);
-                                log("$x");
-                                _swiperController.move(index);
-                                animationController?.forward();
-                              },
-                              child: Container(
-                                width: itemWidth,
-                                child:Badge(
-                                  badgeContent: Text("12"),
-                                  position: BadgePosition(end: 5,bottom: 10),
-                                  badgeColor: ColorUtil.mainColor(),
-                                  child: Text(
-                                    titles[index],
-                                    style: const TextStyle(
-                                        color: Color(0xffc1c1c4), fontSize: 14),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              )
-                            )),
+                                    onTap: () {
+                                      getX(index);
+                                      log("$x");
+                                      _swiperController.move(index);
+                                      animationController?.forward();
+                                    },
+                                    child: Container(
+                                      width: itemWidth,
+                                      child: Badge(
+                                        badgeContent: Text("12"),
+                                        position:
+                                            BadgePosition(end: 5, bottom: 10),
+                                        badgeColor: ColorUtil.mainColor(),
+                                        child: Text(
+                                          titles[index],
+                                          style: const TextStyle(
+                                              color: Color(0xffc1c1c4),
+                                              fontSize: 14),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ))),
                           );
                         },
                         shrinkWrap: true,
@@ -120,29 +127,6 @@ class _MessageCenterState extends State<MessageCenter>
                       height: 1,
                       child: Stack(
                         children: [
-                          // AnimatedBuilder(animation: animationController!, builder: (context,child){
-                          //   return Container(
-                          //             height: 2,
-                          //             width: itemWidth*lineScale,
-                          //             decoration: BoxDecoration(
-                          //               gradient: LinearGradient(
-                          //                 colors: [ColorUtil.hexColor('0xA1927F'),ColorUtil.hexColor('0xFFF1E3')]
-                          //               )
-                          //   )
-                          //   );
-                          // }),
-                          // Transform.translate(
-                          //   offset: Offset(x.toDouble(), 0),
-                          //   child: Container(
-                          //     height: 2,
-                          //     width: itemWidth * lineScale,
-                          //     decoration: BoxDecoration(
-                          //         gradient: LinearGradient(colors: [
-                          //       ColorUtil.hexColor('0xA1927F'),
-                          //       ColorUtil.hexColor('0xFFF1E3')
-                          //     ])),
-                          //   ),
-                          // ),
                           Positioned(
                               left: x.toDouble(),
                               child: Container(
@@ -183,7 +167,7 @@ class _MessageCenterState extends State<MessageCenter>
               },
               controller: _swiperController,
               onTap: (int index) async {
-                print("swiper index ---- >>>> ${titles[index]}");
+                log("swiper index ---- >>>> ${titles[index]}");
               },
               onIndexChanged: (index) {
                 log("index --- >>>$index");
