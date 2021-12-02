@@ -87,6 +87,8 @@ class _MessageCenterState extends State<MessageCenter>
                                 title: GestureDetector(
                               onTap: () {
                                 getX(index);
+                                log("$x");
+                                _swiperController.move(index);
                                 animationController?.forward();
                               },
                               child: Container(
