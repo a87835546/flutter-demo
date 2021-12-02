@@ -59,14 +59,11 @@ class _SuggestionSelectImageViewState extends State<SuggestionSelectImageView> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 5, top: 5, right: 5),
-                      child: Visibility(
-                        visible: image == null,
-                        child: Text(
-                          "*文件格式为PNG，JPG，JPEG，且大小不超过15MB（目前仅支持上传一张）",
-                          style: TextStyle(
-                              color: ColorUtil.hexColor("0x919699"),
-                              fontSize: 14),
-                        ),
+                      child: Text(
+                        "*文件格式为PNG，JPG，JPEG，且大小不超过15MB（目前仅支持上传一张）",
+                        style: TextStyle(
+                            color: ColorUtil.hexColor("0x919699"),
+                            fontSize: 14),
                       ),
                     ),
                     Visibility(
@@ -79,7 +76,7 @@ class _SuggestionSelectImageViewState extends State<SuggestionSelectImageView> {
                       ),
                       visible: image != null,
                     ),
-                    Padding(padding: EdgeInsets.only(top: 60)),
+                    Padding(padding: EdgeInsets.only(top: 30)),
                     GestureDetector(
                       onTap: () {
                         widget.click(null);

@@ -30,9 +30,10 @@ class _M extends State<MessageAppBar> {
                       Navigator.pop(context);
                     },
                     icon: Image.asset(
-                      "imgs/mine/images/icon-customer-service@3x.png",
-                      width: 40,
-                      height: 24,
+                      "imgs/images/icon-back@3x.png",
+                      width: 16,
+                      height: 16,
+                      fit:BoxFit.fill
                     ))),
             Container(
               child: Text(

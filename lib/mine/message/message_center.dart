@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:badges/badges.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,13 +94,18 @@ class _MessageCenterState extends State<MessageCenter>
                               },
                               child: Container(
                                 width: itemWidth,
-                                child: Text(
-                                  titles[index],
-                                  style: const TextStyle(
-                                      color: Color(0xffc1c1c4), fontSize: 14),
-                                  textAlign: TextAlign.center,
+                                child:Badge(
+                                  badgeContent: Text("12"),
+                                  position: BadgePosition(end: 5,bottom: 10),
+                                  badgeColor: ColorUtil.mainColor(),
+                                  child: Text(
+                                    titles[index],
+                                    style: const TextStyle(
+                                        color: Color(0xffc1c1c4), fontSize: 14),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
-                              ),
+                              )
                             )),
                           );
                         },

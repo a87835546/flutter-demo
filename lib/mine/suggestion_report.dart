@@ -70,9 +70,9 @@ class _SuggestionReportState extends State<SuggestionReport> with BasePage {
                           });
                         },
                       ),
-                      Padding(padding: EdgeInsets.only(top: 5)),
-                      SuggestionDescView(),
-                      Padding(padding: EdgeInsets.only(top: 5)),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      SuggestionDescView(valueChange: (value){},),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
                       SuggestionSelectImageView(
                         click: (image) {},
                       ),

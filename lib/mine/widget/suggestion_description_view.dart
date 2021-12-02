@@ -3,16 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/utils/color_util.dart';
-
+typedef SuggestionDescViewValueChange = Function(String);
 /// 问题描述
 class SuggestionDescView extends StatefulWidget {
-  const SuggestionDescView({Key? key}) : super(key: key);
-
+  final SuggestionDescViewValueChange valueChange;
+  const SuggestionDescView({Key? key,required this.valueChange}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _SuggestionDescViewState();
 }
 
 class _SuggestionDescViewState extends State<SuggestionDescView> {
+  TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,8 +45,29 @@ class _SuggestionDescViewState extends State<SuggestionDescView> {
                   onTap: () {
                     log("选择问题类型");
                   },
-                  child: TextField(
-
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 5, left: 5, right: 5),
+                    child: TextField(
+                      controller: _controller,
+                      cursorColor: Colors.white,
+                      maxLines: 10,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          hintText: "请输入…(内容介于20-200字)",
+                          hintStyle:
+                              TextStyle(color: ColorUtil.hexColor('0x919699')),
+                          border: InputBorder.none,
+                          labelStyle: TextStyle(color: Colors.white)),
+                      maxLength: 200,
+                      onEditingComplete: () {
+                        log("suggestion desc input complete value ${_controller.text}");
+                        widget.valueChange(_controller.text);
+                      },
+                      onChanged: (value) {
+                        log("suggestion desc input value $value");
+                        widget.valueChange(value);
+                      },
+                    ),
                   ),
                 ),
               ),
