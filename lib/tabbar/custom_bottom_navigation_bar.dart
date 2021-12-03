@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/mine/mine.dart';
+import 'package:flutter_demo/wallet/deposit_view.dart';
 
 /// 底部tabbar  和 头部导航栏
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -12,7 +13,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class TabbarController extends State<CustomBottomNavigationBar> {
   int selectedIndex = 0;
-  final List tabbar_controllers = [Home(), const Mine()];
+  final List tabbar_controllers = [const Home(),const DepositView(), const Mine()];
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,15 @@ class TabbarController extends State<CustomBottomNavigationBar> {
               activeIcon: Icon(Icons.home, color: Colors.greenAccent),
               title: Text(
                 "首页",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.wallet_membership, color: Colors.black12),
+              activeIcon: Icon(Icons.wallet_membership, color: Colors.greenAccent),
+              title: Text(
+                "充值",
                 style: TextStyle(
                   color: Colors.white,
                 ),

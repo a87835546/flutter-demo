@@ -54,11 +54,13 @@ class _MessageActivityState extends State<MessageActivity> with BasePage {
         itemBuilder: (context, index) {
           Message message = _message[index];
           return GestureDetector(
-            onTap: () {
+            onTap: () async{
               log("activity page click cell index : $index");
+              readMessage(message.id);
             },
             child: Container(
               height: 50,
+              color: Colors.transparent,
               child: Container(
                 child: Column(
                   children: [
@@ -105,8 +107,7 @@ class _MessageActivityState extends State<MessageActivity> with BasePage {
 
   @override
   Future getData() async {
-    HttpManager.get(url: 'message/info').then((value) {
-      // log('get message list ${value}');
+    HttpManager.get(url: 'message/info?messageType=0').then((value) {
 
       if (value['code'] == 200 && value['data'].runtimeType == [].runtimeType) {
         List list = value['data'] as List;
@@ -124,5 +125,15 @@ class _MessageActivityState extends State<MessageActivity> with BasePage {
       log("complete");
     });
     return super.getData();
+  }
+
+  void readMessage(int id) async{
+     await HttpManager.get(url: "message/read?messageId=$id").then((value){
+       if (value == true){
+         log("消息已读");
+       }
+     }).catchError((error){
+       log("read message error $error");
+    });
   }
 }

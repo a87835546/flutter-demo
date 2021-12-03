@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,19 +21,19 @@ class _UserInfoButtonState extends State<UserInfoButton>{
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        widget.click;
+        widget.click!();
       },
       child: Center(
         widthFactor: 1,
         child: Container(
           height: 20,
-          width:widget.width ?? 100,
           padding: const EdgeInsets.only(left: 0),
           color: Colors.transparent,
           alignment: Alignment.center,
           child: Row(
             children: [
               widget.title,
+              const Padding(padding: EdgeInsets.only(left: 3)),
               Image.asset(
                 widget.iconName,
                 height: 16,

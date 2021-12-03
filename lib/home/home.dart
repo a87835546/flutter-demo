@@ -70,7 +70,7 @@ class _home extends State<Home> {
   Widget build(BuildContext context) {
     AppSingleton.getUserInfoModel().then((value)  {
       log("get result");
-      Fluttertoast.showToast(msg: value?.token??"");
+      // Fluttertoast.showToast(msg: value?.token??"");
     });
     return Scaffold(
       appBar: AppBar(
