@@ -6,6 +6,8 @@ import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/wallet/deposit_segment_view.dart';
 
 import 'deposit_navi_bar_widget.dart';
+import 'deposit_select_style_page.dart';
+import 'deposit_style_page.dart';
 
 class DepositView extends StatefulWidget {
   const DepositView({Key? key}) : super(key: key);
@@ -20,7 +22,7 @@ class _DepositViewState extends State<DepositView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.redAccent,
+        color: ColorUtil.hexColor('0x1A1A1C'),
         child: MediaQuery.removePadding(
           removeTop: true,
           context: context,
@@ -34,6 +36,8 @@ class _DepositViewState extends State<DepositView> {
               DepositSegmentView(click: (value){
                 log("$value");
               },),
+              const DepositSelectTypeView(),
+              const DepositStylePage()
             ],
           ),
         ),

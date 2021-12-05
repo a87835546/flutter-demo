@@ -46,7 +46,7 @@ class _DepositNaviBarState extends State<DepositNaviBar>{
                 }),
                 IconButton(onPressed: (){
                   Fluttertoast.showToast(msg: "点击 跟多");
-                }, icon: Icon(Icons.more_horiz,color: Colors.white,))
+                }, icon: Image.asset("imgs/deposit/images/icon-List@3x.png")),
               ],
             )
 

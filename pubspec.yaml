@@ -139,6 +139,14 @@ flutter:
     - imgs/images/iocn-arrow-down@3x.png
     - imgs/images/icon-add@3x.png
     - imgs/images/icon-back@3x.png
+    - imgs/deposit/images/alipay@3x.png
+    - imgs/deposit/images/bank-card@3x.png
+    - imgs/deposit/images/Bank-card-to-card@3x.png
+    - imgs/deposit/images/icon-List@3x.png
+    - imgs/deposit/images/onlie-bank@3x.png
+    - imgs/deposit/images/Title-guide@3x.png
+    - imgs/deposit/images/wechat@3x.png
+    - imgs/deposit/images/background-for-charge@3x.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/imgs-and-images/#resolution-aware.
