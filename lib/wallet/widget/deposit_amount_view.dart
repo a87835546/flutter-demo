@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/custom_widget/login_input_view.dart';
@@ -12,6 +14,8 @@ class DepositAmountView extends StatefulWidget {
 
 class _DepositAmountViewState extends State<DepositAmountView> {
   final TextEditingController _controller = TextEditingController();
+  var select = "";
+  var _value = "";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,15 +52,11 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                     color: ColorUtil.hexColor('0x212222'),
                   ),
                   child: TextField(
-                    cursorColor:Color(0xffC1C2C4),
+                    cursorColor: Color(0xffC1C2C4),
                     keyboardType: TextInputType.number,
                     controller: _controller,
-                    style: TextStyle(
-                      color: Color(0xffC1C2C4),
-                      fontSize: 12
-                    ),
+                    style: TextStyle(color: Color(0xffC1C2C4), fontSize: 12),
                     decoration: InputDecoration(
-
                       border: InputBorder.none,
                       suffix: Padding(
                         padding: EdgeInsets.only(right: 10),
@@ -69,15 +69,22 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                       prefix: Text(
                         '￥',
                         style:
-                        TextStyle(color: Color(0xffC1C2C4), fontSize: 14),
+                            TextStyle(color: Color(0xffC1C2C4), fontSize: 14),
                       ),
                       focusColor: Colors.greenAccent,
-
                       labelStyle: TextStyle(
                         // color: Color(0xffC1C2C4),
                         color: Colors.redAccent,
                       ),
                     ),
+                    onChanged: (value){
+                      setState(() {
+                        _value = value;
+                      });
+                    },
+                    onEditingComplete: (){
+                      log("123");
+                    },
                   ),
                 ),
                 Padding(
@@ -92,15 +99,22 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
-                                color: ColorUtil.hexColor('0x212222')),
+                                color: select == e
+                                    ? ColorUtil.mainColor()
+                                    : ColorUtil.hexColor('0x212222')),
                             child: Text(
                               e,
                               style: TextStyle(
-                                  color: ColorUtil.hexColor('0x919699')),
+                                  color: select == e
+                                      ? ColorUtil.hexColor('0x3A3A3A')
+                                      : ColorUtil.hexColor('0x919699')),
                             ),
                           ),
                           onTap: () {
                             _controller.text = e;
+                            setState(() {
+                              select = e;
+                            });
                           },
                         );
                       }).toList()),
@@ -112,14 +126,23 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                     width: 150,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        gradient: LinearGradient(colors: [
-                          ColorUtil.hexColor('0x3C3E41'),
-                          ColorUtil.hexColor('0x37373A')
-                        ])),
-                    child: Text(
-                      '确定',
-                      style: TextStyle(color: Color(0xffC1C2C4)),
+                      borderRadius: BorderRadius.circular(4),
+                      gradient: LinearGradient(
+                          colors: _value.length > 0 || _controller.text.length > 0
+                              ? [Color(0xffD0C3A6), Color(0xffD4C8A9)]
+                              : [Color(0xff3C3E41), Color(0xff37373A)]),
+                    ),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        child: Text(
+                          '确定',
+                          style: TextStyle(
+                              color: _value.length > 0 || _controller.text.length > 0
+                                  ? Color(0xff3A3A3A)
+                                  : Color(0xffC1C2C4)),
+                        ),
+                      ),
                     ),
                   ),
                 )
