@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/wallet/deposit_segment_view.dart';
+import 'package:flutter_demo/wallet/widget/deposit_transaction_page.dart';
 
 import 'deposit_navi_bar_widget.dart';
 import 'deposit_select_style_page.dart';
@@ -18,6 +19,7 @@ class DepositView extends StatefulWidget {
 
 class _DepositViewState extends State<DepositView> {
   String balance = "10";
+  PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,22 +29,36 @@ class _DepositViewState extends State<DepositView> {
           removeTop: true,
           context: context,
           child: ListView(
-            physics: const AlwaysScrollableScrollPhysics(),
+            // physics: const AlwaysScrollableScrollPhysics(),
             children: [
               DepositNaviBar(
                 balance: balance,
                 height: MediaQuery.of(context).padding.top,
               ),
-              DepositSegmentView(click: (value){
-                log("$value");
-              },),
-              const DepositSelectTypeView(),
-              const DepositStylePage()
+              DepositSegmentView(
+                click: (value) {
+                  log("$value");
+                  _pageController.jumpToPage(value);
+                },
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height,
+                child: PageView(
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  children: [
+                     DepositStylePage(type: DepositStylePageType.deposit,),
+                     DepositStylePage(type: DepositStylePageType.withdraw,),
+                     DepositTransactionPage(),
+                     DepositStylePage(type: DepositStylePageType.bank,),
+                  ],
+                ),
+              )
             ],
           ),
         ),
       ),
     );
   }
-
 }

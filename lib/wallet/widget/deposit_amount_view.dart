@@ -2,11 +2,24 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/custom_widget/login_input_view.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 
+import '../deposit_style_page.dart';
+import 'deposit_input_view.dart';
+
 class DepositAmountView extends StatefulWidget {
-  const DepositAmountView({Key? key}) : super(key: key);
+  final DepositStylePageType? type;
+  final String? placeholder;
+  final String? suffix;
+  final String? prefix;
+
+  const DepositAmountView(
+      {Key? key,
+      this.type = DepositStylePageType.deposit,
+      this.placeholder,
+      this.suffix,
+      this.prefix})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DepositAmountViewState();
@@ -16,6 +29,7 @@ class _DepositAmountViewState extends State<DepositAmountView> {
   final TextEditingController _controller = TextEditingController();
   var select = "";
   var _value = "";
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -77,12 +91,12 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                         color: Colors.redAccent,
                       ),
                     ),
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         _value = value;
                       });
                     },
-                    onEditingComplete: (){
+                    onEditingComplete: () {
                       log("123");
                     },
                   ),
@@ -128,9 +142,10 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       gradient: LinearGradient(
-                          colors: _value.length > 0 || _controller.text.length > 0
-                              ? [Color(0xffD0C3A6), Color(0xffD4C8A9)]
-                              : [Color(0xff3C3E41), Color(0xff37373A)]),
+                          colors:
+                              _value.length > 0 || _controller.text.length > 0
+                                  ? [Color(0xffD0C3A6), Color(0xffD4C8A9)]
+                                  : [Color(0xff3C3E41), Color(0xff37373A)]),
                     ),
                     child: GestureDetector(
                       onTap: () {},
@@ -138,7 +153,8 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                         child: Text(
                           '确定',
                           style: TextStyle(
-                              color: _value.length > 0 || _controller.text.length > 0
+                              color: _value.length > 0 ||
+                                      _controller.text.length > 0
                                   ? Color(0xff3A3A3A)
                                   : Color(0xffC1C2C4)),
                         ),

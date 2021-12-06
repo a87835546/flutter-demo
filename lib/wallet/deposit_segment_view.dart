@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 
-typedef DepositSegmentViewClick = Function(String);
+typedef DepositSegmentViewClick = Function(int);
 
 class DepositSegmentView extends StatefulWidget {
   final DepositSegmentViewClick click;
@@ -16,7 +16,7 @@ class DepositSegmentView extends StatefulWidget {
 
 class _DepositSegmentViewState extends State<DepositSegmentView> {
   var select = "存款";
-
+  List list = ['存款', '取款', '交易记录', '银行卡'];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,13 +25,13 @@ class _DepositSegmentViewState extends State<DepositSegmentView> {
       color: ColorUtil.hexColor('0x1A1A1C'),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: ['存款', '取款', '交易记录', '银行卡'].map((e) {
+        children: list.map((e) {
           return GestureDetector(
             onTap: () {
               setState(() {
                 select = e;
               });
-              widget.click(e);
+              widget.click(list.indexOf(e));
             },
             child: Container(
               height: 32,
