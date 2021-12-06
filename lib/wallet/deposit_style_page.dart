@@ -123,7 +123,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
                       },
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10,top: 10),
+                      padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                       child: DepositInputView(
                         placeholder: '请输入金额',
                         tips: '限额100000',
@@ -165,39 +165,103 @@ class _DepositStylePageState extends State<DepositStylePage> {
       children: [
         DepositSelectTypeView(),
         Padding(
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: EdgeInsets.only(left: 10),
           child: Container(
-            // height: 490,
-            decoration: BoxDecoration(
-                color: ColorUtil.hexColor('0x2C2C2E'),
-                borderRadius: BorderRadius.circular(5)),
-            child: Padding(
-              padding: EdgeInsets.only(left: 0, right: 0),
-              child: Container(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+            alignment: Alignment.centerLeft,
+            child: Text('xxxxx',textAlign: TextAlign.left,style: TextStyle(
+              color: Color(0xffC1C2C4)
+            ),),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 34, right: 34, bottom: 10, top: 10),
+          child: ListView.builder(
+              itemBuilder: (BuildContext context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 65,
+                      decoration: BoxDecoration(
+                          color: ColorUtil.hexColor('0x2C2C2E'),
+                          borderRadius: BorderRadius.circular(5)),
                       child: Container(
-                        child: GestureDetector(
-                          child: Container(
-                            height: 32,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(
-                                    color: ColorUtil.mainColor(), width: 1)),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "存款教程",
-                              style: TextStyle(color: ColorUtil.mainColor()),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Container(
+                                height: 34,
+                                width: 34,
+                                child: Image.asset(
+                                    "imgs/deposit/images/wechat@3x.png"),
+                              ),
                             ),
-                          ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5, top: 12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      'xxxxxxxxx',
+                                      style: TextStyle(
+                                          color: Color(0xffC1C2C4),
+                                          fontSize: 14),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      'xxxxxxxxx',
+                                      style: TextStyle(
+                                          color: Color(0xff919699),
+                                          fontSize: 12),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    )
-                  ],
+                    ),
+                  ),
+                );
+              },
+              itemCount: 3,
+              shrinkWrap: true),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 0, right: 0),
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10),
+              child: Container(
+                child: GestureDetector(
+                  child: Container(
+                    height: 40,
+                    width: 255,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Color(0xff3C3E41),Color(0xff37373A)]
+                      ),
+                      borderRadius: BorderRadius.circular(5),),
+                    alignment: Alignment.center,
+                    child:Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 16,
+                          width: 16,
+                          child: Image.asset("imgs/images/icon-add@3x.png",fit: BoxFit.fitWidth,),
+                        ),
+                        Padding(padding: EdgeInsets.only(left: 5),child: Text(
+                          "存款教程",
+                          style: TextStyle(color: Color(0xffC1C2C4)),
+                        ),)
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
