@@ -1,6 +1,7 @@
 class UserInfoModel {
-  late final bool? gender;
+  late bool? gender;
   final String? birthday;
+  final String avatar;
   final num? userId;
   final String? loginName;
   final String? nickName;
@@ -17,6 +18,7 @@ class UserInfoModel {
   final String? token;
 
   UserInfoModel({
+    required this.avatar,
     required this.gender,
     required this.birthday,
     required this.userId,
@@ -53,6 +55,7 @@ class UserInfoModel {
       qq: map['qq'],
       userInfoMeasure: map['userInfoMeasure'],
       token: map['token'],
+      avatar: map['avatar'],
     );
     return model;
   }
@@ -73,10 +76,12 @@ class UserInfoModel {
     data['qq'] = qq;
     data['userInfoMeasure'] = userInfoMeasure;
     data['token'] = token;
+    data['avatar'] = avatar;
     return data;
   }
+
   @override
   String toString() {
-    return 'UserInfoModel{gender: $gender, birthday: $birthday, userId: $userId, loginName: $loginName, nickName: $nickName, depositLock: $depositLock, realName: $realName, registerTime: $registerTime, available: $available, balance: $balance, mobile: $mobile, email: $email, weChat: $weChat, qq: $qq, userInfoMeasure: $userInfoMeasure, token: $token}';
+    return 'UserInfoModel{gender: $gender, birthday: $birthday, avatar: $avatar, userId: $userId, loginName: $loginName, nickName: $nickName, depositLock: $depositLock, realName: $realName, registerTime: $registerTime, available: $available, balance: $balance, mobile: $mobile, email: $email, weChat: $weChat, qq: $qq, userInfoMeasure: $userInfoMeasure, token: $token}';
   }
 }

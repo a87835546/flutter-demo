@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/mine/mine_userinfo/mine_userinfo.dart';
 import 'package:flutter_demo/mine/model/user_info_model.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
 typedef UserInfoViewEdit = void Function();
@@ -36,6 +37,9 @@ class _UserInfoViewState extends State<UserInfoView>{
           GestureDetector(
             onTap: () async {
               widget.clickEdit();
+              Navigator.push(context, MaterialPageRoute(builder: (_){
+                return UserInfoPage();
+              }));
             },
             child: Center(
               widthFactor: 1,

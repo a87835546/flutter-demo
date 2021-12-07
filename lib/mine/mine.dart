@@ -19,6 +19,7 @@ import 'package:logger/logger.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import "dart:math";
 
+import 'mine_userinfo/mine_userinfo.dart';
 import 'model/user_info_model.dart';
 import 'model/user_sign_info_model.dart';
 import 'model/user_vip_info_model.dart';
@@ -128,7 +129,9 @@ class _MinePageState extends State<Mine> with BasePage {
                 )),
             IconButton(
                 onPressed: () {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (_){
+                    return UserInfoPage(model: AppSingleton.userInfoModel,);
+                  }));
                 },
                 icon: Image.asset(
                   "imgs/mine/images/icon-customer-service@3x.png",
@@ -402,8 +405,9 @@ class _MinePageState extends State<Mine> with BasePage {
     });
     getMessageUnread();
     getBalance();
-    getUserInfo();
+    getSignInfo();
     getVipInfo();
+    getUserInfo();
     return isJump;
   }
 
@@ -450,7 +454,7 @@ class _MinePageState extends State<Mine> with BasePage {
     });
   }
 
-  void getUserInfo() async {
+  void getSignInfo() async {
     developer.log("future complete 4 ");
 
     HttpManager.get(url:"/activity/signInfo?terminal=1")
@@ -520,7 +524,33 @@ class _MinePageState extends State<Mine> with BasePage {
       developer.log("when complete2  count :$_count");
     });
   }
+  void getUserInfo(){
+    HttpManager.get(url:"/user/queryUserInfo")
+        .then((result) {
+      developer.log("get user sign info result :$result");
+      if(determineRequest(result)){
+        goToLogin(context);
+        return;
+      }
+      try {
+        UserInfoModel model = UserInfoModel.jsonToObject(result['data']);
+        developer.log("get user sign info model :$model");
 
+        setState(() {
+          _userInfoModel = model;
+          AppSingleton.userInfoModel = model;
+          AppSingleton.setUserInfoModel(model);
+        });
+      } catch (err) {
+        developer.log("parser user sign info err:${err.toString()}");
+      } finally {
+        if (result['code'] == 401) {
+          goToLogin(context);
+        }
+      }
+    }).whenComplete(() {
+    });
+  }
   void getBalance() {
     developer.log("future complete 2 ");
 
