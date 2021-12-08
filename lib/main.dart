@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_baidu_mapapi_map/flutter_baidu_mapapi_map.dart';
 import 'package:flutter_baidu_mapapi_base/flutter_baidu_mapapi_base.dart';
 import 'package:flutter/material.dart';
@@ -67,14 +68,15 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  void _config (){
-    if(Platform.isIOS){
+  void _config () {
+    if (!kIsWeb && Platform.isIOS) {
       BMFMapSDK.setApiKeyAndCoordType(
           'gb38j4SGzq83tL4z2amTus262D2w3QnR', BMF_COORD_TYPE.BD09LL);
-    }else if(Platform.isAndroid){
+    } else if (!kIsWeb && Platform.isAndroid) {
 // Android 目前不支持接口设置Apikey,
 // 请在主工程的Manifest文件里设置，详细配置方法请参考[https://lbs.baidu.com/ 官网][https://lbs.baidu.com/)demo
-      BMFMapSDK.setCoordType(BMF_COORD_TYPE.BD09LL);}
+      BMFMapSDK.setCoordType(BMF_COORD_TYPE.BD09LL);
+    }
   }
 }
 
