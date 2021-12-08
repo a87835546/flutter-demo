@@ -3,6 +3,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
@@ -18,9 +19,8 @@ allprojects {
     }
 }
 android {
-    defaultConfog {
-        minSdkVersion 20
-    }
+    compileSdkVersion 19
+    buildToolsVersion '23.0.0'
 }
 rootProject.buildDir = '../build'
 subprojects {
@@ -31,3 +31,4 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+apply plugin: 'maven'

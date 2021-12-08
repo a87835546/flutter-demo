@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/mine/model/user_info_model.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
+import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 
 class UserInfoPage extends StatefulWidget {
@@ -297,6 +298,32 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 },
               ),
             ),
+            Padding(padding: EdgeInsets.only(left: 10,right: 10,top: 10),child: RichText(
+              text: TextSpan(
+                text: '为了您的隐私安全，信息在确认后将无法修改需要帮助，请联系客服',
+                style: TextStyle(
+                  color: Color(0xffC1C2C4)
+                ),
+                children: [
+                  TextSpan(text: '联系客服',style: TextStyle(color: ColorUtil.mainColor()))
+                ]
+              ),
+            ),),
+            Padding(padding: EdgeInsets.only(top: 20,left: 35,right: 35),child: GestureDetector(child: Container(
+              height: 45,
+              alignment: Alignment.center,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(22.5),
+                // gradient: LinearGradient(
+                //   colors: [Color(0xff1A1A1C),Color(0xff202123)]
+                // ),
+                  color:Color(0xff2C2C2E)
+              ),
+              child: Text("退出",style: TextStyle(color: Colors.white),),
+            ),onTap: (){
+              log('log out');
+            },behavior: HitTestBehavior.opaque,),),
           ],
         ),
       ),
