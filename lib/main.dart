@@ -1,15 +1,15 @@
 import 'dart:developer';
-
+import 'dart:io';
+import 'package:flutter_baidu_mapapi_map/flutter_baidu_mapapi_map.dart';
+import 'package:flutter_baidu_mapapi_base/flutter_baidu_mapapi_base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
-import 'package:flutter_demo/utils/app_singleton.dart';
-import 'package:flutter_demo/utils/cache.dart';
-import 'package:flutter_demo/utils/share_preference_util.dart';
 
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
+import 'home/baidu_map_sdk_use.dart';
 import 'home/card_use.dart';
 import 'home/catalogue_list.dart';
 import 'home/corner_radius_button.dart';
@@ -23,7 +23,6 @@ import 'home/stateful_use.dart';
 import 'home/swiper_demo.dart';
 import 'home/webview_use.dart';
 import 'home/widget_lifecycle.dart';
-import 'mine/message/message_center.dart';
 import 'mine/mine.dart';
 
 void main() async{
@@ -32,9 +31,9 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+  _config();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -62,9 +61,20 @@ class MyApp extends StatelessWidget {
         'catalogue_list': (BuildContext context)=>CatalogueList(),
         'custom_webView': (BuildContext context)=>const CustomWebView(),
         'card_use': (BuildContext context)=>const CardUse(),
+        'baidu_mapi_use': (BuildContext context)=>BaiDuMapSdk(),
 
       },
     );
+  }
+
+  void _config (){
+    if(Platform.isIOS){
+      BMFMapSDK.setApiKeyAndCoordType(
+          'gb38j4SGzq83tL4z2amTus262D2w3QnR', BMF_COORD_TYPE.BD09LL);
+    }else if(Platform.isAndroid){
+// Android 目前不支持接口设置Apikey,
+// 请在主工程的Manifest文件里设置，详细配置方法请参考[https://lbs.baidu.com/ 官网][https://lbs.baidu.com/)demo
+      BMFMapSDK.setCoordType(BMF_COORD_TYPE.BD09LL);}
   }
 }
 
