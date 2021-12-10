@@ -77,4 +77,13 @@ class AppSingleton {
       log("set user info model error ${err}");
     }
   }
+
+  static void clearUserInfo() {
+    userInfoModel = null;
+    try {
+      Cache.getInstance().remove("userinfo");
+    } catch (err) {
+      log("clear user info model error ${err}");
+    }
+  }
 }

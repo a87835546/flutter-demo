@@ -28,10 +28,18 @@ class _UserInfoViewState extends State<UserInfoView>{
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
-            child: Image.asset(
+            child:(AppSingleton.userInfoModel?.avatar
+                .isNotEmpty ??
+                true)
+                ? Image.network(
+              "${AppSingleton.userInfoModel?.avatar}",
+              width: 40,
+              height: 40,
+            )
+                : Image.asset(
               "imgs/mine/images/tx_icon@3x.png",
-              width: 48,
-              height: 48,
+              width: 40,
+              height: 40,
             ),
           ),
           GestureDetector(

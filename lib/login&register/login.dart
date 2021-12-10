@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               color: Colors.black12,
               child: Container(
-                child: Column(
+                child: ListView(
                   children: [
                     const Padding(padding: EdgeInsets.only(top: 100)),
                     IconButton(onPressed: (){Navigator.pop(context);}, icon: Image.asset("imgs/images/icon-back@3x.png")),

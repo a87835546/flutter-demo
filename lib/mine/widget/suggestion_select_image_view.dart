@@ -1,9 +1,12 @@
+import 'dart:collection';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:image_picker/image_picker.dart';
 
 typedef SuggestionSelectImageViewClick = Function(dynamic);
@@ -107,7 +110,9 @@ class _SuggestionSelectImageViewState extends State<SuggestionSelectImageView> {
   }
 
   Future getImage() async {
-    XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery).then((value){
+      updateImage(value!.path);
+    });
     log("${file?.path}");
     return file;
     //     .then((value) {
@@ -118,5 +123,32 @@ class _SuggestionSelectImageViewState extends State<SuggestionSelectImageView> {
     // }).whenComplete(() {
     //   log("select image finish");
     // });
+  }
+  void updateImage(String path) async {
+    String name = path.split('/').last;
+    log(name);
+    FormData formData = FormData.fromMap({'file': await MultipartFile.fromFile(path,filename: name)});
+    log('form data ${formData.length}');
+    await HttpManager.upload(params: formData, url: "user/upload").then((
+        result) {
+      log('update image result $result');
+    });
+  }
+
+
+  void upload(String path) async{
+    Dio dio =  Dio();
+    var formData = FormData.fromMap({
+      'name': 'wendux',
+      'age': 25,
+      'file': await MultipartFile.fromFile(path,filename: 'upload.png')
+    });
+    dio.post("http://192.168.55.104:9000/user/upload",data: formData,onSendProgress: (progress,total){
+      log("${progress/total}");
+    }).then((value) {
+      log('upload result $value');
+    }).catchError((err){
+      log("upload err ${err.toString()}");
+    });
   }
 }
