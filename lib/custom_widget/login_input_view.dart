@@ -67,7 +67,12 @@ class _InputTextFieldState extends State<InputTextField> {
   final TextEditingController _editingController = TextEditingController();
   bool isVisible = false;
   bool showErrorLabel = false;
-
+  bool _security = false;
+  @override
+  void initState() {
+    _security = widget.security;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,10 +118,21 @@ class _InputTextFieldState extends State<InputTextField> {
                         color: Colors.white38,
                       ),
                       suffixIcon: widget.security == true
-                          ? const Icon(
-                        Icons.remove_red_eye_outlined,
-                        size: 14,
-                        color: Colors.white38,
+                          ? GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            _security = !_security;
+                          });
+                        },
+                        child: Container(
+                          width: 30,
+                          alignment: Alignment.centerRight,
+                          child: const Icon(
+                            Icons.remove_red_eye_outlined,
+                            size: 14,
+                            color: Colors.white38,
+                          ),
+                        ),
                       )
                           : Visibility(
                         child: GestureDetector(
@@ -135,7 +151,7 @@ class _InputTextFieldState extends State<InputTextField> {
                         visible: isVisible,
                       )),
                   autofocus: widget.isFocus,
-                  obscureText: widget.security,
+                  obscureText: _security,
                   onTap: () {
                     log("text field did click");
                   },

@@ -32,9 +32,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    log("width $width");
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
+        resizeToAvoidBottomInset: false,
         body: Container(
           width: width,
           decoration: const BoxDecoration(
@@ -46,30 +46,37 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               color: Colors.black12,
               child: Container(
-                child: ListView(
+                alignment: Alignment.center,
+                child: Stack(
                   children: [
-                    const Padding(padding: EdgeInsets.only(top: 100)),
-                    IconButton(onPressed: (){Navigator.pop(context);}, icon: Image.asset("imgs/images/icon-back@3x.png")),
-                    _createLogoView(),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 60, bottom: 20),
-                      child: Text(
-                        "登录",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
+                    Column(
+                      children: [
+                        const Padding(padding: EdgeInsets.only(top: 100)),
+                        _createLogoView(),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 60, bottom: 20),
+                          child: Text(
+                            "登录",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                        SwitchButton(
+                          titles: const ["密码登录", "手机登录"],
+                          switchButtonClick: (title) {
+                            log("click $title");
+                            setState(() {
+                              usePwdLogin = title == "密码登录";
+                            });
+                          },
+                        ),
+                        usePwdLogin ? _createLoginByPwd() : _createLoginByPhone(),
+                        _createLoginButton(),
+                        _createRememberPwd1()
+                      ],
                     ),
-                    SwitchButton(
-                      titles: const ["密码登录", "手机登录"],
-                      switchButtonClick: (title) {
-                        log("click $title");
-                        setState(() {
-                          usePwdLogin = title == "密码登录";
-                        });
-                      },
-                    ),
-                    usePwdLogin ? _createLoginByPwd() : _createLoginByPhone(),
-                    _createLoginButton(),
-                    _createRememberPwd1()
+
+                    Positioned(child: IconButton(onPressed: (){Navigator.pop(context);}, icon: Image.asset("imgs/images/icon-back@3x.png",width: 20,height: 20,fit: BoxFit.fitWidth,)),left: 0,top: 50,),
+
                   ],
                 ),
               ),

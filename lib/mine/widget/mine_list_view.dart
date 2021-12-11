@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 
 import '../suggestion_report.dart';
 
+typedef MineListViewItemClick = Function(MineModel);
 class MineListView extends StatefulWidget {
-  const MineListView({Key? key}) : super(key: key);
+  final MineListViewItemClick click;
+  const MineListView({Key? key,required this.click}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MineListViewState();
@@ -66,9 +68,7 @@ class _MineListViewState extends State<MineListView> {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () async {
-                  Navigator.push(context, MaterialPageRoute(builder: (_){
-                    return _list[index].target;
-                  }));
+                  widget.click(_list[index]);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10, left: 10),

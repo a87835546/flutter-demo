@@ -28,9 +28,7 @@ class _UserInfoViewState extends State<UserInfoView>{
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
-            child:(AppSingleton.userInfoModel?.avatar
-                .isNotEmpty ??
-                true)
+            child:(AppSingleton.userInfoModel?.avatar != null && AppSingleton.userInfoModel?.avatar != "" )
                 ? Image.network(
               "${AppSingleton.userInfoModel?.avatar}",
               width: 40,
@@ -45,9 +43,6 @@ class _UserInfoViewState extends State<UserInfoView>{
           GestureDetector(
             onTap: () async {
               widget.clickEdit();
-              Navigator.push(context, MaterialPageRoute(builder: (_){
-                return UserInfoPage();
-              }));
             },
             child: Center(
               widthFactor: 1,

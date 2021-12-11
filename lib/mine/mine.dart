@@ -109,16 +109,10 @@ class _MinePageState extends State<Mine> with BasePage {
                 position: const BadgePosition(bottom: 10, end: -10),
                 child: GestureDetector(
                   onTap: () {
-                    setState(() {
-                      isJump = false;
-                    });
-                    if(checkLogin()){
-                      // Navigator.pushNamed(context, 'message_center');
+                    if(hasLogin()){
                       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
                         return MessageCenter(width: MediaQuery.of(context).size.width);
                       }));
-                    }else{
-                      goToLogin(context);
                     }
                   },
                   child: Image.asset(
@@ -129,9 +123,9 @@ class _MinePageState extends State<Mine> with BasePage {
                 )),
             IconButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_){
-                    return UserInfoPage(model: AppSingleton.userInfoModel,);
-                  }));
+                  if(hasLogin()){
+                    developer.log("进入客服中心");
+                  }
                 },
                 icon: Image.asset(
                   "imgs/mine/images/icon-customer-service@3x.png",
@@ -153,7 +147,13 @@ class _MinePageState extends State<Mine> with BasePage {
               getData();
             },
             child: CustomScrollView(
-              slivers: [headerView(), const MineListView()],
+              slivers: [headerView(), MineListView(click: (model){
+                if(hasLogin()){
+                  Navigator.push(context, MaterialPageRoute(builder: (_){
+                    return model.target;
+                  }));
+                }
+              },)],
             ),
             controller: _refreshController,
           ),
@@ -218,6 +218,12 @@ class _MinePageState extends State<Mine> with BasePage {
                                   ),
                                   UserInfoView(infoModel: AppSingleton.userInfoModel,clickEdit: (){
                                     // showToast("点击编辑用户名");
+                                    if(hasLogin()){
+                                      developer.log("点击编辑用户名");
+                                      Navigator.push(context, MaterialPageRoute(builder: (_){
+                                        return UserInfoPage();
+                                      }));
+                                    }
                                   },),
                                   // _createVipInfo(),
                                 ],
@@ -288,7 +294,9 @@ class _MinePageState extends State<Mine> with BasePage {
     return Container(
       child: GestureDetector(
           onTap: () {
-            // showToast("点击vip详情");
+            if(hasLogin()){
+              developer.log("点击vip详情 --- >>> ${AppSingleton.userInfoModel?.token }");
+            }
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(14),
@@ -355,6 +363,9 @@ class _MinePageState extends State<Mine> with BasePage {
                     width: 100,
                     click: () {
                       // showToast("上上签到规则");
+                      if(hasLogin()){
+                        developer.log("上上签到规则");
+                      }
                     }),
               ],
             )
@@ -384,6 +395,9 @@ class _MinePageState extends State<Mine> with BasePage {
           child: GestureDetector(
             onTap: () {
               // showToast("点击签到");
+              if(hasLogin()){
+                developer.log('点击签到');
+              }
             },
             child: const Text(
               "点击签到",
@@ -596,6 +610,17 @@ class _MinePageState extends State<Mine> with BasePage {
         getData();
       }
     }
+  }
+
+
+  bool hasLogin(){
+    if(!super.checkLogin()){
+      setState(() {
+        isJump = false;
+      });
+      goToLogin(context);
+    }
+    return super.checkLogin();
   }
 
 }

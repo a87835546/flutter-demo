@@ -32,8 +32,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    log('app user info ${AppSingleton.userInfoModel?.avatar.isEmpty}');
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           '个人资料',
@@ -84,9 +84,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                                 borderRadius: BorderRadius.circular(20),
                                 child: Container(
                                   alignment: Alignment.centerRight,
-                                  child: (AppSingleton.userInfoModel?.avatar
-                                              .isNotEmpty ??
-                                          true)
+                                  child: (AppSingleton.userInfoModel?.avatar != null && AppSingleton.userInfoModel?.avatar != "" )
                                       ? Image.network(
                                           "${AppSingleton.userInfoModel?.avatar}",
                                           width: 40,
