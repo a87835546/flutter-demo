@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/wallet/banding_phone_page.dart';
 import 'package:flutter_demo/wallet/deposit_segment_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_transaction_page.dart';
 
@@ -22,7 +24,7 @@ class _DepositViewState extends State<DepositView> {
   PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return( AppSingleton.userInfoModel !=null && AppSingleton.userInfoModel!.mobile==null)? BandingPhonePage(): Scaffold(
       body: Container(
         color: ColorUtil.hexColor('0x1A1A1C'),
         child: MediaQuery.removePadding(

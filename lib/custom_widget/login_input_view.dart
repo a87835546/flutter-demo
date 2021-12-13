@@ -38,6 +38,7 @@ class InputTextField extends StatefulWidget {
   final String placeholder;
   final bool isFocus;
   final InputTextFieldType? inputTextFieldType;
+
   /// 当输入内容与给定的长度不符合的时候显示错误内容
   final String? errorText;
   final bool security;
@@ -46,18 +47,18 @@ class InputTextField extends StatefulWidget {
   final num maxLength;
   final num minLength;
 
-  const InputTextField({
-    Key? key,
-    required this.placeholder,
-    this.isFocus = false,
-    this.security = false,
-    this.didChanged,
-    this.complete,
-    this.maxLength = 30,
-    this.minLength = 6,
-    this.errorText,
-    this.inputTextFieldType = InputTextFieldType.username
-  }) : super(key: key);
+  const InputTextField(
+      {Key? key,
+      required this.placeholder,
+      this.isFocus = false,
+      this.security = false,
+      this.didChanged,
+      this.complete,
+      this.maxLength = 30,
+      this.minLength = 6,
+      this.errorText,
+      this.inputTextFieldType = InputTextFieldType.username})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _InputTextFieldState();
@@ -68,19 +69,21 @@ class _InputTextFieldState extends State<InputTextField> {
   bool isVisible = false;
   bool showErrorLabel = false;
   bool _security = false;
+
   @override
   void initState() {
     _security = widget.security;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 38 + 15,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        // color: Colors.redAccent,
-      ),
+          // color: Colors.redAccent,
+          ),
       child: Padding(
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Column(
@@ -108,56 +111,55 @@ class _InputTextFieldState extends State<InputTextField> {
                       filled: false,
                       prefixIcon: widget.security == true
                           ? const Icon(
-                        Icons.lock,
-                        size: 14,
-                        color: Colors.white38,
-                      )
-                          : const Icon(
-                        Icons.person,
-                        size: 14,
-                        color: Colors.white38,
-                      ),
-                      suffixIcon: widget.security == true
-                          ? GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            _security = !_security;
-                          });
-                        },
-                        child: Container(
-                          width: 30,
-                          alignment: Alignment.centerRight,
-                          child: const Icon(
-                            Icons.remove_red_eye_outlined,
-                            size: 14,
-                            color: Colors.white38,
-                          ),
-                        ),
-                      )
-                          : Visibility(
-                        child: GestureDetector(
-                            onTap: () {
-                              _editingController.clear();
-                              widget.didChanged!("");
-                              setState(() {
-                                isVisible = false;
-                              });
-                            },
-                            child: Icon(
-                              Icons.close,
+                              Icons.lock,
                               size: 14,
                               color: Colors.white38,
+                            )
+                          : const Icon(
+                              Icons.person,
+                              size: 14,
+                              color: Colors.white38,
+                            ),
+                      suffixIcon: widget.security == true
+                          ? GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _security = !_security;
+                                });
+                              },
+                              child: Container(
+                                width: 30,
+                                alignment: Alignment.centerRight,
+                                child: const Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  size: 14,
+                                  color: Colors.white38,
+                                ),
+                              ),
+                            )
+                          : Visibility(
+                              child: GestureDetector(
+                                  onTap: () {
+                                    _editingController.clear();
+                                    widget.didChanged!("");
+                                    setState(() {
+                                      isVisible = false;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.close,
+                                    size: 14,
+                                    color: Colors.white38,
+                                  )),
+                              visible: isVisible,
                             )),
-                        visible: isVisible,
-                      )),
                   autofocus: widget.isFocus,
                   obscureText: _security,
                   onTap: () {
                     log("text field did click");
                   },
                   onChanged: (value) {
-                    log("textfield did change: $value max lentg :${widget
-                        .maxLength} value length : ${value.length}");
+                    log("textfield did change: $value max lentg :${widget.maxLength} value length : ${value.length}");
                     if (value.length > widget.maxLength) {
                       // value = value.substring(0,widget.maxLength.toInt());
                       // _editingController.text = value;

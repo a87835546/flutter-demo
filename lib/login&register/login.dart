@@ -33,56 +33,68 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          width: width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("imgs/background-pic@3x.png"),
-                  fit: BoxFit.fill)),
-          child: Padding(
-            padding: EdgeInsets.only(left: 62, right: 62),
+      backgroundColor: Colors.lightBlueAccent,
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        width: width,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("imgs/background-pic@3x.png"),
+                fit: BoxFit.fill)),
+        child: Padding(
+          padding: EdgeInsets.only(left: 62, right: 62),
+          child: Container(
+            color: Colors.black12,
             child: Container(
-              color: Colors.black12,
-              child: Container(
-                alignment: Alignment.center,
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        const Padding(padding: EdgeInsets.only(top: 100)),
-                        _createLogoView(),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 60, bottom: 20),
-                          child: Text(
-                            "登录",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      const Padding(padding: EdgeInsets.only(top: 100)),
+                      _createLogoView(),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 60, bottom: 20),
+                        child: Text(
+                          "登录",
+                          style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
-                        SwitchButton(
-                          titles: const ["密码登录", "手机登录"],
-                          switchButtonClick: (title) {
-                            log("click $title");
-                            setState(() {
-                              usePwdLogin = title == "密码登录";
-                            });
-                          },
-                        ),
-                        usePwdLogin ? _createLoginByPwd() : _createLoginByPhone(),
-                        _createLoginButton(),
-                        _createRememberPwd1()
-                      ],
-                    ),
-
-                    Positioned(child: IconButton(onPressed: (){Navigator.pop(context);}, icon: Image.asset("imgs/images/icon-back@3x.png",width: 20,height: 20,fit: BoxFit.fitWidth,)),left: 0,top: 50,),
-
-                  ],
-                ),
+                      ),
+                      SwitchButton(
+                        titles: const ["密码登录", "手机登录"],
+                        switchButtonClick: (title) {
+                          log("click $title");
+                          setState(() {
+                            usePwdLogin = title == "密码登录";
+                          });
+                        },
+                      ),
+                      usePwdLogin ? _createLoginByPwd() : _createLoginByPhone(),
+                      _createLoginButton(),
+                      _createRememberPwd1()
+                    ],
+                  ),
+                  Positioned(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Image.asset(
+                          "imgs/images/icon-back@3x.png",
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.fitWidth,
+                        )),
+                    left: 0,
+                    top: 50,
+                  ),
+                ],
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _createLoginByPwd() {
@@ -276,12 +288,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
           TextButton(
             onPressed: () async {
-             bool result = await Navigator.push(context, MaterialPageRoute(builder: (context) {
+              bool result = await Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
                 return const RegisterPage();
               }));
-             if (result){
-               Navigator.pop(context,true);
-             }
+              if (result) {
+                Navigator.pop(context, true);
+              }
             },
             child: const Text(
               "没有账号立即注册",

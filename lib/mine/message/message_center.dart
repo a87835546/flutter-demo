@@ -34,6 +34,7 @@ class _MessageCenterState extends State<MessageCenter>
   AnimationController? animationController;
   SwiperController _swiperController = SwiperController();
   num x = 0;
+  int count = 0;
 
   @override
   void initState() {
@@ -47,6 +48,7 @@ class _MessageCenterState extends State<MessageCenter>
         log("listen status $status");
       });
     getX(0);
+    getUnreadCount();
   }
 
   @override
@@ -91,29 +93,39 @@ class _MessageCenterState extends State<MessageCenter>
                             width: width / titles.length,
                             height: 38,
                             child: ListTile(
-                                title: GestureDetector(
-                                    onTap: () {
-                                      getX(index);
-                                      log("$x");
-                                      _swiperController.move(index);
-                                      animationController?.forward();
-                                    },
-                                    child: Container(
-                                      width: itemWidth,
-                                      child: Badge(
-                                        badgeContent: Text("12"),
-                                        position:
-                                            BadgePosition(end: 5, bottom: 10),
-                                        badgeColor: ColorUtil.mainColor(),
-                                        child: Text(
+                              title: GestureDetector(
+                                onTap: () {
+                                  getX(index);
+                                  log("$x");
+                                  _swiperController.move(index);
+                                  animationController?.forward();
+                                },
+                                child: Container(
+                                  width: itemWidth,
+                                  child: index == 0
+                                      ? Badge(
+                                          badgeContent: Text("$count"),
+                                          position:
+                                              BadgePosition(end: 5, bottom: 10),
+                                          badgeColor: ColorUtil.mainColor(),
+                                          child: Text(
+                                            titles[index],
+                                            style: const TextStyle(
+                                                color: Color(0xffc1c1c4),
+                                                fontSize: 14),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                      : Text(
                                           titles[index],
                                           style: const TextStyle(
                                               color: Color(0xffc1c1c4),
                                               fontSize: 14),
                                           textAlign: TextAlign.center,
                                         ),
-                                      ),
-                                    ))),
+                                ),
+                              ),
+                            ),
                           );
                         },
                         shrinkWrap: true,
@@ -178,5 +190,18 @@ class _MessageCenterState extends State<MessageCenter>
       itemCount: titles.length,
       scrollDirection: Axis.horizontal,
     );
+  }
+
+  void getUnreadCount() {
+    HttpManager.get(url: 'message/getUnreadCount').then((value) {
+      log("get unread count $value");
+      if (value['code'] == 200) {
+        setState(() {
+          count = value['data'];
+        });
+      }
+    }).catchError((err) {
+      log('get unread count error ${err}');
+    });
   }
 }
