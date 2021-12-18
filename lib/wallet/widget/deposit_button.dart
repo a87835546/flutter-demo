@@ -36,11 +36,11 @@ class _DepositButtonState extends State<DepositButton> {
                 color:widget.selected ? ColorUtil.mainColor():ColorUtil.mainTitleColor(),
               ),
             ),
-            Container(
+            Padding(padding: EdgeInsets.only(top: 5),child: Container(
               height: 1,
               width: 30,
               color:widget.selected ? ColorUtil.mainColor():Colors.transparent,
-            )
+            ),)
           ],
         ),
       ),

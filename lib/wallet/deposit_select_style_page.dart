@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/wallet/widget/deposit_button.dart';
 
+import 'deposit_style_page.dart';
+
 class DepositSelectTypeView extends StatefulWidget {
-  const DepositSelectTypeView({Key? key}) : super(key: key);
+  final DepositStylePageType type;
+
+  const DepositSelectTypeView({Key? key,required this.type}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DepositSelectTypeViewState();

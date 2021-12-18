@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/home/draw_page.dart';
+import 'package:flutter_demo/home/page_transition.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -46,6 +48,10 @@ class _DepositNaviBarState extends State<DepositNaviBar>{
                 }),
                 IconButton(onPressed: (){
                   Fluttertoast.showToast(msg: "点击 跟多");
+                  Navigator.push(
+                      context,
+                      _createRoute(
+                          Tween(begin: Offset(1.0, 0), end: Offset.zero)));
                 }, icon: Image.asset("imgs/deposit/images/icon-List@3x.png")),
               ],
             )
@@ -64,5 +70,19 @@ class _DepositNaviBarState extends State<DepositNaviBar>{
           width: 60,
           fit: BoxFit.fitWidth,
         ));
+  }
+
+  Route _createRoute(Tween<Offset> tween) {
+    return PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) =>
+           const Page3(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position:
+            animation.drive(tween.chain(CurveTween(curve: Curves.ease))),
+            child: child,
+          );
+        });
   }
 }

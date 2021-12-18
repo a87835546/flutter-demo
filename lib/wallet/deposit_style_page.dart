@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/wallet/widget/bank_item_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_amount_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_channel_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_input_view.dart';
@@ -45,7 +46,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
   Widget _createDepositView() {
     return Column(
       children: [
-        DepositSelectTypeView(),
+        DepositSelectTypeView(type:  DepositStylePageType.deposit,),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Container(
@@ -103,7 +104,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
   Widget _createWithdrawView() {
     return Column(
       children: [
-        DepositSelectTypeView(),
+        DepositSelectTypeView(type: DepositStylePageType.withdraw,),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Container(
@@ -163,7 +164,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
   Widget _createBankView() {
     return Column(
       children: [
-        DepositSelectTypeView(),
+        DepositSelectTypeView(type: DepositStylePageType.bank,),
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Container(
@@ -178,54 +179,8 @@ class _DepositStylePageState extends State<DepositStylePage> {
           child: ListView.builder(
               itemBuilder: (BuildContext context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(bottom: 10),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: ColorUtil.hexColor('0x2C2C2E'),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Container(
-                                height: 34,
-                                width: 34,
-                                child: Image.asset(
-                                    "imgs/deposit/images/wechat@3x.png"),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 5, top: 12),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      'xxxxxxxxx',
-                                      style: TextStyle(
-                                          color: Color(0xffC1C2C4),
-                                          fontSize: 14),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      'xxxxxxxxx',
-                                      style: TextStyle(
-                                          color: Color(0xff919699),
-                                          fontSize: 12),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  padding: EdgeInsets.only(left: 20),
+                  child: BankItemView(),
                 );
               },
               itemCount: 3,

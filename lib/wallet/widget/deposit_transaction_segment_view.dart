@@ -30,12 +30,16 @@ class _DepositTransactionSegmentViewState
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: list.map((e) {
-          return DepositButton(click: (value ) {
-            setState(() {
-              select = value;
-            });
-            widget.click(list.indexOf(value));
-          }, selected: select == e,title: e,);
+          return DepositButton(
+            click: (value) {
+              setState(() {
+                select = value;
+              });
+              widget.click(list.indexOf(value));
+            },
+            selected: select == e,
+            title: e,
+          );
         }).toList(),
       ),
     );
