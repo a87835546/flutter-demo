@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
+import 'package:flutter_demo/wallet/entity/deposit_style_model.dart';
 import 'package:flutter_demo/wallet/widget/bank_item_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_amount_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_channel_view.dart';

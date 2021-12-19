@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
+import 'package:flutter_demo/wallet/entity/deposit_style_model.dart';
 
-typedef DepositStyleViewClick = Function(int);
+typedef DepositStyleViewClick = Function(DepositStyleModel);
 class DepositStyleView extends StatefulWidget {
   final DepositStyleViewClick click;
   const DepositStyleView({Key? key,required this.click}) : super(key: key);
@@ -12,13 +16,12 @@ class DepositStyleView extends StatefulWidget {
 }
 
 class _DepositStyleViewState extends State<DepositStyleView> {
-  List list = [
-    'imgs/deposit/images/alipay@3x.png',
-    'imgs/deposit/images/alipay@3x.png',
-    'imgs/deposit/images/alipay@3x.png',
-    'imgs/deposit/images/alipay@3x.png'
-  ];
-  var select = "";
+  List<DepositStyleModel> _list = [];
+@override
+  void initState() {
+    super.initState();
+    getStyle();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,18 +51,15 @@ class _DepositStyleViewState extends State<DepositStyleView> {
             padding: EdgeInsets.only(left: 15, right: 15, top: 10),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: list.map((e) {
+                children: _list.map((e) {
                   return GestureDetector(
                     onTap: (){
-                      setState(() {
-                        select = e;
-                      });
-                      widget.click(list.indexOf(e));
+                      widget.click(e);
                     },
                     child: Container(
                       height: 62,
                       width: 62,
-                      child: Image.asset(e),
+                      child: Image.network(e.url)
                     ),
                   );
                 }).toList()),
@@ -67,5 +67,24 @@ class _DepositStyleViewState extends State<DepositStyleView> {
         ],
       ),
     ));
+  }
+
+  void getStyle(){
+    HttpManager.get(url: "/wallet/deposit/style").then((value){
+      List<DepositStyleModel> lists = [];
+      if(value['data'] != null) {
+        List<dynamic> temp = value["data"];
+
+        temp.forEach((element) {
+          lists.add(DepositStyleModel.fromJson(element));
+        });
+        log("$lists");
+        setState(() {
+          _list = lists;
+        });
+      }
+    }).catchError((err){
+      log("${err.toString()}");
+    });
   }
 }

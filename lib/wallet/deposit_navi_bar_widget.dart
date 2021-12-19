@@ -74,7 +74,7 @@ class _DepositNaviBarState extends State<DepositNaviBar>{
 
   Route _createRoute(Tween<Offset> tween) {
     return PageRouteBuilder(
-        opaque: false,
+        opaque: true,
         pageBuilder: (context, animation, secondaryAnimation) =>
            const Page3(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {

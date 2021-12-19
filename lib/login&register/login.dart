@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_demo/custom_widget/login_input_view.dart';
 import 'package:flutter_demo/custom_widget/switch_button.dart';
 import 'package:flutter_demo/login&register/login_request.dart';
@@ -29,6 +30,12 @@ class _LoginPageState extends State<LoginPage> {
   String phone = "";
   String code = "";
 
+  @override
+  void dispose() {
+    super.dispose();
+    SystemChannels.textInput.invokeMethod(
+        'TextInput.hide');
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
