@@ -25,13 +25,24 @@ class _BankItemViewState extends State<BankItemView>{
             padding: EdgeInsets.only(left: 5, top: 12),
             child: Column(
               children: [
-                Container(
-                  child: Text(
-                    '中国银行    大师傅看看',
-                    style: TextStyle(
-                        color: Color(0xffC1C2C4),
-                        fontSize: 14),
-                  ),
+                Row(
+                  children: [
+                    Container(
+                      child: Text(
+                        '中国银行    大师傅看看',
+                        style: TextStyle(
+                            color: Color(0xffC1C2C4),
+                            fontSize: 14),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color:Color(0xffC1C2C4),width: 1 )
+                      ),
+                      child: Text("解绑",style: TextStyle(color: Color(0xffC1C2C4),fontSize: 12),),
+                    )
+                  ],
                 ),
                 Container(
                   alignment: Alignment.centerLeft,

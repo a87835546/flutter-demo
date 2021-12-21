@@ -6,27 +6,22 @@ import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/wallet/entity/deposit_style_model.dart';
 
-typedef DepositStyleViewClick = Function(DepositStyleModel);
+typedef DepositStyleViewClick = Function(int);
 class DepositStyleView extends StatefulWidget {
   final DepositStyleViewClick click;
-  const DepositStyleView({Key? key,required this.click}) : super(key: key);
+  final List<DepositStyleModel> data;
+  const DepositStyleView({Key? key,required this.click,required this.data}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DepositStyleViewState();
 }
 
 class _DepositStyleViewState extends State<DepositStyleView> {
-  List<DepositStyleModel> _list = [];
-@override
-  void initState() {
-    super.initState();
-    getStyle();
-  }
+  var selected = null;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        // height: 90,
-        child: Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -51,40 +46,31 @@ class _DepositStyleViewState extends State<DepositStyleView> {
             padding: EdgeInsets.only(left: 15, right: 15, top: 10),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: _list.map((e) {
+                children: widget.data.map((e) {
                   return GestureDetector(
                     onTap: (){
-                      widget.click(e);
+                      widget.click(widget.data.indexOf(e));
+                      setState(() {
+                        selected = e;
+                      });
                     },
-                    child: Container(
-                      height: 62,
-                      width: 62,
-                      child: Image.network(e.url)
+                    child: Stack(
+                      children: [
+                        Container(
+                            height: 62,
+                            width: 62,
+                            child: Image.network(e.url)
+                        ),
+                        Visibility(child: Positioned(child: Image.asset("imgs/deposit/images/deposit-images-choose@3x .png",height: 62,
+                          width: 62,fit: BoxFit.cover,)),visible: selected == e,)
+                      ],
                     ),
                   );
                 }).toList()),
           )
         ],
       ),
-    ));
+    );
   }
 
-  void getStyle(){
-    HttpManager.get(url: "/wallet/deposit/style").then((value){
-      List<DepositStyleModel> lists = [];
-      if(value['data'] != null) {
-        List<dynamic> temp = value["data"];
-
-        temp.forEach((element) {
-          lists.add(DepositStyleModel.fromJson(element));
-        });
-        log("$lists");
-        setState(() {
-          _list = lists;
-        });
-      }
-    }).catchError((err){
-      log("${err.toString()}");
-    });
-  }
 }

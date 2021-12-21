@@ -12,7 +12,7 @@ class DepositAmountView extends StatefulWidget {
   final String? suffix;
   final String? prefix;
   final String? rightDescription;
-  final List<String>? amount;
+  final List<String> amount;
 
   const DepositAmountView(
       {Key? key,
@@ -21,7 +21,7 @@ class DepositAmountView extends StatefulWidget {
         this.suffix,
         this.prefix,
         this.rightDescription,
-        this.amount,})
+        required this.amount,})
       : super(key: key);
 
   @override
@@ -40,9 +40,8 @@ class _DepositAmountViewState extends State<DepositAmountView> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.amount != null){
-      _list = widget.amount!;
-    }
+
+    _list = widget.amount;
     return Container(
         child: Container(
           child: Column(

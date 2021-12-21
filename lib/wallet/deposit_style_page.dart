@@ -29,6 +29,13 @@ class DepositStylePage extends StatefulWidget {
 }
 
 class _DepositStylePageState extends State<DepositStylePage> {
+  List<DepositStyleModel> _list = [];
+  @override
+  void initState() {
+    super.initState();
+    getStyle();
+  }
+
   @override
   Widget build(BuildContext context) {
     switch (widget.type) {
@@ -44,7 +51,8 @@ class _DepositStylePageState extends State<DepositStylePage> {
         }
     }
   }
-
+   int _index = 0;
+   int _index1 = 0;
   Widget _createDepositView() {
     return Column(
       children: [
@@ -63,16 +71,25 @@ class _DepositStylePageState extends State<DepositStylePage> {
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     DepositStyleView(
+                      data: _list,
                       click: (value) {
+                        setState(() {
+                          _index = value;
+                          _index1 = 0;
+                        });
                         log('click deposit style view $value');
                       },
                     ),
                     DepositChannelView(
+                      model:_list.isNotEmpty? _list[_index]:null,
                       click: (value) {
+                        setState(() {
+                          _index1 = value;
+                        });
                         log("DepositChannelView");
                       },
                     ),
-                    const DepositAmountView(),
+                    DepositAmountView(amount:_list[_index].channels[_index1].fixedAmount,),
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       child: Container(
@@ -121,6 +138,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     DepositStyleView(
+                      data: _list,
                       click: (value) {
                         log('click deposit style view $value');
                       },
@@ -213,7 +231,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
                           child: Image.asset("imgs/images/icon-add@3x.png",fit: BoxFit.fitWidth,),
                         ),
                         Padding(padding: EdgeInsets.only(left: 5),child: Text(
-                          "存款教程",
+                          "添加银行卡",
                           style: TextStyle(color: Color(0xffC1C2C4)),
                         ),)
                       ],
@@ -226,5 +244,23 @@ class _DepositStylePageState extends State<DepositStylePage> {
         ),
       ],
     );
+  }
+
+  void getStyle(){
+    HttpManager.get(url: "/wallet/deposit/style").then((value){
+      List<DepositStyleModel> lists = [];
+      if(value['data'] != null) {
+        List<dynamic> temp = value["data"];
+
+        temp.forEach((element) {
+          lists.add(DepositStyleModel.fromJson(element));
+        });
+        setState(() {
+          _list = lists;
+        });
+      }
+    }).catchError((err){
+      log("${err.toString()}");
+    });
   }
 }
