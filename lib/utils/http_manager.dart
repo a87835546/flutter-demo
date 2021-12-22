@@ -36,7 +36,7 @@ class HttpManager {
     Response response = await _dio.get(baseUrl + url,
         queryParameters: params, options: options);
     try {
-      log("$response");
+      // log("$response");
       if (response.statusCode == 200) {
         if (response.data['code'] == 200) {
           return response.data;

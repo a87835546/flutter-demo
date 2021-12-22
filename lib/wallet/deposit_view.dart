@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/wallet/banding_phone_page.dart';
 import 'package:flutter_demo/wallet/deposit_segment_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_transaction_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'deposit_navi_bar_widget.dart';
 import 'deposit_select_style_page.dart';
@@ -22,7 +24,13 @@ class DepositView extends StatefulWidget {
 
 class _DepositViewState extends State<DepositView> {
   String balance = "10";
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
+  @override
+  void initState() {
+    super.initState();
+    getBalance();
+  }
+
   @override
   Widget build(BuildContext context) {
     return( AppSingleton.userInfoModel !=null && AppSingleton.userInfoModel!.mobile==null)? BandingPhonePage(): Scaffold(
@@ -42,6 +50,9 @@ class _DepositViewState extends State<DepositView> {
                 DepositNaviBar(
                   balance: balance,
                   height: MediaQuery.of(context).padding.top,
+                  refresh: (){
+                    getBalance();
+                  },
                 ),
                 DepositSegmentView(
                   click: (value) {
@@ -52,10 +63,10 @@ class _DepositViewState extends State<DepositView> {
                 Container(
                   height: MediaQuery.of(context).size.height,
                   child: PageView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     controller: _pageController,
-                    children: [
+                    children:const [
                       DepositStylePage(type: DepositStylePageType.deposit,),
                       DepositStylePage(type: DepositStylePageType.withdraw,),
                       DepositTransactionPage(),
@@ -69,5 +80,20 @@ class _DepositViewState extends State<DepositView> {
         ),
       ),
     );
+  }
+
+  void getBalance(){
+    HttpManager.get(url: "pay/checkBalance").then((value){
+      log("get balance $value");
+      if(value['data'] != null){
+        setState(() {
+          balance = value['data']['balance'];
+        });
+        Fluttertoast.showToast(msg: "刷新成功",gravity:ToastGravity.TOP);
+      }
+    }).catchError((err){
+      Fluttertoast.showToast(msg: "刷新失败" + err.toString(),gravity:ToastGravity.CENTER);
+
+    });
   }
 }

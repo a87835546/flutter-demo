@@ -5,11 +5,12 @@ import 'package:flutter_demo/home/page_transition.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+typedef DepositNaviBarRefresh = Function();
 class DepositNaviBar extends StatefulWidget {
   final String balance;
   final double height;
-  const DepositNaviBar({Key? key,required this.balance,required this.height}) : super(key: key);
+  final DepositNaviBarRefresh? refresh;
+  const DepositNaviBar({Key? key,required this.balance,required this.height,this.refresh}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DepositNaviBarState();
@@ -44,7 +45,9 @@ class _DepositNaviBarState extends State<DepositNaviBar>{
                     ),
                     iconName:"imgs/mine/images/icon-Refresh@3x.png",
                     width:100, click:() async {
-                  Fluttertoast.showToast(msg: "点击 余额");
+                      if(widget.refresh!=null){
+                        widget.refresh!();
+                      }
                 }),
                 IconButton(onPressed: (){
                   Fluttertoast.showToast(msg: "点击 跟多");

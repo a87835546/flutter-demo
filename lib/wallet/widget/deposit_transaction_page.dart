@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
+import 'package:flutter_demo/wallet/entity/transaction_model.dart';
 
 import 'deposit_transaction_list_item.dart';
 import 'deposit_transaction_other_list_item.dart';
@@ -31,6 +33,13 @@ class _DepositTransactionPageState extends State<DepositTransactionPage> {
     DepositTransactionOtherListView(),
     DepositTransactionListView(),
   ];
+  int _index = 0;
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +59,12 @@ class _DepositTransactionPageState extends State<DepositTransactionPage> {
                 kBottomNavigationBarHeight,
             child: PageView(
                 controller: _pageController,
+                onPageChanged: (value){
+                  setState(() {
+                    _index = value;
+                  });
+                  log("on page changed $value");
+                },
                 children: list.map((e) {
                   return Container(child: pages[list.indexOf(e)]);
                 }).toList()),

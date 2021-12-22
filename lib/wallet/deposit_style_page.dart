@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/wallet/entity/deposit_style_model.dart';
+import 'package:flutter_demo/wallet/entity/transaction_model.dart';
 import 'package:flutter_demo/wallet/widget/bank_item_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_amount_view.dart';
 import 'package:flutter_demo/wallet/widget/deposit_channel_view.dart';
@@ -30,6 +31,7 @@ class DepositStylePage extends StatefulWidget {
 
 class _DepositStylePageState extends State<DepositStylePage> {
   List<DepositStyleModel> _list = [];
+
   @override
   void initState() {
     super.initState();
@@ -51,24 +53,27 @@ class _DepositStylePageState extends State<DepositStylePage> {
         }
     }
   }
-   int _index = 0;
-   int _index1 = 0;
+
+  int _index = 0;
+  int _index1 = 0;
+  String _amount = '0';
+
   Widget _createDepositView() {
-    return Column(
+    return ListView(
       children: [
-        DepositSelectTypeView(type:  DepositStylePageType.deposit,),
-        Padding(
+        DepositSelectTypeView(
+          type: DepositStylePageType.deposit,
+        ),
+       _list.length > 0 ? Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Container(
-            // height: 490,
             decoration: BoxDecoration(
                 color: ColorUtil.hexColor('0x2C2C2E'),
                 borderRadius: BorderRadius.circular(5)),
             child: Padding(
               padding: EdgeInsets.only(left: 0, right: 0),
               child: Container(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child:  Column(
                   children: [
                     DepositStyleView(
                       data: _list,
@@ -81,7 +86,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
                       },
                     ),
                     DepositChannelView(
-                      model:_list.isNotEmpty? _list[_index]:null,
+                      model: _list[_index],
                       click: (value) {
                         setState(() {
                           _index1 = value;
@@ -89,7 +94,17 @@ class _DepositStylePageState extends State<DepositStylePage> {
                         log("DepositChannelView");
                       },
                     ),
-                    DepositAmountView(amount:_list[_index].channels[_index1].fixedAmount,),
+                    DepositAmountView(
+                      amount:
+                      _list[_index].channels[_index1].fixedAmount,
+                      click: (value) {
+                        log('充值金额---->>>> $value');
+                        setState(() {
+                          _amount = value;
+                        });
+                        deposit();
+                      },
+                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       child: Container(
@@ -100,11 +115,13 @@ class _DepositStylePageState extends State<DepositStylePage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
-                                    color: ColorUtil.mainColor(), width: 1)),
+                                    color: ColorUtil.mainColor(),
+                                    width: 1)),
                             alignment: Alignment.center,
                             child: Text(
                               "存款教程",
-                              style: TextStyle(color: ColorUtil.mainColor()),
+                              style: TextStyle(
+                                  color: ColorUtil.mainColor()),
                             ),
                           ),
                         ),
@@ -115,7 +132,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
               ),
             ),
           ),
-        ),
+        ) : Text(""),
       ],
     );
   }
@@ -123,7 +140,9 @@ class _DepositStylePageState extends State<DepositStylePage> {
   Widget _createWithdrawView() {
     return Column(
       children: [
-        DepositSelectTypeView(type: DepositStylePageType.withdraw,),
+        DepositSelectTypeView(
+          type: DepositStylePageType.withdraw,
+        ),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Container(
@@ -184,14 +203,18 @@ class _DepositStylePageState extends State<DepositStylePage> {
   Widget _createBankView() {
     return Column(
       children: [
-        DepositSelectTypeView(type: DepositStylePageType.bank,),
+        DepositSelectTypeView(
+          type: DepositStylePageType.bank,
+        ),
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Container(
             alignment: Alignment.centerLeft,
-            child: Text('xxxxx',textAlign: TextAlign.left,style: TextStyle(
-              color: Color(0xffC1C2C4)
-            ),),
+            child: Text(
+              'xxxxx',
+              textAlign: TextAlign.left,
+              style: TextStyle(color: Color(0xffC1C2C4)),
+            ),
           ),
         ),
         Padding(
@@ -218,22 +241,28 @@ class _DepositStylePageState extends State<DepositStylePage> {
                     width: 255,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                          colors: [Color(0xff3C3E41),Color(0xff37373A)]
-                      ),
-                      borderRadius: BorderRadius.circular(5),),
+                          colors: [Color(0xff3C3E41), Color(0xff37373A)]),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                     alignment: Alignment.center,
-                    child:Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           height: 16,
                           width: 16,
-                          child: Image.asset("imgs/images/icon-add@3x.png",fit: BoxFit.fitWidth,),
+                          child: Image.asset(
+                            "imgs/images/icon-add@3x.png",
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
-                        Padding(padding: EdgeInsets.only(left: 5),child: Text(
-                          "添加银行卡",
-                          style: TextStyle(color: Color(0xffC1C2C4)),
-                        ),)
+                        Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: Text(
+                            "添加银行卡",
+                            style: TextStyle(color: Color(0xffC1C2C4)),
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -246,12 +275,12 @@ class _DepositStylePageState extends State<DepositStylePage> {
     );
   }
 
-  void getStyle(){
-    HttpManager.get(url: "/wallet/deposit/style").then((value){
-      List<DepositStyleModel> lists = [];
-      if(value['data'] != null) {
-        List<dynamic> temp = value["data"];
-
+  Future<List<DepositStyleModel>> getStyle() async {
+    var result = await HttpManager.get(url: "/wallet/deposit/style");
+    log('result --->>>>> $result');
+    List<DepositStyleModel> lists = [];
+      if (result['data'] != null) {
+        List<dynamic> temp = result["data"];
         temp.forEach((element) {
           lists.add(DepositStyleModel.fromJson(element));
         });
@@ -259,7 +288,43 @@ class _DepositStylePageState extends State<DepositStylePage> {
           _list = lists;
         });
       }
-    }).catchError((err){
+    return lists;
+    // HttpManager.get(url: "/wallet/deposit/style").then((value) {
+    //   List<DepositStyleModel> lists = [];
+    //
+    //   if (value['data'] != null) {
+    //     List<dynamic> temp = value["data"];
+    //
+    //     temp.forEach((element) {
+    //       lists.add(DepositStyleModel.fromJson(element));
+    //     });
+    //     setState(() {
+    //       _list = lists;
+    //     });
+    //   }
+    // }).catchError((err) {
+    //   log("${err.toString()}");
+    // });
+  }
+
+  void deposit() {
+    HttpManager.post(url: "/wallet/deposit/deposit", params: {
+      "amountType": _list[_index].amountType.toString(),
+      "channelId": _list[_index].channels[_index1].id.toString(),
+      "money": _amount,
+      "typeId": '0'
+    }).then((value) {
+      List<DepositStyleModel> lists = [];
+      if (value['data'] != null) {
+        List<dynamic> temp = value["data"];
+        temp.forEach((element) {
+          lists.add(DepositStyleModel.fromJson(element));
+        });
+        setState(() {
+          _list = lists;
+        });
+      }
+    }).catchError((err) {
       log("${err.toString()}");
     });
   }

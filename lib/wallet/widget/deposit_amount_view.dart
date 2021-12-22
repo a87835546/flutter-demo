@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 
 import '../deposit_style_page.dart';
-
+typedef DepositAmountViewClick = Function(dynamic);
 class DepositAmountView extends StatefulWidget {
   final DepositStylePageType? type;
   final String? placeholder;
@@ -13,6 +13,7 @@ class DepositAmountView extends StatefulWidget {
   final String? prefix;
   final String? rightDescription;
   final List<String> amount;
+  final DepositAmountViewClick? click;
 
   const DepositAmountView(
       {Key? key,
@@ -21,6 +22,7 @@ class DepositAmountView extends StatefulWidget {
         this.suffix,
         this.prefix,
         this.rightDescription,
+        this.click,
         required this.amount,})
       : super(key: key);
 
@@ -176,7 +178,11 @@ class _DepositAmountViewState extends State<DepositAmountView> {
                                   : [Color(0xff3C3E41), Color(0xff37373A)]),
                         ),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            if(widget.click!=null){
+                              widget.click!(_controller.text);
+                            }
+                          },
                           child: Container(
                             child: Text(
                               '确定',
