@@ -47,6 +47,7 @@ class _DepositTransactionPageState extends State<DepositTransactionPage> {
       child: Column(
         children: [
           DepositTransactionSegmentView(
+            index: _index,
             click: (index) {
               log("$index");
               _pageController.jumpToPage(index);

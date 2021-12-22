@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/base_page/base_page.dart';
+import 'package:flutter_demo/base_page/base_pagina_model.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/wallet/entity/transaction_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -17,8 +18,11 @@ class DepositTransactionListView extends StatefulWidget {
 
 class _DepositTransactionListViewState extends State<DepositTransactionListView>
     with BasePage {
-  final RefreshController _refreshController = RefreshController(initialRefresh: false,);
+  final RefreshController _refreshController = RefreshController(
+    initialRefresh: false,
+  );
   List<TransactionModel> _lists = [];
+  int _pageNum = 0;
 
   @override
   void initState() {
@@ -42,7 +46,6 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
       header: WaterDropHeader(),
       footer: ClassicFooter(
         loadStyle: LoadStyle.ShowWhenLoading,
-        // completeDuration: Duration(milliseconds: 50),
       ),
       child: ListView.builder(
         itemBuilder: (context, index) {
@@ -77,8 +80,8 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
                             alignment: Alignment.centerRight,
                             child: Text(
                               "${model.amount}元",
-                              style:
-                                 const TextStyle(color: Colors.white, fontSize: 12),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
                             ),
                           ),
                         ),
@@ -95,7 +98,7 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
                           alignment: Alignment.center,
                           child: Text(
                             "${model.description}",
-                            style:const TextStyle(
+                            style: const TextStyle(
                                 color: Color(0xffC1C2C4), fontSize: 12),
                           ),
                         ),
@@ -105,7 +108,7 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
                             alignment: Alignment.centerRight,
                             child: Text(
                               "${model.resultType == 0 ? "成功" : " 失败"}",
-                              style:const TextStyle(
+                              style: const TextStyle(
                                   color: Color(0xff26C97F), fontSize: 12),
                             ),
                           ),
@@ -121,32 +124,45 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
         itemCount: _lists.length,
       ),
       onRefresh: () {
+        setState(() {
+          _pageNum = 0;
+          _refreshController.resetNoData();
+          _lists = [];
+        });
         depositTransaction();
         log("refresh");
       },
       onLoading: () {
         log("loading more");
+        setState(() {
+          _pageNum++;
+        });
         depositTransaction();
-        // _refreshController.loadNoData();
       },
-
     );
   }
 
   void depositTransaction() {
-    HttpManager.get(url: "/wallet/transaction/deposit").then((value) {
+    HttpManager.get(
+            url: "/wallet/transaction/deposit?pageSize=10&pageNum=${_pageNum}")
+        .then((value) {
+      log('transaction value --- >>> $value');
       List<TransactionModel> lists = [];
-      if (value['data'] != null) {
-        List<dynamic> temp = value['data'];
+
+      if (value['data']['records'] != null) {
+        List<dynamic> temp = value['data']['records'];
         temp.forEach((element) {
           lists.add(TransactionModel.fromJson(element));
         });
         setState(() {
-          _lists = lists;
+          _lists.addAll(lists);
         });
-
-        _refreshController.refreshCompleted();
-        _refreshController.loadComplete();
+        if (lists.isEmpty) {
+          _refreshController.loadNoData();
+        } else {
+          _refreshController.refreshCompleted();
+          _refreshController.loadComplete();
+        }
       }
     }).catchError((err) {
       log("${err.toString()}");

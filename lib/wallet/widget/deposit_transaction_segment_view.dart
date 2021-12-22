@@ -9,8 +9,8 @@ typedef DepositTransactionSegmentViewClick = Function(int);
 
 class DepositTransactionSegmentView extends StatefulWidget {
   final DepositTransactionSegmentViewClick click;
-
-  const DepositTransactionSegmentView({Key? key, required this.click})
+  final int index;
+  const DepositTransactionSegmentView({Key? key, required this.click,required this.index})
       : super(key: key);
 
   @override
@@ -24,6 +24,7 @@ class _DepositTransactionSegmentViewState
 
   @override
   Widget build(BuildContext context) {
+    select = list[widget.index];
     return Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 20, bottom: 5),
       color: ColorUtil.hexColor('0x1A1A1C'),
