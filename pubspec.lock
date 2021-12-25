@@ -127,6 +127,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
+  city_picker_china:
+    dependency: "direct main"
+    description:
+      name: city_picker_china
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.2"
   cli_util:
     dependency: transitive
     description:

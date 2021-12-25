@@ -6,12 +6,12 @@ import 'package:flutter_demo/mine/widget/user_info_button.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 typedef DepositNaviBarRefresh = Function();
+const double kDepositNaviBarHeight = 40;
 class DepositNaviBar extends StatefulWidget {
   final String balance;
   final double height;
   final DepositNaviBarRefresh? refresh;
   const DepositNaviBar({Key? key,required this.balance,required this.height,this.refresh}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => _DepositNaviBarState();
 
@@ -21,7 +21,7 @@ class _DepositNaviBarState extends State<DepositNaviBar>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height + 40,
+      height: widget.height + kDepositNaviBarHeight,
       color: ColorUtil.hexColor('0x1A1A1C'),
       child: Padding(
         padding: EdgeInsets.only(top: widget.height),

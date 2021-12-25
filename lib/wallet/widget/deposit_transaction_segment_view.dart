@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 
 import 'deposit_button.dart';
 
 typedef DepositTransactionSegmentViewClick = Function(int);
-
+const double kDepositTransactionSegmentViewHeight = 84;
 class DepositTransactionSegmentView extends StatefulWidget {
   final DepositTransactionSegmentViewClick click;
   final int index;

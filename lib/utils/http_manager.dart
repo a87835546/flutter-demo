@@ -52,7 +52,7 @@ class HttpManager {
   static post(
       {required String url,
       Map<String, dynamic>? headers,
-      required Map<String, String> params}) async {
+      required Map<String, dynamic> params}) async {
     Options options = Options(headers: headers, sendTimeout: timeout);
     log("post request params $params");
     Response response =

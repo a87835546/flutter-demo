@@ -8,8 +8,9 @@ import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/wallet/banding_phone_page.dart';
 import 'package:flutter_demo/wallet/deposit_segment_view.dart';
-import 'package:flutter_demo/wallet/widget/deposit_transaction_page.dart';
+import 'package:flutter_demo/wallet/widget/wallet_transaction_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'deposit_navi_bar_widget.dart';
 import 'deposit_select_style_page.dart';
@@ -25,59 +26,58 @@ class DepositView extends StatefulWidget {
 class _DepositViewState extends State<DepositView> {
   String balance = "10";
   final PageController _pageController = PageController();
+
   @override
   void initState() {
     super.initState();
     getBalance();
   }
-
   @override
   Widget build(BuildContext context) {
+    double kContainerHeight = MediaQuery.of(context).size.height  - MediaQuery.of(context).padding.bottom -kBottomNavigationBarHeight - kDepositSegmentViewHeight -kDepositNaviBarHeight;
     return( AppSingleton.userInfoModel !=null && AppSingleton.userInfoModel!.mobile==null)? BandingPhonePage(): Scaffold(
       body: GestureDetector(
         onTap: (){
           SystemChannels.textInput.invokeMethod(
               'TextInput.hide');
         },
-        child: Container(
+        child:Container(
           color: ColorUtil.hexColor('0x1A1A1C'),
           child: MediaQuery.removePadding(
-            removeTop: true,
-            context: context,
-            child: ListView(
-              // physics: const AlwaysScrollableScrollPhysics(),
-              children: [
-                DepositNaviBar(
-                  balance: balance,
-                  height: MediaQuery.of(context).padding.top,
-                  refresh: (){
-                    getBalance();
-                  },
+              removeTop: true,
+              context: context, child: ListView(
+            // physics: const AlwaysScrollableScrollPhysics(),
+            children: [
+              DepositNaviBar(
+                balance: balance,
+                height: MediaQuery.of(context).padding.top,
+                refresh: (){
+                  getBalance();
+                },
+              ),
+              DepositSegmentView(
+                click: (value) {
+                  log("$value");
+                  _pageController.jumpToPage(value);
+                },
+              ),
+              Container(
+                height: kContainerHeight,
+                child: PageView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  children: [
+                    DepositStylePage(type: DepositStylePageType.deposit,),
+                    DepositStylePage(type: DepositStylePageType.withdraw,),
+                    DepositTransactionPage(height: kContainerHeight),
+                    DepositStylePage(type: DepositStylePageType.bank,),
+                  ],
                 ),
-                DepositSegmentView(
-                  click: (value) {
-                    log("$value");
-                    _pageController.jumpToPage(value);
-                  },
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: PageView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    controller: _pageController,
-                    children:const [
-                      DepositStylePage(type: DepositStylePageType.deposit,),
-                      DepositStylePage(type: DepositStylePageType.withdraw,),
-                      DepositTransactionPage(),
-                      DepositStylePage(type: DepositStylePageType.bank,),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
+              )
+            ],
+          )),
+        )
       ),
     );
   }

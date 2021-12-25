@@ -128,6 +128,13 @@
             </list>
           </value>
         </entry>
+        <entry key="city_picker_china">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/city_picker_china-0.0.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="cli_util">
           <value>
             <list>
@@ -758,6 +765,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/characters-1.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/charcode-1.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/checked_yaml-2.0.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/city_picker_china-0.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/cli_util-0.3.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/clock-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/code_builder-4.1.0/lib" />

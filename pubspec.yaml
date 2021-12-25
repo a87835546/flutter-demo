@@ -48,6 +48,7 @@ dependencies:
   logger: ^1.1.0
   image_picker: ^0.8.4+4
   flutter_baidu_mapapi_map: ^3.0.0+2
+  city_picker_china: ^0.0.2
 
 dev_dependencies:
   flutter_test:

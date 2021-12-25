@@ -3,15 +3,17 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
+import 'package:flutter_demo/wallet/entity/bank_model.dart';
 
 import 'bank_item_view.dart';
 
 typedef WithdrawAddBankViewClick = Function();
-typedef WithdrawSelectedBankItemClick = Function();
+typedef WithdrawSelectedBankItemClick = Function(int);
 class WithdrawAddBankView extends StatefulWidget {
+  final List<Banks> list;
   final WithdrawAddBankViewClick? clickAdd;
   final WithdrawSelectedBankItemClick? clickItem;
-  const WithdrawAddBankView({Key? key, this.clickAdd,this.clickItem}) : super(key: key);
+  const WithdrawAddBankView({Key? key, this.clickAdd,this.clickItem,required this.list}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _WithdrawAddBankViewState();
@@ -19,7 +21,7 @@ class WithdrawAddBankView extends StatefulWidget {
 
 class _WithdrawAddBankViewState extends State<WithdrawAddBankView> {
   bool hasBank = true;
-
+  var show ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -112,18 +114,24 @@ class _WithdrawAddBankViewState extends State<WithdrawAddBankView> {
                                   const EdgeInsets.only(bottom: 10, left: 0),
                               child: GestureDetector(
                                 onTap: () {
+                                  log("12312");
                                   if(widget.clickItem != null){
-                                    widget.clickItem!();
+                                    widget.clickItem!(index);
+                                    setState(() {
+                                      show = widget.list[index];
+                                    });
                                   }
                                 },
                                 child: Container(
                                   height: 65,
-                                  child: BankItemView(),
+                                  child: BankItemView(model: widget.list[index],clickUnbind: (){
+
+                                  },showUnbindingBtn: false),
                                 ),
                               ),
                             );
                           },
-                          itemCount: 3,
+                          itemCount: widget.list.length,
                           shrinkWrap: true),
                     ),
             ),

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_baidu_mapapi_map/flutter_baidu_mapapi_map.dart';
 import 'package:flutter_baidu_mapapi_base/flutter_baidu_mapapi_base.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/home/city_picker.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/home.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
         'custom_webView': (BuildContext context)=>const CustomWebView(),
         'card_use': (BuildContext context)=>const CardUse(),
         'baidu_mapi_use': (BuildContext context)=>BaiDuMapSdk(),
+        'city_picker': (BuildContext context)=>CityPickerPage(title: "123123"),
 
       },
     );

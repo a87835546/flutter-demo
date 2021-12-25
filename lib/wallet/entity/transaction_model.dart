@@ -22,7 +22,7 @@ class TransactionModel extends BaseModel{
   final num amount;
   final String description;
   final String showName;
-  final num resultType;
+  final bool resultType;
   final num type;
   final String createTime;
 

@@ -26,7 +26,7 @@ class _SuggestionReportState extends State<SuggestionReport> with BasePage {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "意见反馈",
           style: TextStyle(color: Colors.white, fontSize: 16),
         ),

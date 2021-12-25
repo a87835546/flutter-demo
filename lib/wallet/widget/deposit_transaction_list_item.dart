@@ -22,7 +22,7 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
     initialRefresh: false,
   );
   List<TransactionModel> _lists = [];
-  int _pageNum = 0;
+  int _pageNum = 1;
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
   Widget build(BuildContext context) {
     return SmartRefresher(
       controller: _refreshController,
-      physics: BouncingScrollPhysics(),
+      physics:const BouncingScrollPhysics(),
       enablePullUp: true,
       enablePullDown: true,
       header: WaterDropHeader(),
@@ -107,9 +107,9 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
                             height: 30,
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "${model.resultType == 0 ? "成功" : " 失败"}",
-                              style: const TextStyle(
-                                  color: Color(0xff26C97F), fontSize: 12),
+                              "${model.resultType == true ? "成功" : " 失败"}",
+                              style:  TextStyle(
+                                  color:model.resultType == true ? Color(0xff26C97F) :Colors.redAccent, fontSize: 12),
                             ),
                           ),
                         ),
@@ -125,7 +125,7 @@ class _DepositTransactionListViewState extends State<DepositTransactionListView>
       ),
       onRefresh: () {
         setState(() {
-          _pageNum = 0;
+          _pageNum = 1;
           _refreshController.resetNoData();
           _lists = [];
         });

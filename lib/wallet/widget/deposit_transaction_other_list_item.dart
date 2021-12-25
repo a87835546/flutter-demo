@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/utils/http_manager.dart';
+import 'package:flutter_demo/wallet/entity/transaction_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class DepositTransactionOtherListView extends StatefulWidget {
@@ -14,6 +18,13 @@ class _DepositTransactionOtherListViewState
     extends State<DepositTransactionOtherListView> {
   final RefreshController _refreshController =
       RefreshController(initialRefresh: true);
+  List<TransactionModel> _lists = [];
+  int _pageNum = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -25,11 +36,15 @@ class _DepositTransactionOtherListViewState
   Widget build(BuildContext context) {
     return SmartRefresher(
       controller: _refreshController,
-      onRefresh: (){
-        _refreshController.refreshCompleted();
+      onRefresh: () {
+        withdrawTransaction();
+        setState(() {
+          _pageNum = 0;
+        });
       },
       child: ListView.builder(
         itemBuilder: (context, index) {
+          TransactionModel model = _lists[index];
           return Padding(
             padding: EdgeInsets.only(left: 14, right: 14, bottom: 10),
             child: Container(
@@ -47,7 +62,7 @@ class _DepositTransactionOtherListViewState
                       height: 30,
                       alignment: Alignment.center,
                       child: Text(
-                        "${DateTime.now()}",
+                        model.createTime,
                         style:
                             TextStyle(color: Color(0xffC1C2C4), fontSize: 12),
                       ),
@@ -57,18 +72,21 @@ class _DepositTransactionOtherListViewState
                         height: 30,
                         alignment: Alignment.center,
                         child: Text(
-                          "123",
+                          "${model.amount}元",
                           style: TextStyle(color: Colors.white, fontSize: 12),
                         ),
                       ),
                     ),
                     Container(
                       height: 30,
-                      alignment: Alignment.center,
+                      alignment: Alignment.centerRight,
                       child: Text(
-                        "123",
-                        style:
-                            TextStyle(color: Color(0xffC1C2C4), fontSize: 12),
+                        "${model.resultType == true ? "成功" : " 失败"}",
+                        style: TextStyle(
+                            color: model.resultType == true
+                                ? Color(0xff26C97F)
+                                : Colors.redAccent,
+                            fontSize: 12),
                       ),
                     ),
                   ],
@@ -77,8 +95,37 @@ class _DepositTransactionOtherListViewState
             ),
           );
         },
-        itemCount: 10,
+        itemCount: _lists.length,
       ),
     );
+  }
+
+  void withdrawTransaction() {
+    HttpManager.get(
+            url:
+                "/wallet/transaction/getWithdraw?pageSize=10&pageNum=${_pageNum}")
+        .then((value) {
+      log('transaction value --- >>> $value');
+      List<TransactionModel> lists = [];
+
+      if (value['data']['records'] != null) {
+        List<dynamic> temp = value['data']['records'];
+        temp.forEach((element) {
+          lists.add(TransactionModel.fromJson(element));
+        });
+        setState(() {
+          if(_pageNum == 0){ _lists = [];}
+          _lists.addAll(lists);
+        });
+        if (lists.isEmpty) {
+          _refreshController.loadNoData();
+        } else {
+          _refreshController.refreshCompleted();
+          _refreshController.loadComplete();
+        }
+      }
+    }).catchError((err) {
+      log("${err.toString()}");
+    });
   }
 }

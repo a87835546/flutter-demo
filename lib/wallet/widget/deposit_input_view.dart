@@ -3,18 +3,20 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/utils/color_util.dart';
-
+typedef DepositInputViewValueDidChange = Function(String);
 class DepositInputView extends StatefulWidget {
   /// 前面货币
   final String prefixTitle;
   final String? placeholder;
   final String tips;
+  final DepositInputViewValueDidChange didChange;
 
   const DepositInputView(
       {Key? key,
       required this.prefixTitle,
       required this.placeholder,
-      required this.tips})
+      required this.tips,
+      required this.didChange})
       : super(key: key);
 
   @override
@@ -29,7 +31,6 @@ class _DepositInputViewState extends State<DepositInputView> {
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      // width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         color: ColorUtil.hexColor('0x212222'),
@@ -61,9 +62,11 @@ class _DepositInputViewState extends State<DepositInputView> {
 
                         contentPadding: EdgeInsets.only( left:10,bottom: 10)),
                     onChanged: (value) {
+                      log(value);
                       setState(() {
                         _value = value;
                       });
+                      widget.didChange(value);
                     },
                     onEditingComplete: () {
                       log("123");

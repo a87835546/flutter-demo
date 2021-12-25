@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 
 typedef DepositSegmentViewClick = Function(int);
-
+const double kDepositSegmentViewHeight = 76;
 class DepositSegmentView extends StatefulWidget {
   final DepositSegmentViewClick click;
 
@@ -21,7 +21,7 @@ class _DepositSegmentViewState extends State<DepositSegmentView> {
   Widget build(BuildContext context) {
     return Container(
       padding:const EdgeInsets.only(left: 14, right: 14, top: 20, bottom: 5),
-      // height: 90,
+      height: kDepositSegmentViewHeight -25,
       color: ColorUtil.hexColor('0x1A1A1C'),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

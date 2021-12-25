@@ -6,6 +6,7 @@ import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/baidu_map_sdk_use.dart';
 import 'package:flutter_demo/home/card_use.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
+import 'package:flutter_demo/home/city_picker.dart';
 import 'package:flutter_demo/home/corner_radius_button.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
@@ -65,6 +66,7 @@ class _home extends State<Home> {
     RouterModel("webview 的常见使用", "custom_webView", const CustomWebView()),
     RouterModel("卡片式的view 常见使用", "card_use", const CardUse()),
     RouterModel("百度地图sdk的使用", "baidu_mapi_use",  BaiDuMapSdk()),
+    RouterModel("city picker 使用", "city_picker",  CityPickerPage(title: '12312312',)),
 
   ];
 
