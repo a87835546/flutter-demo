@@ -32,8 +32,10 @@ class _WalletBankViewState extends State<WalletBankView> {
         List<Banks> list = snapshot.data as List<Banks>;
         return Column(
           children: [
-            const DepositSelectTypeView(
+             DepositSelectTypeView(
               type: DepositStylePageType.bank,
+              click: (index){},
+
             ),
             Padding(
               padding: EdgeInsets.only(left: 10),

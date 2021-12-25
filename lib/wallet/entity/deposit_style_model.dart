@@ -55,6 +55,7 @@ class DepositChannel {
   final String showName;
   final num maxAmount;
   final num minAmount;
+  final num depositTypeId;
   final List<String> fixedAmount;
 
   DepositChannel({
@@ -65,6 +66,7 @@ class DepositChannel {
     required this.minAmount,
     required this.id,
     required this.fixedAmount,
+    required this.depositTypeId
   });
 
   static DepositChannel fromJson(Map<String, dynamic> json) {
@@ -80,6 +82,7 @@ class DepositChannel {
       fixedAmount: temp,
       maxAmount: json['maxAmount'],
       minAmount: json['minAmount'],
+        depositTypeId:json["depositTypeId"],
     );
     return model;
   }

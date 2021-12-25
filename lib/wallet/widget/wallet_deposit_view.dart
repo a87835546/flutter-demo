@@ -14,8 +14,9 @@ import 'deposit_style_view.dart';
 
 class WalletDepositView extends StatefulWidget {
   final List<DepositStyleModel> lists;
+  final List<DepositChannel> channel;
 
-  const WalletDepositView({Key? key, required this.lists}) : super(key: key);
+  const WalletDepositView({Key? key, required this.lists,required this.channel}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _WalletDepositViewState();
@@ -23,7 +24,8 @@ class WalletDepositView extends StatefulWidget {
 
 class _WalletDepositViewState extends State<WalletDepositView> {
   int _index = 0;
-  int _index1 = 0;
+  DepositChannel? _channel;
+  bool show = true;
   String _amount = '0';
 
   @override
@@ -35,8 +37,14 @@ class _WalletDepositViewState extends State<WalletDepositView> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const DepositSelectTypeView(
+         DepositSelectTypeView(
           type: DepositStylePageType.deposit,
+          click: (index){
+            setState(() {
+              show = index == 0;
+            });
+          },
+
         ),
         widget.lists.isNotEmpty
             ? Padding(
@@ -50,28 +58,27 @@ class _WalletDepositViewState extends State<WalletDepositView> {
                     child: Container(
                       child: Column(
                         children: [
-                          DepositStyleView(
+                          Visibility(child: DepositStyleView(
                             data: widget.lists,
                             click: (value) {
                               setState(() {
                                 _index = value;
-                                _index1 = 0;
                               });
                               log('click deposit style view $value');
                             },
                           ),
+                          visible:show ,),
                           DepositChannelView(
-                            model: widget.lists[_index],
+                            channels: show == true ? widget.lists[_index].channels : widget.channel,
                             click: (value) {
                               setState(() {
-                                _index1 = value;
+                                _channel = value;
                               });
                               log("DepositChannelView");
                             },
                           ),
                           DepositAmountView(
-                            amount: widget
-                                .lists[_index].channels[_index1].fixedAmount,
+                            amount: (show == true ? widget.lists[_index].channels : widget.channel).first.fixedAmount,
                             click: (value) {
                               log('充值金额---->>>> $value');
                               setState(() {
@@ -115,8 +122,8 @@ class _WalletDepositViewState extends State<WalletDepositView> {
 
   void deposit() {
     HttpManager.post(url: "/wallet/deposit/deposit", params: {
-      "amountType": widget.lists[_index].amountType.toString(),
-      "channelId": widget.lists[_index].channels[_index1].id.toString(),
+      "amountType": _channel?.depositTypeId.toString(),
+      "channelId": _channel?.id.toString(),
       "money": _amount,
       "typeId": '0'
     }).then((value) {

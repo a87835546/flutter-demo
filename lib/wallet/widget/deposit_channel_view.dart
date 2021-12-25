@@ -8,8 +8,8 @@ import 'package:flutter_demo/wallet/entity/deposit_style_model.dart';
 typedef DepositChannelViewClickItem = Function(dynamic);
 class DepositChannelView extends StatefulWidget {
   final DepositChannelViewClickItem click;
-  final DepositStyleModel? model;
-  const DepositChannelView({Key? key,required this.click,required this.model}) : super(key: key);
+  final List<DepositChannel>? channels;
+  const DepositChannelView({Key? key,required this.click,this.channels}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DepositChannelViewState();
@@ -49,10 +49,10 @@ class _DepositChannelViewState extends State<DepositChannelView> {
             padding: const EdgeInsets.all(4.0),
             childAspectRatio: 3,
             shrinkWrap: true,
-            children: (widget.model?.channels??[]).map((e) {
+            children: (widget.channels??[]).map((e) {
               return GestureDetector(
                 onTap: (){
-                  widget.click(widget.model?.channels.indexOf(e));
+                  widget.click(e);
                   setState(() {
                     selected = e;
                   });

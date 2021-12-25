@@ -61,6 +61,7 @@ class _WalletWithdrawViewState extends State<WalletWithdrawView> {
       children: [
         DepositSelectTypeView(
           type: DepositStylePageType.withdraw,
+          click: (index){},
         ),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),

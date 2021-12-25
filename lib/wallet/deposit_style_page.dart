@@ -38,7 +38,8 @@ class _DepositStylePageState extends State<DepositStylePage> {
           List temp = snapshot.data;
           List<DepositStyleModel> list =
               temp.first as List<DepositStyleModel>;
-          List<Banks> banks = temp.last as List<Banks>;
+          List<Banks> banks = temp[1] as List<Banks>;
+          List<DepositChannel> channels = temp.last as List<DepositChannel>;
           switch (widget.type) {
             case DepositStylePageType.withdraw:
               return WalletWithdrawView(
@@ -50,6 +51,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
             case DepositStylePageType.deposit:
               return WalletDepositView(
                 lists: list,
+                channel: channels,
               );
           }
         }
@@ -58,7 +60,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
   }
 
   Future getDatas() async {
-    return Future.wait([getStyle(), getList()]);
+    return Future.wait([getStyle(), getList(),getStyle2()]);
   }
 
   Future<List<DepositStyleModel>> getStyle() async {
@@ -86,5 +88,18 @@ class _DepositStylePageState extends State<DepositStylePage> {
       return banks;
     }
     return [];
+  }
+
+  Future<List<DepositChannel>> getStyle2() async {
+    var result = await HttpManager.get(url: "/wallet/deposit/style?type=1");
+    log('result --->>>>> $result');
+    List<DepositChannel> lists = [];
+    if (result['data'] != null) {
+      List<dynamic> temp = result["data"];
+      temp.forEach((element) {
+        lists.add(DepositChannel.fromJson(element));
+      });
+    }
+    return lists;
   }
 }

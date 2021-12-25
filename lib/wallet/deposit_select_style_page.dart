@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_demo/wallet/widget/deposit_button.dart';
 
 import 'deposit_style_page.dart';
-
+typedef DepositSelectTypeViewClick = Function(int);
 class DepositSelectTypeView extends StatefulWidget {
   final DepositStylePageType type;
+  final DepositSelectTypeViewClick click;
 
-  const DepositSelectTypeView({Key? key,required this.type}) : super(key: key);
+  const DepositSelectTypeView({Key? key,required this.type,required this.click}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DepositSelectTypeViewState();
@@ -29,6 +30,7 @@ class _DepositSelectTypeViewState extends State<DepositSelectTypeView> {
                 click: (value) {
                   setState(() {
                     _selected = value == "人民币充值";
+                    widget.click(0);
                   });
                 },
               ),
@@ -38,6 +40,7 @@ class _DepositSelectTypeViewState extends State<DepositSelectTypeView> {
                   click: (value) {
                     setState(() {
                       _selected = value != "人民币充值1";
+                      widget.click(1);
                     });
                   })
             ],
