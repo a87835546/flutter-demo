@@ -1,6 +1,6 @@
 import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_demo/base_page/base_notification.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
 import 'package:flutter_demo/wallet/entity/deposit_style_model.dart';
@@ -89,22 +89,23 @@ class _WalletDepositViewState extends State<WalletDepositView> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 10, bottom: 10),
-                            child: Container(
-                              child: GestureDetector(
-                                child: Container(
-                                  height: 32,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border: Border.all(
-                                          color: ColorUtil.mainColor(),
-                                          width: 1)),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    "存款教程",
-                                    style:
-                                        TextStyle(color: ColorUtil.mainColor()),
-                                  ),
+                            child: GestureDetector(
+                              onTap: (){
+                              },
+                              behavior: HitTestBehavior.opaque,
+                              child: Container(
+                                height: 32,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                        color: ColorUtil.mainColor(),
+                                        width: 1)),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "存款教程",
+                                  style:
+                                  TextStyle(color: ColorUtil.mainColor()),
                                 ),
                               ),
                             ),
@@ -130,6 +131,7 @@ class _WalletDepositViewState extends State<WalletDepositView> {
       log("deposit money result $value");
       if (value['code'] == 200) {
         Fluttertoast.showToast(msg: "充值成功");
+        BaseNotification(BaseNotificationIdentify.refreshAmount.name).dispatch(context);
       }
     }).catchError((err) {
       log("${err.toString()}");
