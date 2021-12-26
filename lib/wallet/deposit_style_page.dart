@@ -32,7 +32,8 @@ class _DepositStylePageState extends State<DepositStylePage> {
       future: getDatas(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasError || snapshot.data == null) {
-          return Text("${snapshot.error}");
+          log("error ---->>>> ${snapshot.error}");
+          return Text("");
         } else {
           // log("data ---->>>> ${snapshot.data}");
           List temp = snapshot.data;

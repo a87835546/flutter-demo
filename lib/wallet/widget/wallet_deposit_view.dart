@@ -132,6 +132,7 @@ class _WalletDepositViewState extends State<WalletDepositView> {
       if (value['code'] == 200) {
         Fluttertoast.showToast(msg: "充值成功");
         BaseNotification(BaseNotificationIdentify.refreshAmount.name).dispatch(context);
+
       }
     }).catchError((err) {
       log("${err.toString()}");
