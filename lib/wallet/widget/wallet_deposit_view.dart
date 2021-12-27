@@ -122,7 +122,7 @@ class _WalletDepositViewState extends State<WalletDepositView> {
   }
 
   void deposit() {
-    HttpManager.post(url: "/wallet/deposit/deposit", params: {
+    HttpManager.post(url: "/wallet/deposit", params: {
       "amountType": _channel?.depositTypeId.toString(),
       "channelId": _channel?.id.toString(),
       "money": _amount,

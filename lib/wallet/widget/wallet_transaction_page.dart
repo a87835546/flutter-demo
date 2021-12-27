@@ -25,11 +25,11 @@ class _DepositTransactionPageState extends State<DepositTransactionPage> {
   ];
 
   List pages =const [
-    DepositTransactionListView(),
+    DepositTransactionListView(type: 0,),
     DepositTransactionOtherListView(),
-    DepositTransactionListView(),
-    DepositTransactionOtherListView(),
-    DepositTransactionListView(),
+    DepositTransactionListView(type: 1,),
+    DepositTransactionListView(type: 2,),
+    DepositTransactionListView(type: 3,),
   ];
   int _index = 0;
 

@@ -32,6 +32,7 @@ import 'mine/mine.dart';
 void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ProviderModel()),
+    ChangeNotifierProvider(create: (_) => UserProviderModel()),
   ],child: MyApp(),));
 }
 

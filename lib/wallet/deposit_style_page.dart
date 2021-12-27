@@ -65,7 +65,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
   }
 
   Future<List<DepositStyleModel>> getStyle() async {
-    var result = await HttpManager.get(url: "/wallet/deposit/style");
+    var result = await HttpManager.get(url: "/wallet/style");
     // log('result --->>>>> $result');
     List<DepositStyleModel> lists = [];
     if (result['data'] != null) {
@@ -92,7 +92,7 @@ class _DepositStylePageState extends State<DepositStylePage> {
   }
 
   Future<List<DepositChannel>> getStyle2() async {
-    var result = await HttpManager.get(url: "/wallet/deposit/style?type=1");
+    var result = await HttpManager.get(url: "/wallet/style?type=1");
     log('result --->>>>> $result');
     List<DepositChannel> lists = [];
     if (result['data'] != null) {

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/base_page/base_notification.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
 import 'package:flutter_demo/utils/color_util.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
@@ -203,8 +204,11 @@ class _WalletWithdrawViewState extends State<WalletWithdrawView> {
   }
 
   void withdraw(){
-    HttpManager.post(url: "wallet/deposit/withdraw", params: {"bankId":widget.banks[_index].id,"cardNum":widget.banks[_index].bankCode,"amount":amount}).then((value){
+    HttpManager.post(url: "wallet/withdraw", params: {"bankId":widget.banks[_index].id,"cardNum":widget.banks[_index].bankCode,"amount":amount}).then((value){
       log("withdraw result --- >>> $value");
+      if(value['code'] == 200){
+        BaseNotification(BaseNotificationIdentify.refreshAmount.name).dispatch(context);
+      }
     });
   }
 }

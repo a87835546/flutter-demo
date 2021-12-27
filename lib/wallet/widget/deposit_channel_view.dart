@@ -20,6 +20,7 @@ class _DepositChannelViewState extends State<DepositChannelView> {
 
   @override
   Widget build(BuildContext context) {
+    log('deposit channel count :${widget.channels?.length}');
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

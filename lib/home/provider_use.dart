@@ -11,32 +11,64 @@ class ProviderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProviderModel>(
-        create: (_) => ProviderModel(),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("provider 的使用介绍"),
-            centerTitle: true,
-          ),
-          body: Center(
-            child: ListView(
-              children: [
-                Text("123123123"),
-                Consumer(builder:
-                    (BuildContext context, ProviderModel value, Widget? child) {
-                  log("value ---->>> $value");
-                  return Text("${value.name}");
-                }),
-                ElevatedButton(
-                  onPressed: (){
-                    context.read<ProviderModel>().doSomething();
-                  },
-                  child: Text("++++++++"),
-                )
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("provider 的使用介绍"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ChangeNotifierProvider<ProviderModel>(
+              create: (_) => ProviderModel(),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  Text("provider model count :${context.read<ProviderModel>().count}"),
+                  Consumer(builder: (BuildContext context, ProviderModel value,
+                      Widget? child) {
+                    log("value ---->>> $value");
+                    return Text("${value.name}");
+                  }),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<ProviderModel>().doSomething();
+                    },
+                    child: Text("provider model +++ "),
+                  )
+                ],
+              ),
             ),
-          ),
-        ));
+            ChangeNotifierProvider<UserProviderModel>(
+              create: (_) => UserProviderModel(),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  Text("provider model count :${context.read<UserProviderModel>().count}"),
+                  Consumer(builder: (BuildContext context, UserProviderModel value,
+                      Widget? child) {
+                    log("value ---->>> $value");
+                    return Text("${value.name}");
+                  }),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<UserProviderModel>().doSomething();
+                    },
+                    child: Text("user provider model"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<UserProviderModel>().updateUserInfo();
+                    },
+                    child: Text("user provider model count ++"),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -49,18 +81,20 @@ class ProviderModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
 class UserProviderModel extends ChangeNotifier {
   UserInfoModel? userInfoModel;
   int count = 0;
   String name = "zhangsan";
 
   void doSomething() {
-    log("provider model function doing ");
+    log("provider user model function doing ");
     notifyListeners();
   }
 
-  void updateUserInfo(){
+  void updateUserInfo() {
+    count++;
+    log('user provider model count $count');
     notifyListeners();
-
   }
 }
