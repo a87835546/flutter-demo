@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/mine/widget/user_info_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+typedef MineWalletViewRefreshAmount = Function();
 class MineWalletView extends StatefulWidget {
-  final int balance;
-  const MineWalletView({Key? key,required this.balance}) : super(key: key);
+  final dynamic balance;
+  final MineWalletViewRefreshAmount refreshAmount;
+  const MineWalletView({Key? key,required this.balance,required this.refreshAmount}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MineWalletViewState();
@@ -46,6 +48,7 @@ class _MineWalletViewState extends State<MineWalletView> {
               iconName:"imgs/mine/images/icon-Refresh@3x.png",
               width:100, click:() async {
             Fluttertoast.showToast(msg: "点击 余额");
+            widget.refreshAmount();
           }),
           Container(
             width: 128,

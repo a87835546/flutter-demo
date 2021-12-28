@@ -26,6 +26,8 @@ class HttpManager {
 
   static const int timeout = 1500;
 
+  static List<CancelToken> _tokens = [];
+
   static get(
       {required String url,
       Map<String, dynamic>? headers,
@@ -55,8 +57,10 @@ class HttpManager {
       required Map<String, dynamic> params}) async {
     Options options = Options(headers: headers, sendTimeout: timeout);
     log("post request params $params");
+    CancelToken token = CancelToken();
+    _tokens.add(token);
     Response response =
-        await _dio.post(baseUrl + url, data: params, options: options);
+        await _dio.post(baseUrl + url, data: params, options: options,cancelToken: token);
 
     try {
       if (response.statusCode == 200) {
@@ -92,6 +96,13 @@ class HttpManager {
     }
     return Future.value(true);
   }
+
+  static cancelRequest(){
+    _tokens.forEach((element) {
+      log('取消网络请求 ----->>>>>> $element');
+    });
+  }
+
 }
 
 class HttpInterceptor extends Interceptor {

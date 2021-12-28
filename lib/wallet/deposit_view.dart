@@ -35,6 +35,12 @@ class _DepositViewState extends State<DepositView> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    HttpManager.cancelRequest();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double kContainerHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.bottom -
@@ -113,7 +119,7 @@ class _DepositViewState extends State<DepositView> {
   void getBalance() {
     HttpManager.get(url: "pay/checkBalance").then((value) {
       log("get balance $value");
-      if (value['data'] != null) {
+      if (value['data'] != null && mounted) {
         setState(() {
           balance = value['data']['balance'];
         });

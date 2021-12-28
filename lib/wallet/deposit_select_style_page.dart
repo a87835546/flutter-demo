@@ -28,20 +28,24 @@ class _DepositSelectTypeViewState extends State<DepositSelectTypeView> {
                 title: "人民币充值",
                 selected: _selected,
                 click: (value) {
-                  setState(() {
-                    _selected = value == "人民币充值";
-                    widget.click(0);
-                  });
+                  if(mounted) {
+                    setState(() {
+                      _selected = value == "人民币充值";
+                      widget.click(0);
+                    });
+                  }
                 },
               ),
               DepositButton(
                   title: "人民币充值1",
                   selected: !_selected,
                   click: (value) {
-                    setState(() {
-                      _selected = value != "人民币充值1";
-                      widget.click(1);
-                    });
+                    if(mounted) {
+                      setState(() {
+                        _selected = value != "人民币充值1";
+                        widget.click(1);
+                      });
+                    }
                   })
             ],
           )

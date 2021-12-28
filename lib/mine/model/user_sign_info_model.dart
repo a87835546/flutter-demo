@@ -1,9 +1,9 @@
 class UserSignInfoModel {
-  late final num dayAmount;
+  num dayAmount;
 
-  late final num sumAmount;
+  num sumAmount;
 
-  late final List<TaskConfigs>? taskConfigs;
+  List<TaskConfigs>? taskConfigs;
 
   UserSignInfoModel(
       {required this.dayAmount,

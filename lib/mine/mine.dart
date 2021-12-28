@@ -13,8 +13,8 @@ import 'package:flutter_demo/mine/widget/user_info_mine_wallet_view.dart';
 import 'package:flutter_demo/mine/widget/user_info_view.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
 import 'package:flutter_demo/utils/http_manager.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
-
 
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import "dart:math";
@@ -32,12 +32,10 @@ class Mine extends StatefulWidget {
     return _MinePageState();
   }
 }
+
 var logger = Logger(
   printer: PrefixPrinter(
-    PrettyPrinter(
-        stackTraceBeginIndex: 5,
-        methodCount: 1
-    ),
+    PrettyPrinter(stackTraceBeginIndex: 5, methodCount: 1),
   ),
   filter: ProductionFilter(),
 );
@@ -55,7 +53,7 @@ class _MinePageState extends State<Mine> with BasePage {
   UserVipInfoModel? _vipInfoModel;
 
   /// 余额
-  late int _balance = 0;
+  var _balance;
 
   /// 消息中心的未读消息数量
   late int _unreadCount = 0;
@@ -68,7 +66,6 @@ class _MinePageState extends State<Mine> with BasePage {
 
   @override
   void initState() {
-
     isJump = false;
     getData();
     super.initState();
@@ -109,9 +106,11 @@ class _MinePageState extends State<Mine> with BasePage {
                 position: const BadgePosition(bottom: 10, end: -10),
                 child: GestureDetector(
                   onTap: () {
-                    if(hasLogin()){
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-                        return MessageCenter(width: MediaQuery.of(context).size.width);
+                    if (hasLogin()) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return MessageCenter(
+                            width: MediaQuery.of(context).size.width);
                       }));
                     }
                   },
@@ -123,7 +122,7 @@ class _MinePageState extends State<Mine> with BasePage {
                 )),
             IconButton(
                 onPressed: () {
-                  if(hasLogin()){
+                  if (hasLogin()) {
                     developer.log("进入客服中心");
                   }
                 },
@@ -134,30 +133,38 @@ class _MinePageState extends State<Mine> with BasePage {
                 )),
           ],
         ),
-        body:show?error: Container(
-          decoration: const BoxDecoration(
-            // color: Color(0xff30323f),
-            color: Colors.transparent,
-            image: DecorationImage(
-                image: AssetImage("imgs/mine/images/bg@3x.png"),
-                fit: BoxFit.fill),
-          ),
-          child: SmartRefresher(
-            onRefresh: () async {
-              getData();
-            },
-            child: CustomScrollView(
-              slivers: [headerView(), MineListView(click: (model){
-                if(hasLogin()){
-                  Navigator.push(context, MaterialPageRoute(builder: (_){
-                    return model.target;
-                  }));
-                }
-              },)],
-            ),
-            controller: _refreshController,
-          ),
-        ));
+        body: show
+            ? error
+            : Container(
+                decoration: const BoxDecoration(
+                  // color: Color(0xff30323f),
+                  color: Colors.transparent,
+                  image: DecorationImage(
+                      image: AssetImage("imgs/mine/images/bg@3x.png"),
+                      fit: BoxFit.fill),
+                ),
+                child: SmartRefresher(
+                  onRefresh: () async {
+                    getData();
+                  },
+                  child: CustomScrollView(
+                    slivers: [
+                      headerView(),
+                      MineListView(
+                        click: (model) {
+                          if (hasLogin()) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (_) {
+                              return model.target;
+                            }));
+                          }
+                        },
+                      )
+                    ],
+                  ),
+                  controller: _refreshController,
+                ),
+              ));
   }
 
   SliverToBoxAdapter headerView() {
@@ -186,55 +193,61 @@ class _MinePageState extends State<Mine> with BasePage {
                         margin: const EdgeInsets.only(left: 20, right: 10),
                         width: 36,
                         height: 16,
-                        child: _createVip(_vipInfoModel?.accountLevel ?? 0,true),
+                        child:
+                            _createVip(_vipInfoModel?.accountLevel ?? 0, true),
                       ),
                       Expanded(
                           child: Container(
-                            color: Colors.transparent,
-                            child: OverflowBox(
-                              alignment: Alignment.topCenter,
-                              maxHeight: 230,
-                              maxWidth: 236,
-                              minHeight: 190,
-                              minWidth: 236,
-                              child: Stack(
-                                clipBehavior: Clip.antiAlias,
-                                alignment: Alignment.topCenter,
-                                children: [
-                                  Container(
-                                    color: Colors.transparent,
-                                    child: SizedBox(
-                                      height: 230,
-                                      width: 236,
-                                      child: Transform.rotate(
-                                        angle: pi * 1.25,
-                                        child: const CircularProgressIndicator(
-                                            value: 0.8,
-                                            backgroundColor: Colors.transparent,
-                                            valueColor: AlwaysStoppedAnimation(
-                                                Color(0xffD3C294))),
-                                      ),
-                                    ),
+                        color: Colors.transparent,
+                        child: OverflowBox(
+                          alignment: Alignment.topCenter,
+                          maxHeight: 230,
+                          maxWidth: 236,
+                          minHeight: 190,
+                          minWidth: 236,
+                          child: Stack(
+                            clipBehavior: Clip.antiAlias,
+                            alignment: Alignment.topCenter,
+                            children: [
+                              Container(
+                                color: Colors.transparent,
+                                child: SizedBox(
+                                  height: 230,
+                                  width: 236,
+                                  child: Transform.rotate(
+                                    angle: pi * 1.25,
+                                    child: const CircularProgressIndicator(
+                                        value: 0.8,
+                                        backgroundColor: Colors.transparent,
+                                        valueColor: AlwaysStoppedAnimation(
+                                            Color(0xffD3C294))),
                                   ),
-                                  UserInfoView(infoModel: AppSingleton.userInfoModel,clickEdit: (){
-                                    // showToast("点击编辑用户名");
-                                    if(hasLogin()){
-                                      developer.log("点击编辑用户名");
-                                      Navigator.push(context, MaterialPageRoute(builder: (_){
-                                        return UserInfoPage();
-                                      }));
-                                    }
-                                  },),
-                                  // _createVipInfo(),
-                                ],
+                                ),
                               ),
-                            ),
-                          )),
+                              UserInfoView(
+                                infoModel: AppSingleton.userInfoModel,
+                                clickEdit: () {
+                                  // showToast("点击编辑用户名");
+                                  if (hasLogin()) {
+                                    developer.log("点击编辑用户名");
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (_) {
+                                      return UserInfoPage();
+                                    }));
+                                  }
+                                },
+                              ),
+                              // _createVipInfo(),
+                            ],
+                          ),
+                        ),
+                      )),
                       Container(
                         margin: const EdgeInsets.only(left: 10, right: 20),
                         width: 36,
                         height: 16,
-                        child: _createVip((_vipInfoModel?.accountLevel??0)+1,false),
+                        child: _createVip(
+                            (_vipInfoModel?.accountLevel ?? 0) + 1, false),
                       )
                     ],
                   ),
@@ -256,8 +269,13 @@ class _MinePageState extends State<Mine> with BasePage {
                           fit: BoxFit.fill)),
                   child: Column(
                     children: [
-                      _createVipInfo(_vipInfoModel?.accountLevel??0),
-                      MineWalletView(balance: _balance),
+                      _createVipInfo(_vipInfoModel?.accountLevel ?? 0),
+                      MineWalletView(
+                        balance: _balance,
+                        refreshAmount: () {
+                          getBalance();
+                        },
+                      ),
                       _createVipTaskView(),
                       _createBtn()
                     ],
@@ -294,8 +312,9 @@ class _MinePageState extends State<Mine> with BasePage {
     return Container(
       child: GestureDetector(
           onTap: () {
-            if(hasLogin()){
-              developer.log("点击vip详情 --- >>> ${AppSingleton.userInfoModel?.token }");
+            if (hasLogin()) {
+              developer
+                  .log("点击vip详情 --- >>> ${AppSingleton.userInfoModel?.token}");
             }
           },
           child: ClipRRect(
@@ -308,9 +327,9 @@ class _MinePageState extends State<Mine> with BasePage {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xffEAEAEA),
-                        Color(0xffE0E0E0),
-                      ])),
+                    Color(0xffEAEAEA),
+                    Color(0xffE0E0E0),
+                  ])),
               alignment: Alignment.center,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -363,7 +382,7 @@ class _MinePageState extends State<Mine> with BasePage {
                     width: 100,
                     click: () {
                       // showToast("上上签到规则");
-                      if(hasLogin()){
+                      if (hasLogin()) {
                         developer.log("上上签到规则");
                       }
                     }),
@@ -395,7 +414,7 @@ class _MinePageState extends State<Mine> with BasePage {
           child: GestureDetector(
             onTap: () {
               // showToast("点击签到");
-              if(hasLogin()){
+              if (hasLogin()) {
                 developer.log('点击签到');
               }
             },
@@ -425,7 +444,7 @@ class _MinePageState extends State<Mine> with BasePage {
     return isJump;
   }
 
-  void finishedRequesting(){
+  void finishedRequesting() {
     setState(() {
       _count = 0;
     });
@@ -435,10 +454,10 @@ class _MinePageState extends State<Mine> with BasePage {
   ///获取未读消息
   void getMessageUnread() async {
     developer.log("future complete 1 ");
-    HttpManager.get(url:"/message/unreadCount?terminal=1&msgType=0")
+    HttpManager.get(url: "/message/unreadCount?terminal=1&msgType=0")
         .then((result) {
       developer.log("get message unread result :$result");
-      if(determineRequest(result)){
+      if (determineRequest(result)) {
         goToLogin(context);
         return;
       }
@@ -471,15 +490,15 @@ class _MinePageState extends State<Mine> with BasePage {
   void getSignInfo() async {
     developer.log("future complete 4 ");
 
-    HttpManager.get(url:"/activity/signInfo?terminal=1")
-        .then((result) {
+    HttpManager.get(url: "/activity/signInfo?terminal=1").then((result) {
       developer.log("get user sign info result :$result");
-      if(determineRequest(result)){
+      if (determineRequest(result)) {
         goToLogin(context);
         return;
       }
       try {
-        UserSignInfoModel signInfoModel = UserSignInfoModel.fromJson(result['data']);
+        UserSignInfoModel signInfoModel =
+            UserSignInfoModel.fromJson(result['data']);
         developer.log("get user sign info model :$signInfoModel");
 
         setState(() {
@@ -504,10 +523,9 @@ class _MinePageState extends State<Mine> with BasePage {
   }
 
   void getVipInfo() {
-    HttpManager.get(url:"/activity/vipInfo?=1&terminal=1")
-        .then((result) {
+    HttpManager.get(url: "/activity/vipInfo?=1&terminal=1").then((result) {
       developer.log("get user vip info result :${result.runtimeType}");
-      if(determineRequest(result)){
+      if (determineRequest(result)) {
         setState(() {
           show = !show;
           errorTitle = "测试。。。。。。。";
@@ -517,7 +535,8 @@ class _MinePageState extends State<Mine> with BasePage {
         return;
       }
       try {
-        UserVipInfoModel vipInfoModel = UserVipInfoModel.jsonToObject(result['data']);
+        UserVipInfoModel vipInfoModel =
+            UserVipInfoModel.jsonToObject(result['data']);
         setState(() {
           _vipInfoModel = vipInfoModel;
         });
@@ -538,11 +557,11 @@ class _MinePageState extends State<Mine> with BasePage {
       developer.log("when complete2  count :$_count");
     });
   }
-  void getUserInfo(){
-    HttpManager.get(url:"/user/queryUserInfo")
-        .then((result) {
+
+  void getUserInfo() {
+    HttpManager.get(url: "/user/queryUserInfo").then((result) {
       developer.log("get user sign info result :$result");
-      if(determineRequest(result)){
+      if (determineRequest(result)) {
         goToLogin(context);
         return;
       }
@@ -562,24 +581,28 @@ class _MinePageState extends State<Mine> with BasePage {
           goToLogin(context);
         }
       }
-    }).whenComplete(() {
-    });
+    }).whenComplete(() {});
   }
+
   void getBalance() {
     developer.log("future complete 2 ");
 
-    HttpManager.get(url:"/pay/checkBalance?terminal=1").then((result) {
+    HttpManager.get(url: "pay/checkBalance").then((result) {
       developer.log("get balance info result : $result");
-      if(determineRequest(result)){
+      if (determineRequest(result)) {
         goToLogin(context);
         return;
       }
       try {
         setState(() {
-          _balance = result['balance'];
+          _balance = result['data']['balance'];
         });
+        Fluttertoast.showToast(msg: "刷新成功", gravity: ToastGravity.TOP);
       } catch (err) {
         developer.log("parser user sign info err:${err.toString()}");
+
+        Fluttertoast.showToast(
+            msg: "刷新失败" + err.toString(), gravity: ToastGravity.CENTER);
       } finally {
         if (result['code'] == 401) {
           goToLogin(context);
@@ -603,18 +626,17 @@ class _MinePageState extends State<Mine> with BasePage {
         isJump = true;
       });
       final result =
-      await Navigator.push(context, MaterialPageRoute(builder: (context) {
+          await Navigator.push(context, MaterialPageRoute(builder: (context) {
         return const LoginPage();
       }));
-      if(result == true){
+      if (result == true) {
         getData();
       }
     }
   }
 
-
-  bool hasLogin(){
-    if(!super.checkLogin()){
+  bool hasLogin() {
+    if (!super.checkLogin()) {
       setState(() {
         isJump = false;
       });
@@ -622,5 +644,4 @@ class _MinePageState extends State<Mine> with BasePage {
     }
     return super.checkLogin();
   }
-
 }

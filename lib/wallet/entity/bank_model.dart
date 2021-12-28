@@ -36,6 +36,7 @@ class Banks {
   int? clientType;
   var category;
   int? wdenable;
+  int? protocol;
 
   Banks(
       {this.id,
@@ -56,6 +57,13 @@ class Banks {
     category = json['category'];
     wdenable = json['wdenable'];
   }
+  Banks.fromJson1(Map<String, dynamic> json) {
+    id = json['id'];
+    bankName = json['name'];
+    bankCode = json['address'];
+    category = json['category'];
+    protocol = json['protocol'];
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -68,5 +76,10 @@ class Banks {
     data['category'] = this.category;
     data['wdenable'] = this.wdenable;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'Banks{id: $id, bankName: $bankName, bankCode: $bankCode, bankLog: $bankLog, backBankImg: $backBankImg, clientType: $clientType, category: $category, wdenable: $wdenable}';
   }
 }

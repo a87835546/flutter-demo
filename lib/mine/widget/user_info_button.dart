@@ -33,7 +33,6 @@ class _UserInfoButtonState extends State<UserInfoButton> {
         widthFactor: 1,
         child: Container(
           height: 20,
-          // width:widget.width ?? 100,
           padding: const EdgeInsets.only(left: 0),
           color: Colors.transparent,
           alignment: Alignment.center,

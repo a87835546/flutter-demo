@@ -92,8 +92,8 @@ class _DepositStylePageState extends State<DepositStylePage> {
   }
 
   Future<List<DepositChannel>> getStyle2() async {
-    var result = await HttpManager.get(url: "/wallet/style?type=1");
-    log('result --->>>>> $result');
+    var result = await HttpManager.get(url: "wallet/style?type=1");
+    // log('result --->>>>> $result');
     List<DepositChannel> lists = [];
     if (result['data'] != null) {
       List<dynamic> temp = result["data"];
