@@ -54,7 +54,7 @@ class LoginRequest {
       if(value['code'] == 200) {
 
         model = UserInfoModel.jsonToObject(value['data']);
-        AppSingleton.setUserInfoModel(value as UserInfoModel);
+        AppSingleton.setUserInfoModel(model);
         log("login by user name result:$value    model : $model");
       }else{
         log("login error $value");

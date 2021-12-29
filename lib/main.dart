@@ -33,20 +33,21 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ProviderModel()),
     ChangeNotifierProvider(create: (_) => UserProviderModel()),
-  ],child: MyApp(),));
+  ],child: const MyApp(),));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     _config();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // brightness: AppSingleton.brightness??Brightness.light,
         primarySwatch: Colors.blue,
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
       home: CustomBottomNavigationBar(),
       routes: <String, WidgetBuilder>{
         'home': (BuildContext context) => Home(),

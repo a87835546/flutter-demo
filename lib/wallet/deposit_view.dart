@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/base_page/base_notification.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
@@ -14,7 +16,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'deposit_navi_bar_widget.dart';
-import 'deposit_select_style_page.dart';
 import 'deposit_style_page.dart';
 
 class DepositView extends StatefulWidget {
@@ -27,6 +28,7 @@ class DepositView extends StatefulWidget {
 class _DepositViewState extends State<DepositView> {
   String balance = "10";
   final PageController _pageController = PageController();
+  final RefreshController _refreshController = RefreshController();
 
   @override
   void initState() {
@@ -51,24 +53,39 @@ class _DepositViewState extends State<DepositView> {
             AppSingleton.userInfoModel!.mobile == null)
         ? BandingPhonePage()
         : Scaffold(
-            body: GestureDetector(
-              onTap: () {
-                SystemChannels.textInput.invokeMethod('TextInput.hide');
-              },
-              child: Container(
-                color: ColorUtil.hexColor('0x1A1A1C'),
-                child: MediaQuery.removePadding(
-                  removeTop: true,
-                  context: context,
-                  child: NotificationListener<BaseNotification>(
+            body: Container(
+              color: ColorUtil.hexColor('0x1A1A1C'),
+              child: MediaQuery.removePadding(
+                removeTop: true,
+                context: context,
+                child: SmartRefresher(
+                    controller: _refreshController,
+                    header: MaterialClassicHeader(),
+                    onRefresh: () {
+                      log('refresh');
+                      sleep(Duration(milliseconds: 500));
+                      _refreshController.refreshCompleted();
+                    },
                     child: ListView(
-                      // physics: const AlwaysScrollableScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       children: [
-                        DepositNaviBar(
-                          balance: balance,
-                          height: MediaQuery.of(context).padding.top,
-                          refresh: () {
-                            getBalance();
+                        NotificationListener<BaseNotification>(
+                          child: DepositNaviBar(
+                            balance: balance,
+                            height: MediaQuery.of(context).padding.top,
+                            refresh: () {
+                              getBalance();
+                            },
+                          ),
+                          onNotification: (noti) {
+                            log("接收到的通知内容---->>>>> ${noti.identify}");
+                            log("接收到的通知内容---->>>>> ${BaseNotificationIdentify.refreshAmount.index}");
+                            if (noti.identify ==
+                                BaseNotificationIdentify
+                                    .refreshAmount.name) {
+                              getBalance();
+                            }
+                            return true;
                           },
                         ),
                         DepositSegmentView(
@@ -92,7 +109,8 @@ class _DepositViewState extends State<DepositView> {
                               DepositStylePage(
                                 type: DepositStylePageType.withdraw,
                               ),
-                              DepositTransactionPage(height: kContainerHeight),
+                              DepositTransactionPage(
+                                  height: kContainerHeight),
                               DepositStylePage(
                                 type: DepositStylePageType.bank,
                               ),
@@ -100,17 +118,7 @@ class _DepositViewState extends State<DepositView> {
                           ),
                         )
                       ],
-                    ),
-                    onNotification: (noti) {
-                      log("接收到的通知内容---->>>>> ${noti.identify}");
-                      log("接收到的通知内容---->>>>> ${BaseNotificationIdentify.refreshAmount.index}");
-                      if(noti.identify == BaseNotificationIdentify.refreshAmount.name) {
-                        getBalance();
-                      }
-                      return true;
-                    },
-                  ),
-                ),
+                    )),
               ),
             ),
           );
@@ -123,7 +131,7 @@ class _DepositViewState extends State<DepositView> {
         setState(() {
           balance = value['data']['balance'];
         });
-        Fluttertoast.showToast(msg: "刷新成功",gravity:ToastGravity.TOP);
+        Fluttertoast.showToast(msg: "刷新成功", gravity: ToastGravity.TOP);
       }
     }).catchError((err) {
       Fluttertoast.showToast(

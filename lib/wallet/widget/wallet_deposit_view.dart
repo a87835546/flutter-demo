@@ -36,6 +36,7 @@ class _WalletDepositViewState extends State<WalletDepositView> {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      physics: NeverScrollableScrollPhysics(),
       children: [
          DepositSelectTypeView(
           type: DepositStylePageType.deposit,

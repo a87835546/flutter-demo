@@ -62,6 +62,7 @@ class _WalletBankViewState extends State<WalletBankView> {
               padding:
                   EdgeInsets.only(left: 34, right: 34, bottom: 10, top: 10),
               child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, index) {
                     return SizedBox(
                       height: 65,

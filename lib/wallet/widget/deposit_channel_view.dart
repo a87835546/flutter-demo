@@ -50,6 +50,7 @@ class _DepositChannelViewState extends State<DepositChannelView> {
             padding: const EdgeInsets.all(4.0),
             childAspectRatio: 3,
             shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             children: (widget.channels??[]).map((e) {
               return GestureDetector(
                 onTap: (){
