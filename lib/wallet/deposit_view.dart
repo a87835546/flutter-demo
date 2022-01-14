@@ -34,6 +34,7 @@ class _DepositViewState extends State<DepositView> {
   void initState() {
     super.initState();
     getBalance();
+    multitest();
   }
 
   @override
@@ -126,6 +127,30 @@ class _DepositViewState extends State<DepositView> {
 
   void getBalance() {
     HttpManager.get(url: "pay/checkBalance").then((value) {
+      log("get balance $value");
+      if (value['data'] != null && mounted) {
+        setState(() {
+          balance = value['data']['balance'];
+        });
+        Fluttertoast.showToast(msg: "刷新成功", gravity: ToastGravity.TOP);
+      }
+    }).catchError((err) {
+      Fluttertoast.showToast(
+          msg: "刷新失败" + err.toString(), gravity: ToastGravity.CENTER);
+    });
+  }
+
+
+  void multitest() async{
+
+  }
+  void test(int i) async{
+   await HttpManager.post(url: "/coupon/add",params: {
+      "displayName": "测试00000----${i}",
+      "isShow": true,
+      "picUrl": "",
+      "state": 0
+    }).then((value) {
       log("get balance $value");
       if (value['data'] != null && mounted) {
         setState(() {
