@@ -20,8 +20,8 @@ enum HttpManagerErrorType {
 
 class HttpManager {
   // static String baseUrl = "http://192.168.1.18:9000/";
-  static String baseUrl = "http://192.168.1.13:9000/";
-  // static String baseUrl = "http://192.168.55.131:9000/";
+  static String baseUrl = "http://192.168.1.13:9001/api/v1/";
+  // static String baseUrl = "http://3.85.245.163:9001/api/v1/";
   static final Dio _dio = Dio();
 
   static const int timeout = 1500;
