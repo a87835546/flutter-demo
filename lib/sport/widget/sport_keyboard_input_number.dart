@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/sport/widget/sport_keyboard_amount_textfield.dart';
+import 'package:flutter_demo/sport/widget/sport_keyboard_balance_view.dart';
 import 'package:flutter_demo/sport/widget/sport_keyboard_input_amount.dart';
 import 'package:flutter_demo/sport/widget/sport_keyborad_number_button.dart';
 
@@ -18,6 +21,8 @@ class SportKeyboardInputNumber extends StatefulWidget {
 
 class _SportKeyboardInputNumberState extends State<SportKeyboardInputNumber> {
   final ScrollController _controller = ScrollController();
+  final TextEditingController _editingController = TextEditingController();
+  List<String> _value = [];
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +35,8 @@ class _SportKeyboardInputNumberState extends State<SportKeyboardInputNumber> {
       margin: EdgeInsets.only(left: left_margin, right: right_margin),
       child: Column(
         children: [
+          SportKeyboardBalanceView(balance: "100",refresh: (){},),
+          SportKeyboardAmountTextField(controller: _editingController,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -59,18 +66,47 @@ class _SportKeyboardInputNumberState extends State<SportKeyboardInputNumber> {
                     ].map((e) {
                       return SportKeyboardNumberButton(
                         title: e,
-                        click: () {},
+                        click: () {
+                          if(e=="-" && _value.isNotEmpty){
+                            _value.removeLast();
+                          }else {
+                            _value.add(e);
+                          }
+                          log("value --->>>> $_value");
+                          if(_value.isNotEmpty){
+                            String? value;
+                            _value.forEach((element) {
+                              if(value == null){
+                                value = element;
+                              }else{
+                                value = value!+element;
+                              }
+                            });
+                            setState(() {
+                              _editingController.text = value!;
+                            });
+                          }
+                        },
                       );
                     }).toList(),
                     controller: _controller,
                   )),
-              SizedBox(
+              const SizedBox(
                 width: center_padding,
               ),
               SportKeyboardInputAmountView(
                 width: item_width,
               ),
             ],
+          ),
+          Visibility(
+            child: Container(
+              alignment: Alignment.center,
+              color: Colors.redAccent,
+              height: 30,
+              child: Text("12312312"),
+            ),
+            visible: true,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10),

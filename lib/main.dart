@@ -7,17 +7,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/city_picker.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
 import 'package:flutter_demo/home/home.dart';
+import 'package:flutter_demo/home/upload_image_to_s3.dart';
 import 'package:flutter_demo/tabbar/custom_bottom_navigation_bar.dart';
+import 'package:magic_sdk/magic_sdk.dart';
 import 'package:provider/provider.dart';
 
 import 'home/animation_use.dart';
 import 'home/app_lifecycle.dart';
 import 'home/baidu_map_sdk_use.dart';
+import 'home/blockchain_wallet_page.dart';
 import 'home/card_use.dart';
 import 'home/catalogue_list.dart';
 import 'home/corner_radius_button.dart';
 import 'home/expansion_use.dart';
 import 'home/list_view_controller.dart';
+import 'home/login_by_google.dart';
+import 'home/magic_wallet.dart';
 import 'home/navigator_use.dart';
 import 'home/page_transition.dart';
 import 'home/provider_use.dart';
@@ -34,6 +39,8 @@ void main() async {
     ChangeNotifierProvider(create: (_) => ProviderModel()),
     ChangeNotifierProvider(create: (_) => UserProviderModel()),
   ],child: const MyApp(),));
+
+  Magic.instance = Magic("pk_live_B105F42AA2851AEC");
 }
 
 class MyApp extends StatelessWidget {
@@ -48,7 +55,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home: CustomBottomNavigationBar(),
+      home: Stack(
+        children: [
+          MaterialApp(
+            home: CustomBottomNavigationBar(),
+          ),
+          Magic.instance.relayer // Insert Magic relayer here
+
+        ],
+      ),
       routes: <String, WidgetBuilder>{
         'home': (BuildContext context) => Home(),
         'mine': (BuildContext context) => Mine(),
@@ -73,11 +88,16 @@ class MyApp extends StatelessWidget {
         'city_picker': (BuildContext context) =>
             CityPickerPage(title: "123123"),
         'provider_use': (BuildContext context) => ProviderPage(),
+        'google_sign_in': (BuildContext context) => GoogleLoginPage(),
+        'magic_wallet_page': (BuildContext context) => MagicWalletPage(),
+        'blockchain_wallet_page': (BuildContext context) => BlockchainWalletPage(),
+        'upload_image_page': (BuildContext context) => UploadImageExample(),
       },
     );
   }
 
   void _config() {
+
     if (!kIsWeb && Platform.isIOS) {
       BMFMapSDK.setApiKeyAndCoordType(
           'gb38j4SGzq83tL4z2amTus262D2w3QnR', BMF_COORD_TYPE.BD09LL);
@@ -87,4 +107,5 @@ class MyApp extends StatelessWidget {
       BMFMapSDK.setCoordType(BMF_COORD_TYPE.BD09LL);
     }
   }
+
 }

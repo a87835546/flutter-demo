@@ -1,0 +1,311 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+MERGED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+MERGED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_baidu_mapapi_map] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_baidu_mapapi_map/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_plugin_android_lifecycle] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:device_info] /Users/yicen/AndroidStudioProjects/flutter-demo/build/device_info/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] /Users/yicen/AndroidStudioProjects/flutter-demo/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:fluttertoast] /Users/yicen/AndroidStudioProjects/flutter-demo/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:google_sign_in] /Users/yicen/AndroidStudioProjects/flutter-demo/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_baidu_mapapi_base] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_baidu_mapapi_base/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:webview_flutter_android] /Users/yicen/AndroidStudioProjects/flutter-demo/build/webview_flutter_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:amazon_s3_cognito] /Users/yicen/AndroidStudioProjects/flutter-demo/build/amazon_s3_cognito/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e0c80cb72d282da5b4cd1966a30d3891/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/699f67f2d72ad9902250b3e1c41f0647/exifinterface-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/b6c34301107cd06a29fdce8c3ef58e3a/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.webkit:webkit:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/cbbb6921b2521959953b0c781fe5c304/webkit-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.amazonaws:aws-android-sdk-s3:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/383c820a1f53501967457f57c59f0952/jetified-aws-android-sdk-s3-2.32.0/AndroidManifest.xml:2:1-12:12
+MERGED from [com.amazonaws:aws-android-sdk-kms:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/7528abe27a52e76d0ca5c59d314b0801/jetified-aws-android-sdk-kms-2.32.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:2:1-16:12
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a8ae44bfd6b20fdc1af29c44a05c8967/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/60cd34e2200aa4988cf2ccc6e39ccf82/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ea13efc794b0e1323e550b6fc47b72e2/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5cc10fa79d98a6363adab29f7c5f3eea/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2fd9120a6da4df3dbabdd40f6a2d8995/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/d9536c14ffde0b7289f12ba6def6bfa4/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/eb26273f8f7192460456ce62b9bdf9ef/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/68dbf8ea01a1dbd974fc87b5753550f0/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/93b67ce77e3018bae7dcfb3d9df971c2/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a71638e40cbd9c9c6e5d2d7449ca53dd/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/bc28a09d8d2212ffd5788fe6c1853326/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a59d1de1f299e68c5b049a432ccfd655/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/42415d22b488b741b7e8fbc712464c00/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.6.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/fb333fb43575d8a3b51161295454427f/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/cad25976877a6ae855ef6821534f58a1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/1fdddb698f5b73fbeb212822ee0a08f1/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/c39070be4a8b092ae5970162a829e305/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a861f0b05a17132e2f96ff286e3c4f23/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+	package
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:2:5-39
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:1-43:12
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:1:11-69
+application
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:3:4-42:19
+MERGED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-17:19
+MERGED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:10:5-14:19
+MERGED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:10:5-14:19
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ea13efc794b0e1323e550b6fc47b72e2/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ea13efc794b0e1323e550b6fc47b72e2/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.6.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:4:9-37
+	android:icon
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:5:9-43
+activity#com.example.flutter_demo.MainActivity
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:6:9-34:20
+	android:launchMode
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:8:13-43
+	android:hardwareAccelerated
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:11:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:12:13-55
+	android:configChanges
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:10:13-163
+	android:theme
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:9:13-47
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:7:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:17:13-20:17
+	android:resource
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:19:15-52
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:18:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:26:13-29:17
+	android:resource
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:28:15-61
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:27:15-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:30:13-33:29
+action#android.intent.action.MAIN
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:31:17-68
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:31:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:32:17-76
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:32:27-74
+service#com.amazonaws.mobileconnectors.s3.transferutility.TransferService
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:35:8-124
+	android:enabled
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:35:99-121
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:35:17-98
+meta-data#flutterEmbedding
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:39:9-41:33
+	android:value
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:41:13-30
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml:40:13-44
+uses-sdk
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+MERGED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_baidu_mapapi_map] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_baidu_mapapi_map/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_baidu_mapapi_map] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_baidu_mapapi_map/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_plugin_android_lifecycle/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:device_info] /Users/yicen/AndroidStudioProjects/flutter-demo/build/device_info/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:device_info] /Users/yicen/AndroidStudioProjects/flutter-demo/build/device_info/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /Users/yicen/AndroidStudioProjects/flutter-demo/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /Users/yicen/AndroidStudioProjects/flutter-demo/build/shared_preferences/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/yicen/AndroidStudioProjects/flutter-demo/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/yicen/AndroidStudioProjects/flutter-demo/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] /Users/yicen/AndroidStudioProjects/flutter-demo/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] /Users/yicen/AndroidStudioProjects/flutter-demo/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_baidu_mapapi_base] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_baidu_mapapi_base/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_baidu_mapapi_base] /Users/yicen/AndroidStudioProjects/flutter-demo/build/flutter_baidu_mapapi_base/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] /Users/yicen/AndroidStudioProjects/flutter-demo/build/webview_flutter_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] /Users/yicen/AndroidStudioProjects/flutter-demo/build/webview_flutter_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:amazon_s3_cognito] /Users/yicen/AndroidStudioProjects/flutter-demo/build/amazon_s3_cognito/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:amazon_s3_cognito] /Users/yicen/AndroidStudioProjects/flutter-demo/build/amazon_s3_cognito/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e0c80cb72d282da5b4cd1966a30d3891/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e0c80cb72d282da5b4cd1966a30d3891/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/699f67f2d72ad9902250b3e1c41f0647/exifinterface-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/699f67f2d72ad9902250b3e1c41f0647/exifinterface-1.3.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/b6c34301107cd06a29fdce8c3ef58e3a/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/b6c34301107cd06a29fdce8c3ef58e3a/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/cbbb6921b2521959953b0c781fe5c304/webkit-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/cbbb6921b2521959953b0c781fe5c304/webkit-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.amazonaws:aws-android-sdk-s3:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/383c820a1f53501967457f57c59f0952/jetified-aws-android-sdk-s3-2.32.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.amazonaws:aws-android-sdk-s3:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/383c820a1f53501967457f57c59f0952/jetified-aws-android-sdk-s3-2.32.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.amazonaws:aws-android-sdk-kms:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/7528abe27a52e76d0ca5c59d314b0801/jetified-aws-android-sdk-kms-2.32.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.amazonaws:aws-android-sdk-kms:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/7528abe27a52e76d0ca5c59d314b0801/jetified-aws-android-sdk-kms-2.32.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a8ae44bfd6b20fdc1af29c44a05c8967/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a8ae44bfd6b20fdc1af29c44a05c8967/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/60cd34e2200aa4988cf2ccc6e39ccf82/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/60cd34e2200aa4988cf2ccc6e39ccf82/jetified-play-services-auth-base-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ea13efc794b0e1323e550b6fc47b72e2/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ea13efc794b0e1323e550b6fc47b72e2/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:18:5-43
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5cc10fa79d98a6363adab29f7c5f3eea/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5cc10fa79d98a6363adab29f7c5f3eea/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2fd9120a6da4df3dbabdd40f6a2d8995/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2fd9120a6da4df3dbabdd40f6a2d8995/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/d9536c14ffde0b7289f12ba6def6bfa4/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/d9536c14ffde0b7289f12ba6def6bfa4/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/eb26273f8f7192460456ce62b9bdf9ef/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/eb26273f8f7192460456ce62b9bdf9ef/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/68dbf8ea01a1dbd974fc87b5753550f0/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/68dbf8ea01a1dbd974fc87b5753550f0/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/93b67ce77e3018bae7dcfb3d9df971c2/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/93b67ce77e3018bae7dcfb3d9df971c2/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a71638e40cbd9c9c6e5d2d7449ca53dd/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a71638e40cbd9c9c6e5d2d7449ca53dd/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/bc28a09d8d2212ffd5788fe6c1853326/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/bc28a09d8d2212ffd5788fe6c1853326/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a59d1de1f299e68c5b049a432ccfd655/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a59d1de1f299e68c5b049a432ccfd655/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/42415d22b488b741b7e8fbc712464c00/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/42415d22b488b741b7e8fbc712464c00/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/fb333fb43575d8a3b51161295454427f/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/fb333fb43575d8a3b51161295454427f/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/cad25976877a6ae855ef6821534f58a1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/cad25976877a6ae855ef6821534f58a1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/1fdddb698f5b73fbeb212822ee0a08f1/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/1fdddb698f5b73fbeb212822ee0a08f1/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/c39070be4a8b092ae5970162a829e305/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/c39070be4a8b092ae5970162a829e305/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a861f0b05a17132e2f96ff286e3c4f23/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/a861f0b05a17132e2f96ff286e3c4f23/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml:6:5-66
+MERGED from [:google_sign_in] /Users/yicen/AndroidStudioProjects/flutter-demo/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [:google_sign_in] /Users/yicen/AndroidStudioProjects/flutter-demo/build/google_sign_in/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [:amazon_s3_cognito] /Users/yicen/AndroidStudioProjects/flutter-demo/build/amazon_s3_cognito/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [:amazon_s3_cognito] /Users/yicen/AndroidStudioProjects/flutter-demo/build/amazon_s3_cognito/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /Users/yicen/AndroidStudioProjects/flutter-demo/android/app/src/debug/AndroidManifest.xml:6:22-64
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-15:75
+	android:resource
+		ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-72
+	android:name
+		ADDED from [:image_picker] /Users/yicen/AndroidStudioProjects/flutter-demo/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.amazonaws:aws-android-sdk-s3:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/383c820a1f53501967457f57c59f0952/jetified-aws-android-sdk-s3-2.32.0/AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from [com.amazonaws:aws-android-sdk-s3:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/383c820a1f53501967457f57c59f0952/jetified-aws-android-sdk-s3-2.32.0/AndroidManifest.xml:10:22-76
+uses-library#org.apache.http.legacy
+ADDED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:11:9-13:40
+	android:required
+		ADDED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:13:13-37
+	android:name
+		ADDED from [com.amazonaws:aws-android-sdk-core:2.32.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/0ed7ecc22fee73d382ba7d6d42d98154/jetified-aws-android-sdk-core-2.32.0/AndroidManifest.xml:12:13-50
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/47170cd74a7a8e187e4cafcd524a4274/jetified-play-services-auth-20.0.1/AndroidManifest.xml:34:13-89
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/yicen/.gradle/caches/transforms-2/files-2.1/e1c5805fd7b0dd07bf6c63b1f33a8d8f/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] /Users/yicen/.gradle/caches/transforms-2/files-2.1/2457fa5d6012b18885c4b2ecd3ae746e/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58

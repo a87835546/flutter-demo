@@ -51,6 +51,11 @@ dependencies:
   city_picker_china: ^0.0.2
   provider: ^6.0.1
   flutter_pickers: ^2.1.8
+  google_sign_in: ^5.2.3
+  magic_sdk: ^0.4.0
+  amazon_s3_cognito: ^0.7.4
+  bip39: ^1.0.6
+  bip32: ^2.0.0
 
 dev_dependencies:
   flutter_test:

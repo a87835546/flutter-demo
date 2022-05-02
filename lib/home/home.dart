@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/home/animation_use.dart';
 import 'package:flutter_demo/home/app_lifecycle.dart';
 import 'package:flutter_demo/home/baidu_map_sdk_use.dart';
+import 'package:flutter_demo/home/blockchain_wallet_page.dart';
 import 'package:flutter_demo/home/card_use.dart';
 import 'package:flutter_demo/home/catalogue_list.dart';
 import 'package:flutter_demo/home/city_picker.dart';
 import 'package:flutter_demo/home/corner_radius_button.dart';
 import 'package:flutter_demo/home/device_info_page.dart';
+import 'package:flutter_demo/home/expansion_use.dart';
+import 'package:flutter_demo/home/list_view_controller.dart';
+import 'package:flutter_demo/home/login_by_google.dart';
 import 'package:flutter_demo/home/navigator_use.dart';
 import 'package:flutter_demo/home/page_transition.dart';
 import 'package:flutter_demo/home/provider_use.dart';
@@ -17,15 +21,13 @@ import 'package:flutter_demo/home/router_pass_arguments.dart';
 import 'package:flutter_demo/home/share_preference_use.dart';
 import 'package:flutter_demo/home/stateful_use.dart';
 import 'package:flutter_demo/home/swiper_demo.dart';
+import 'package:flutter_demo/home/upload_image_to_s3.dart';
 import 'package:flutter_demo/home/webview_use.dart';
 import 'package:flutter_demo/home/widget_lifecycle.dart';
 import 'package:flutter_demo/utils/app_singleton.dart';
-import 'package:flutter_demo/utils/screen_utils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
-import 'expansion_use.dart';
-import 'list_view_controller.dart';
 import 'package:logger/logger.dart';
+
+import 'magic_wallet.dart';
 
 var logger = Logger(
   printer: PrefixPrinter(
@@ -69,6 +71,10 @@ class _home extends State<Home> {
     RouterModel("百度地图sdk的使用", "baidu_mapi_use",  BaiDuMapSdk()),
     RouterModel("provider 全局的状态管理 使用", "provider_use",  ProviderPage()),
     RouterModel("city picker 使用", "city_picker",  CityPickerPage(title: '12312312',)),
+    RouterModel("google 登录", "google_sign_in",  GoogleLoginPage()),
+    RouterModel("magic wallet use", "magic_wallet_page",  MagicWalletPage()),
+    RouterModel("blockchain address", "blockchain_wallet_page",  const BlockchainWalletPage()),
+    RouterModel("upload image to amazon s3", "upload_image_page",  const UploadImageExample()),
 
   ];
 

@@ -48,6 +48,18 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_baidu_mapapi_base/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_baidu_mapapi_base/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/flutter_baidu_mapapi_base/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/amazon_s3_cognito/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/amazon_s3_cognito/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/amazon_s3_cognito/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/google_sign_in/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/google_sign_in/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/google_sign_in/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/amazon_s3_cognito/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/amazon_s3_cognito/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/amazon_s3_cognito/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/google_sign_in/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/google_sign_in/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/google_sign_in/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

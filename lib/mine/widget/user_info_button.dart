@@ -35,7 +35,7 @@ class _UserInfoButtonState extends State<UserInfoButton> {
           height: 20,
           padding: const EdgeInsets.only(left: 0),
           color: Colors.transparent,
-          alignment: Alignment.center,
+          alignment: Alignment.centerLeft,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

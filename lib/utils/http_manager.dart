@@ -83,7 +83,7 @@ class HttpManager {
     Map<String,dynamic> map = HashMap();
     map.putIfAbsent("file", () => params);
     Response response =
-    await _dio.post(baseUrl + url, data:params, options: options);
+    await _dio.post(url, data:params, options: options);
 
     try {
       if (response.statusCode == 200) {

@@ -22,7 +22,7 @@ class TabbarController extends State<CustomBottomNavigationBar> {
     const Home(),
     const SportPage(),
     const DepositView(),
-    const Mine()
+    const Mine(),
   ];
 
   @override
